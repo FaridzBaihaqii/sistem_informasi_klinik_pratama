@@ -25,7 +25,7 @@
                                     <th>TANGGAL LAHIR</th>
                                     <th>NAMA PASIEN</th>
                                     <th>ALAMAT</th>
-                                    <th>FOTO PASIEN</th>
+                                    <th>JENIS KELAMIN</th>
                                     <th>NO. TELP</th>
                                     <th>AKSI</th>
                                 </tr>
@@ -36,12 +36,13 @@
                                         <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->nama_pasien }}</td>
                                         <td>{{ $p->alamat }}</td>
-                                        <td>
-                                            @if ($s->file)
+                                        <td>{{ $p->jenkel }}</td>
+                                        <!-- <td>
+                                            @if ($p->file)
                                                 <img src="{{ url('foto') . '/' . $p->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
-                                        </td>
+                                        </td> -->
                                         <td>{{ $p->no_telp }}</td>
                                         <td>
                                             <a href="pasien/edit/{{ $p->username }}">

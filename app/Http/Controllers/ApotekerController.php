@@ -40,7 +40,7 @@ class ApotekerController extends Controller
                 'nama_obat'    => 'required',
                 'tipe_obat'    => 'required',
                 'stok_obat'    => 'required',
-                'tgl_exp'    => 'required',
+                'tgl_exp'      => 'required',
                 'foto_obat'    => 'required|file',
             ]
         );
