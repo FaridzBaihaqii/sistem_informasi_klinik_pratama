@@ -90,6 +90,7 @@ Route::prefix('dashboard')->group(function () {
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/pendaftaran', [ResepsionisController::class, 'index']);
-    Route::get('/dashboard/tambah', [ResepsionisController::class, 'create']);
-    Route::post('/dashboard/simpan', [ResepsionisController::class, 'store']);
+    Route::get('/tambah', [ResepsionisController::class, 'create']);
+    Route::post('/simpan', [ResepsionisController::class, 'store']);
+    Route::delete('/akun/hapus/', [AkunController::class, 'destroy']);
 });

@@ -22,18 +22,22 @@
                                     <label>Nama Pasien</label>
                                     <select name="id_pendaftaran" class="form-control">
                                         @foreach ($pendaftaran as $p)
-                                            <option value="{{ $pendaftaran->id_jenis_surat }}">{{ $jenis->jenis_surat }}
+                                            <option value="{{ $pendaftaran->id_pendaftaran }}">
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label>Ringkasan</label>
-                                    <input type="text" class="form-control" name="ringkasan" />
+                                    <label>Alamat</label>
+                                    <input type="text" class="form-control" name="alamat" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Foto Surat</label>
+                                    <label>Foto Pasien</label>
                                     <input type="file" class="form-control" name="file" />
+                                </div>
+                                <div class="form-group">
+                                    <label>No. Telp</label>
+                                    <input type="file" class="form-control" name="text" />
                                 </div>
                                 <div class="col-md-4 mt-3">
                                     <button type="submit" class="btn btn-primary">SIMPAN</button>

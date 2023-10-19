@@ -21,9 +21,9 @@ class ResepsionisController extends Controller
     public function index(Pendaftaran $pendaftaran)
     {
     $data = [
-            'pendaftaran' => $this->userModel->all()
+            'pasien' => $this->userModel->all()
     ];
-    return view ('pendaftaran.index', $data);
+    return view ('pasien.index', $data);
     }
 
     /**
@@ -31,10 +31,7 @@ class ResepsionisController extends Controller
      */
     public function create(Pendaftaran $pendaftaran)
     {
-        $data = [
-            'pendaftaran' => $this->userModel->all()
-        ];
-        return view('pendaftaran.tambah');
+        return view('pasien.tambah');
     }
 
     /**

@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pendaftaran as $p)
+                                @foreach ($pasien as $p)
                                     <tr>
                                         <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->nama_pasien }}</td>

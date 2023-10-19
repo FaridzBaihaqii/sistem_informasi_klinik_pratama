@@ -31,7 +31,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role == 'resepsionis' || $user->role == 'asisten' || $user->role == 'apoteker') {
+            if ($user->peran == 'resepsionis' || $user->peran == 'asisten' || $user->peran == 'apoteker') {
                 return redirect('dashboard/pasien')->with('_token', Session::token());
             } 
         }
