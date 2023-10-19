@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->integer('no_rm')->nullable(false);;
             $table->unsignedBigInteger('id_pendaftaran');
+=======
+            $table->integer('no_rm')->nullable(false);
+            $table->integer('id_pendaftaran');
+>>>>>>> 9d03121c45886fd0d9708b677577f4699110c149
             $table->integer('id_asisten');
             $table->integer('id_dokter');
             $table->date('tgl_pelayanan');

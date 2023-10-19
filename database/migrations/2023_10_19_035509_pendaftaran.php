@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->unsignedBigInteger('id_pendaftaran');
+=======
+            $table->integer('id_pendaftaran');
+>>>>>>> 9d03121c45886fd0d9708b677577f4699110c149
             $table->unsignedBigInteger('id_resepsionis');
             $table->unsignedBigInteger('id_pasien');
             $table->unsignedBigInteger('id_poli');
