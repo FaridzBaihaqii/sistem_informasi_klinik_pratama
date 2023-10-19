@@ -16,13 +16,13 @@ return new class extends Migration
             $table->date('tgl_pelayanan');
             $table->string('keluhan_rm', 60);
             $table->text('diagnosis');
-            $table->foreign('id_pendaftaran')->on('pendaftaran')->references('id_pendaftaran');
-            $table->foreign('id_asisten')->on('asisten_dokter')->references('id_asisten')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_dokter')->on('dokter')->references('id_dokter')->onDelete('cascade')->onUpdate('cascade');;
-            
             $table->timestamps();
 
+            $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('pendaftaran');
+            $table->foreign('id_asisten')->references('id_asisten')->on('asisten_dokter')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_dokter')->references('id_dokter')->on('dokter')->onDelete('cascade')->onUpdate('cascade');
         });
+
     }
     /**
      * Reverse the migrations.
