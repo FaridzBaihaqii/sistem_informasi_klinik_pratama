@@ -11,25 +11,31 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dokter', function (Blueprint $table) {
-            $table->id('id_dokter');
+        Schema::create('pendaftaran', function (Blueprint $table) {
+            $table->integer('id_pendaftaran');
+            $table->unsignedBigInteger('id_resepsionis');
+            $table->unsignedBigInteger('id_pasien');
             $table->unsignedBigInteger('id_poli');
-            $table->string('username', 255);
-            $table->string('nama_dokter', 60);
-            $table->bigInteger('no_telp');
-            $table->text('foto_profil');
+            $table->string('keluhan', 60);
+            $table->date('tgl_pendaftaran');
+            $table->date('jadwal_pelayanan');
+            $table->string('info_janji', 60);
+
+            $table->foreign('id_resepsionis')
+                ->references('id_resepsionis')
+                ->on('resepsionis')
+                ->onDelete('cascade');
+
+            $table->foreign('id_pasien')
+                ->references('id_pasien')
+                ->on('pasien')
+                ->onDelete('cascade');
 
             $table->foreign('id_poli')
                 ->references('id_poli')
                 ->on('poli')
                 ->onDelete('cascade');
-
-            $table->foreign('username')
-                ->references('username')
-                ->on('users')
-                ->onDelete('cascade');
         });
-
     }
 
     /**
@@ -37,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dokter');
+        Schema::dropIfExists('pendaftaran');
     }
 };

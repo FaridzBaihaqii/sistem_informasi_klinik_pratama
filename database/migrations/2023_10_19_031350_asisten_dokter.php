@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+    if (!Schema::hasTable('asisten_dokter')) {
         Schema::create('asisten_dokter', function (Blueprint $table) {
             $table->id('id_asisten');
             $table->string('username', 255);
@@ -20,7 +21,7 @@ return new class extends Migration
                     
             $table->foreign('username')->references('username')->on('akun');
         });
-    }
+    }}
 
     /**
      * Reverse the migrations.
