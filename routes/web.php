@@ -81,5 +81,26 @@ Route::get('/home', function () {
     });
 
     Route::get('/logout', [AuthController::class, 'logout']);
+<<<<<<< HEAD
 
 // });
+=======
+
+// });
+
+Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/akun', [AkunController::class, 'index']);
+    Route::get('/akun/tambah', [AkunController::class, 'create']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
+    Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
+    Route::delete('/akun/hapus/{id}', [AkunController::class, 'destroy']);
+});
+>>>>>>> c55dd7034afa2efeb2dbca2e2b46c2b9a6cddef2
