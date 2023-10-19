@@ -109,15 +109,31 @@ class AkunController extends Controller
      */
     public function destroy(Request $request, Akun $akun, string $id)
     {
-        $remove_akun = Akun::where('id_user', $id)->first();
+        // $remove_akun = Akun::where('id_user', $id)->first();
 
-        if ($remove_akun) {
+        // if ($remove_akun) {
 
-            $remove_akun->delete();
+        //     $remove_akun->delete();
 
-            return redirect()->to('dashboard/jenis')->with('success', 'you are remove data');
-        }else {
-            return redirect()->back();
-        }
+        //     return redirect()->to('dashboard/jenis')->with('success', 'you are remove data');
+        // }else {
+        //     return redirect()->back();
+        // }
+        $id_user = $request->input('id_user');
+        $aksi = $akun->where('id_user',$id_user)->delete();
+            if($aksi)
+            {
+                $pesan = [
+                    'success' => true,
+                    'pesan'   => 'Jenis surat berhasil dihapus'
+                ];
+            }else
+            {
+                $pesan = [
+                    'success' => false,
+                    'pesan'   => 'Jenis surat gagal dihapus'
+                ];
+            }
+            return response()->json($pesan);
     }
 }

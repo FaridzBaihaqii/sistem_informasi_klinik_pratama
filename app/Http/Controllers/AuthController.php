@@ -2,47 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    function index()
+    public function index()
     {
         return view('login');
     }
 
-    function login(Request $request)
+    public function check(Request $request)
     {
-        $validatedData = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ], [
-            'username.required' => 'Username harus diisi',
-            'password.required' => 'Password harus diisi',
+        $postData = $request->validate([
+            'username' => ['required'],
+            'password' => ['required']
         ]);
 
-        $credentials = [
-            'username' => $validatedData['username'],
-            'password' => $validatedData['password'],
-        ];
-
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-
-            if ($user->role == 'resepsionis' || $user->role == 'asisten' || $user->role == 'apoteker') {
-                return redirect('dashboard/pasien')->with('_token', Session::token());
-            } 
+        if (Auth::attempt($postData)) {
+            $request->session()->regenerate();
+            if (Auth::user()->peran == ['asisten dokter', 'apoteker', 'resepsionis']) {
+                return response([
+                    'success' => true,
+                    'redirect_url' => 'dashboard/',
+                    'pesan' => 'login berhasil'
+                ], 200);
+            } else {
+                return response([
+                    'success' => true,
+                    'redirect_url' => '',
+                    'pesan' => 'Anda Bukan Admin'
+                ], 200);
+            }
+        } else {
+            return response([
+                'success' => false
+            ], 401);
         }
-
-        return redirect()->back()->withErrors('Terdapat kesalahan Username atau Password')->withInput()->with('_token', Session::token());
     }
 
     function logout()
     {
         Auth::logout();
         Session::regenerateToken();
-        return redirect('/');
+        return redirect('/auth');
     }
 }
