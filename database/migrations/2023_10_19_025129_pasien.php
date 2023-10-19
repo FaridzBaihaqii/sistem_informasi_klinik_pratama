@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pasien', function (Blueprint $table) {
-            $table->string('username', 255)->primary();
+            $table->increments('id_pasien');
+            $table->string('username', 255)->unique();
             $table->string('nama_pasien', 60);
             $table->string('jenkel', 60)->nullable();
             $table->date('tgl_lahir');
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->bigInteger('no_telp');
             $table->bigInteger('no_bpjs');
             $table->text('foto_profil');
+            $table->timestamps();
         });
     }
 
