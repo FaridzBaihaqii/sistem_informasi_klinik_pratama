@@ -11,7 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        //
+        Schema::create('dokter', function (Blueprint $table) {
+            $table->id('id_dokter');
+            $table->unsignedBigInteger('id_poli');
+            $table->string('username', 255);
+            $table->string('nama_dokter', 60);
+            $table->bigInteger('no_telp');
+            $table->text('foto_profil');
+
+            $table->foreign('id_poli')
+                ->references('id_poli')
+                ->on('poli')
+                ->onDelete('cascade');
+
+            $table->foreign('username')
+                ->references('username')
+                ->on('users')
+                ->onDelete('cascade');
+        });
+
     }
 
     /**
@@ -19,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('dokter');
     }
 };
