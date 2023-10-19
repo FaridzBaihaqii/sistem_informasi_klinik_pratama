@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pendaftaran', function (Blueprint $table) {
-<<<<<<< HEAD
+        Schema::create('pendaftaran', function (Blueprint $table) 
+        {
             $table->unsignedBigInteger('id_pendaftaran');
-=======
+            $table->unsignedBigInteger('id_pendaftaran');
             $table->integer('id_pendaftaran');
->>>>>>> 9d03121c45886fd0d9708b677577f4699110c149
             $table->unsignedBigInteger('id_resepsionis');
             $table->unsignedBigInteger('id_pasien');
             $table->unsignedBigInteger('id_poli');
@@ -26,7 +25,6 @@ return new class extends Migration
             $table->string('info_janji', 60);
 
             $table->foreign('id_resepsionis')->references('id_resepsionis')->on('resepsionis')->onDelete('cascade');
-
             $table->foreign('id_pasien')
                 ->references('id_pasien')
                 ->on('pasien')
@@ -38,7 +36,6 @@ return new class extends Migration
                 ->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      */
