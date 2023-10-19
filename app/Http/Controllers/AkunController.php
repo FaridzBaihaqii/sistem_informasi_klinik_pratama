@@ -59,11 +59,7 @@ class AkunController extends Controller
         // Proses Insert
         if (Akun::create($data)) {
             $data['password'] = Hash::make($request->input('password'));
-            if ($this->userModel->create($data)) {
-                return redirect('/dashboard/akun')->with('success','Data cabang baru berhasil ditambah');
-            } else {
-                return back()->with("error","Data Surat Gagal Ditambahkan");
-            }
+            return redirect('/dashboard/akun')->with('success','Akun Pegawai baru berhasil ditambah');
         } else {
             return back()->with('error','Data cabang gagal ditambahkan');
         }
@@ -95,7 +91,17 @@ class AkunController extends Controller
      */
     public function update(Request $request, Akun $akun)
     {
-        //
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'peran' => 'required',
+        ]);
+        if($data){
+            Akun::where('id_user', $request->input('id_user'))->update($data);
+            return redirect()->to('/dashboard/akun')->with('success','Data Surat Berhasil di Update');
+        } else {
+            return back()->with('error','Data Surat Gagal di Update');
+        }
     }
 
     /**

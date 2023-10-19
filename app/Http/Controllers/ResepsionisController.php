@@ -64,7 +64,7 @@ class ResepsionisController extends Controller
              //Proses Insert
             if($data):
             //Simpan jika data terisi semua
-                $data['password'] = Hash::make($request->input('password'));
+                $data['password'] = Akun::make($request->input('password'));
                 if($this->userModel->create($data));
                 return redirect('/dashboard/akun')->with('success','Data Pendaftaran baru berhasil ditambah');
             else:

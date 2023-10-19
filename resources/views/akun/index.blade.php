@@ -34,7 +34,7 @@
                                             @endif
                                         </td> --}}
                                         <td class="grid gap-3">
-                                            <a href="akun/edit/{{ $a->username }}">
+                                            <a href="akun/edit/{{ $a->id_user }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
                                             <btn class="btn btn-danger btnHapus" Username="{{ $a->id_user }}">HAPUS</btn>
