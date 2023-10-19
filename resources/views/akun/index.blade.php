@@ -6,43 +6,41 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Surat
+                        Data Akun Pegawai
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="dashboard/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
+                            <a href="akun/tambah">
+                                <btn class="btn btn-success">Tambah Akun</btn>
                             </a>
 
                         </div>
                         <p>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
-                            <thead>
+                            <thead class='table-dark'>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Password</th>
                                     <th>Peran</th>
+                                    <th>Foto</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($akun as $a)
                                     <tr>
-                                        <td>{{ $p->tgl_lahir }}</td>
-                                        <td>{{ $p->nama_pasien }}</td>
-                                        <td>{{ $p->alamat }}</td>
+                                        <td>{{ $a->username }}</td>
+                                        <td>{{ $a->peran }}</td>
                                         <td>
-                                            @if ($s->file)
-                                                <img src="{{ url('foto') . '/' . $p->file }} "
+                                            @if ($a->file)
+                                                <img src="{{ url('foto') . '/' . $a->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
                                         </td>
-                                        <td>{{ $p->no_telp }}</td>
                                         <td>
-                                            <a href="pasien/edit/{{ $p->username }}">
+                                            <a href="pasien/edit/{{ $a->username }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
                                             <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>

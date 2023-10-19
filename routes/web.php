@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -20,6 +21,8 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::post('/', [AuthController::class, 'login']);
 });
+
+
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
@@ -65,4 +68,10 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/logout', [AuthController::class, 'logout']);
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/akun', [AkunController::class, 'index']);
+    Route::get('/akun/tambah', [AkunController::class, 'create']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
 });
