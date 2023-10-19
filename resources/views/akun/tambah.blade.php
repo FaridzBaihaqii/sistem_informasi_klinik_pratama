@@ -32,6 +32,7 @@
                                 <select name="peran" class="form-control">
                                     <option value="asisten dokter">Asisten Dokter</option>
                                     <option value="apoteker">Apoteker</option>
+                                    <option value="resepsionis">Resepsionis</option>
                                 </select>
                             </div>
                             <div class="col-md-4 mt-4 display-flex">

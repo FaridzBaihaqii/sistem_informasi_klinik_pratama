@@ -85,4 +85,5 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
     Route::get('/akun/tambah', [AkunController::class, 'create']);
     Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::delete('/akun/hapus/', [AkunController::class, 'destroy']);
 });

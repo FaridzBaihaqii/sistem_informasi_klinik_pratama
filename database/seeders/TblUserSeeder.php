@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Akun;
 use App\Models\tblUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -34,7 +35,7 @@ class TblUserSeeder extends Seeder
 
         // looping data dengan foreach
         foreach ($userData as $user => $val) {
-            tblUser::create($val);
+            Akun::create($val);
         }
     }
 }
