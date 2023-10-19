@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('asisten_dokter', function (Blueprint $table) {
-            $table->string('username', 255)->primary();
-            $table->bigIncrements('id_asisten');
+            $table->id('id_asisten');
+            $table->string('username', 255);
             $table->string('nama_asisten', 255);
             $table->bigInteger('no_telp');
             $table->text('foto_profil');
-            
+                    
             $table->foreign('username')->references('username')->on('akun');
         });
     }
