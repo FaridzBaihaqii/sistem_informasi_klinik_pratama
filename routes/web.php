@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Models\Resepsionis;
+use App\Http\Middleware\UserAccess;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/asisten/edit/{id}', [AsistenController::class, 'edit']);
         Route::post('/asisten/edit/simpan', [AsistenController::class, 'update']);
         Route::delete('/asisten/hapus', [AsistenController::class, 'destroy']);
+    });
+
+    //Resepsionis
+    Route::prefix('pendaftaran')->middleware(['UserAccess:resepsionis'])->group(function () {
+        Route::get('/resepsionis', [ResepsionisController::class, 'index']);
+        Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
+        Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
+        Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
+        Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
     });
 
     //Apoteker
