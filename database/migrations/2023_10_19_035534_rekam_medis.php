@@ -12,17 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
-            $table->increments('no_rm');
-            $table->unsignedInteger('id_pendaftaran');
-            $table->unsignedInteger('id_asisten');
-            $table->unsignedInteger('id_dokter');
+            $table->integer('no_rm')->nullable(false);;
+            $table->integer('id_pendaftaran');
+            $table->integer('id_asisten');
+            $table->integer('id_dokter');
             $table->date('tgl_pelayanan');
             $table->string('keluhan_rm', 60);
             $table->text('diagnosis');
             
-            $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('pendaftaran');
-            $table->foreign('id_asisten')->references('id_asisten')->on('asisten_dokter');
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokter');
+            $table->foreign('id_pendaftaran')->on('pendaftaran')->references('id_pendaftaran')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_asisten')->on('asisten_dokter')->references('id_asisten')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_dokter')->on('dokter')->references('id_dokter')->onDelete('cascade')->onUpdate('cascade');;
             
             $table->timestamps();
         });

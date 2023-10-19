@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     //Apoteker
-    Route::prefix('admin')->middleware(['UserAccess:apoteker'])->group(function () {
+    Route::prefix('obat')->middleware(['UserAccess:apoteker'])->group(function () {
         Route::get('/apoteker', [ApotekerController::class, 'index']);
         Route::get('/Apoteker/tambah', [ApotekerController::class, 'create']);
         Route::post('/Apoteker/simpan', [ApotekerController::class, 'store']);
