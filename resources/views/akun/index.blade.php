@@ -3,55 +3,53 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
                     <span class="h1">
-                        Data Surat
+                        Data Akun Pegawai
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
-                            <a href="dashboard/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
-                            </a>
-
-                        </div>
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
-                            <thead>
+                        <table class="table table-hover ">
+                            <thead class='table-dark'>
                                 <tr>
                                     <th>Username</th>
-                                    <th>Password</th>
                                     <th>Peran</th>
+                                    {{-- <th>Foto</th> --}}
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($akun as $a)
                                     <tr>
-                                        <td>{{ $p->tgl_lahir }}</td>
-                                        <td>{{ $p->nama_pasien }}</td>
-                                        <td>{{ $p->alamat }}</td>
-                                        <td>
-                                            @if ($s->file)
-                                                <img src="{{ url('foto') . '/' . $p->file }} "
+                                        <td>{{ $a->username }}</td>
+                                        <td>{{ $a->peran }}</td>
+                                        {{-- <td>
+                                            @if ($a->file)
+                                                <img src="{{ url('foto') . '/' . $a->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
-                                        </td>
-                                        <td>{{ $p->no_telp }}</td>
-                                        <td>
-                                            <a href="pasien/edit/{{ $p->username }}">
+                                        </td> --}}
+                                        <td class="grid gap-3">
+                                            <a href="akun/edit/{{ $a->id_user }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $a->id_user }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="col-md-4 float-m-end">
+                    <a href="akun/tambah">
+                        <btn class="btn btn-success">Tambah Akun</btn>
+                    </a>
+
                 </div>
                 <div class="card-footer">
 
@@ -78,7 +76,7 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'pasien/hapus',
+                        url: 'akun/hapus',
                         data: {
                             username: Username,
                             _token: "{{ csrf_token() }}"

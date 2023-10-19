@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -23,6 +24,8 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login');
     Route::post('/', [AuthController::class, 'login']);
 });
+
+
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
@@ -78,4 +81,17 @@ Route::get('/home', function () {
     });
 
     Route::get('/logout', [AuthController::class, 'logout']);
+<<<<<<< HEAD
 // });
+=======
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/akun', [AkunController::class, 'index']);
+    Route::get('/akun/tambah', [AkunController::class, 'create']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
+    Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
+});
+>>>>>>> 89544ea7b7de0d15f6903913ec1ab10ad966a40e

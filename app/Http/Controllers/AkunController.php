@@ -19,13 +19,13 @@ class AkunController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Akun $Akun)
+    public function index(Akun $akun)
     {
     // $data = [
-    //         'Akun' => $Akun->all()
+    //         'Akun' => $akun->all()
     // ];
     $data = [
-            'user' => $this->userModel->all()
+            'akun' => $this->userModel->all()
     ];
     return view ('Akun.index', $data);
     }
@@ -42,46 +42,34 @@ class AkunController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Akun $Akun)
+    public function store(Request $request, Akun $akun)
     {
-          
-        // data dari form di view yang dikumpulkan berbentuk array akan di vilter sesuai validasi yang ditentukan
-        $data = $request->validate(
-            [
-                'username' => ['required'],
-                'password' => ['required'],
-                'peran' => ['required'],
-            ]
-            );
-            if($request->input('id_user') !== null){
-                //Proses Update
-                $dataUpdate = Akun::where('username', $request->input('username'))
-                    ->update($data); 
-                if($dataUpdate){
-                    return redirect('dashboard/manage-user')->with('success', 'data Akun berhasil diupdate');
-                } else {
-                    return back()->with('error', 'data Akun gagal di update');
-                }
-            }
-            else{
-             //Proses Insert
-            if($data):
-                // $data['id_surat'] = 1;
-            //Simpan jika data terisi semua
-                $data['password'] = Hash::make($request->input('password'));
-                if($this->userModel->create($data));
-                return redirect('/dashboard/akun')->with('success','Data cabang baru berhasil ditambah');
-            else:
-            //Kembali ke form tambah data
-                return back()->with('error','Data cabang gagal ditambahkan');
-            endif;
+        
+        // data dari form di view yang dikumpulkan berbentuk array akan di filter sesuai validasi yang ditentukan
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'peran' => 'required',
+        ]);
+
+        // dd($data);
+        
+        // Menyertakan 'peran' dengan nilai yang valid
+        
+        // Proses Insert
+        if (Akun::create($data)) {
+            $data['password'] = Hash::make($request->input('password'));
+            return redirect('/dashboard/akun')->with('success','Akun Pegawai baru berhasil ditambah');
+        } else {
+            return back()->with('error','Data cabang gagal ditambahkan');
         }
+        
     }
     
     /**
      * Display the specified resource.
      */
-    public function show(Akun $Akun)
+    public function show(Akun $akun)
     {
         //
     }
@@ -89,7 +77,7 @@ class AkunController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Akun $Akun, Request $request)
+    public function edit(Akun $akun, Request $request)
     {
         //
         $data = [
@@ -101,32 +89,35 @@ class AkunController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Akun $Akun)
+    public function update(Request $request, Akun $akun)
     {
-        //
+        $data = $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+            'peran' => 'required',
+        ]);
+        if($data){
+            Akun::where('id_user', $request->input('id_user'))->update($data);
+            return redirect()->to('/dashboard/akun')->with('success','Data Surat Berhasil di Update');
+        } else {
+            return back()->with('error','Data Surat Gagal di Update');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Akun $Akun)
+    public function destroy(Request $request, Akun $akun, string $id)
     {
-        $id_user = $request->input('id_user');
-        $aksi = $Akun->where('id_user',$id_user)->delete();
-            if($aksi)
-            {
-                $pesan = [
-                    'success' => true,
-                    'pesan'   => 'Jenis surat berhasil dihapus'
-                ];
-            }else
-            {
-                $pesan = [
-                    'success' => false,
-                    'pesan'   => 'Jenis surat gagal dihapus'
-                ];
-            }
-            return response()->json($pesan);
+        $remove_akun = Akun::where('id_user', $id)->first();
 
+        if ($remove_akun) {
+
+            $remove_akun->delete();
+
+            return redirect()->to('dashboard/jenis')->with('success', 'you are remove data');
+        }else {
+            return redirect()->back();
+        }
     }
 }
