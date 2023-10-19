@@ -3,6 +3,7 @@
 use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ResepsionisController;
 use App\Models\Resepsionis;
 use App\Http\Middleware\UserAccess;
 
@@ -85,4 +86,10 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
     Route::get('/akun/tambah', [AkunController::class, 'create']);
     Route::post('/akun/simpan', [AkunController::class, 'store']);
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/pendaftaran', [ResepsionisController::class, 'index']);
+    Route::get('/dashboard/tambah', [ResepsionisController::class, 'create']);
+    Route::post('/dashboard/simpan', [ResepsionisController::class, 'store']);
 });

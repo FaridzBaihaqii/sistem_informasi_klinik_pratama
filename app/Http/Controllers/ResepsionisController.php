@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Akun;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ResepsionisController extends Controller
 {
@@ -11,35 +13,34 @@ class ResepsionisController extends Controller
     protected $userModel;
     public function __construct()
     {
-        $this->userModel = new Akun;    
+        $this->userModel = new Pendaftaran;    
     }
     /**
      * Display a listing of the resource.
      */
-    public function index(Akun $Akun)
+    public function index(Pendaftaran $pendaftaran)
     {
-    // $data = [
-    //         'Akun' => $Akun->all()
-    // ];
     $data = [
-            'user' => $this->userModel->all()
+            'pendaftaran' => $this->userModel->all()
     ];
-    return view ('Akun.index', $data);
+    return view ('pendaftaran.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Pendaftaran $pendaftaran)
     {
-        //
-        return view('Akun.tambah');
+        $data = [
+            'pendaftaran' => $this->userModel->all()
+        ];
+        return view('pendaftaran.tambah');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Akun $Akun)
+    public function store(Request $request, Pendaftaran $pendaftaran)
     {
           
         // data dari form di view yang dikumpulkan berbentuk array akan di vilter sesuai validasi yang ditentukan
@@ -52,10 +53,10 @@ class ResepsionisController extends Controller
             );
             if($request->input('id_user') !== null){
                 //Proses Update
-                $dataUpdate = Akun::where('username', $request->input('username'))
+                $dataUpdate = $pendaftaran::where('username', $request->input('username'))
                     ->update($data); 
                 if($dataUpdate){
-                    return redirect('dashboard/manage-user')->with('success', 'data Akun berhasil diupdate');
+                    return redirect('dashboard/')->with('success', 'data Akun berhasil diupdate');
                 } else {
                     return back()->with('error', 'data Akun gagal di update');
                 }
@@ -85,13 +86,13 @@ class ResepsionisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Akun $Akun, Request $request)
+    public function edit(Pendaftaran $pendaftaran, Request $request)
     {
         //
         $data = [
-            'Akun' => Akun::where('id_user', $request->id)->first()
+            'Pendaftaran' => Akun::where('id_user', $request->id)->first()
         ];
-        return view('Akun.edit', $data);
+        return view('Pendaftaram.edit', $data);
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Daftar Surat')
+@section('title', 'Data Pendaftaran')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pasien as $p)
+                                @foreach ($pendaftaran as $p)
                                     <tr>
                                         <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->nama_pasien }}</td>
