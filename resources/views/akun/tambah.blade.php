@@ -10,7 +10,7 @@
                 </span>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{url('/dashboard/akun/simpan')}}">
+                <form method="POST" action="simpan">
                     @csrf
                     <div class="row">
                         <p>
@@ -29,7 +29,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Peran</label><br>
-                                <select name="role" class="form-control">
+                                <select name="peran" class="form-control">
                                     <option value="asisten dokter">Asisten Dokter</option>
                                     <option value="apoteker">Apoteker</option>
                                 </select>

@@ -65,16 +65,23 @@ class AkunController extends Controller
             // }
             // else{
              //Proses Insert
-            if($data):
-                // $data['id_surat'] = 1;
-            //Simpan jika data terisi semua
+             if(Akun::create($data))
+             {
                 $data['password'] = Hash::make($request->input('password'));
                 if($this->userModel->create($data));
                 return redirect('/dashboard/akun')->with('success','Data cabang baru berhasil ditambah');
-            else:
-            //Kembali ke form tambah data
-                return back()->with('error','Data cabang gagal ditambahkan');
-            endif;
+             }else
+             {
+                 return back()->with("error","Data Surat Gagal Ditambahkan");
+             }
+            // if($data):
+            //     $data['password'] = Hash::make($request->input('password'));
+            //     if($this->userModel->create($data));
+            //     return redirect('/dashboard/akun')->with('success','Data cabang baru berhasil ditambah');
+            // else:
+            // //Kembali ke form tambah data
+            //     return back()->with('error','Data cabang gagal ditambahkan');
+            // endif;
         // }
     }
     

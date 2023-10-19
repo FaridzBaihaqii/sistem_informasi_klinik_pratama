@@ -24,7 +24,7 @@
                                 <tr>
                                     <th>Username</th>
                                     <th>Peran</th>
-                                    <th>Foto</th>
+                                    {{-- <th>Foto</th> --}}
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -33,17 +33,17 @@
                                     <tr>
                                         <td>{{ $a->username }}</td>
                                         <td>{{ $a->peran }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($a->file)
                                                 <img src="{{ url('foto') . '/' . $a->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         <td>
-                                            <a href="pasien/edit/{{ $a->username }}">
+                                            <a href="akun/edit/{{ $a->username }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $a->username }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
