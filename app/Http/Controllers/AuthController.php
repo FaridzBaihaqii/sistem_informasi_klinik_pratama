@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         $postData = $request->validate([
             'username' => ['required'],
-            'password' => ['required']
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt($postData)) {
