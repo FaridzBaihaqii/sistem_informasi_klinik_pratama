@@ -16,7 +16,6 @@ return new class extends Migration
             $table->bigInteger('riwayat_penyakit_id')->unsigned();
             $table->string('nama_penyakit', 60);
             $table->string('status', 60);
-            $table->foreign('riwayat_penyakit_id')->references('id_riwayat')->on('riwayat_penyakit');
         });
     }
 

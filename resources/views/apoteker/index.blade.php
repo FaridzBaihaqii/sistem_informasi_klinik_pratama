@@ -6,14 +6,14 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Pasien
+                        Data Obat
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="dashboard/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
+                            <a href="apoteker/tambah">
+                                <btn class="btn btn-success">Tambah Obat</btn>
                             </a>
 
                         </div>
@@ -22,23 +22,24 @@
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>TANGGAL LAHIR</th>
-                                    <th>NAMA PASIEN</th>
+                                    <th>NAMA OBAT</th>
+                                    <th>TIPE OBAT</th>
                                     <th>ALAMAT</th>
-                                    <th>FOTO PASIEN</th>
-                                    <th>NO. TELP</th>
+                                    <th>STOK OBAT</th>
+                                    <th>TANGGAL EXP</th>
+                                    <th>FOTO OBAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pasien as $p)
+                                @foreach ($obat as $o)
                                     <tr>
-                                        <td>{{ $p->tgl_lahir }}</td>
-                                        <td>{{ $p->nama_pasien }}</td>
-                                        <td>{{ $p->alamat }}</td>
+                                        <td>{{ $o->tgl_lahir }}</td>
+                                        <td>{{ $o->nama_oasien }}</td>
+                                        <td>{{ $o->alamat }}</td>
                                         <td>
                                             @if ($s->file)
-                                                <img src="{{ url('foto') . '/' . $p->file }} "
+                                                <img src="{{ url('foto') . '/' . $o->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
                                         </td>
