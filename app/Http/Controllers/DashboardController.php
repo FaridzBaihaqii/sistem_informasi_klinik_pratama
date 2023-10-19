@@ -5,22 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 
-class PasienController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Pasien $pasien)
     {
-        //
+
+        $data = [
+            'pasien' => $pasien->all()
+        ];
+        return view('dashboard.index', $data);
     }
+
 
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
-        //
+        return view('user.tambah');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ApotekerController;
 use App\Models\Resepsionis;
 use App\Http\Middleware\UserAccess;
 
@@ -27,10 +29,10 @@ Route::get('/home', function () {
     return redirect('dashboard/pasien');
 });
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
 
     //Dashboard
-    Route::prefix('dashboard')->middleware(['UserAccess:resepsionis,asisten,apoteker'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
         Route::get('/pasien', [DashboardController::class, 'index']);
         Route::get('/pasien/tambah', [DashboardController::class, 'create']);
         Route::post('/pasien/simpan', [DashboardController::class, 'store']);
@@ -40,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     //Asisten
-    Route::prefix('admin')->middleware(['UserAccess:asisten'])->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('/asisten', [AsistenController::class, 'index']);
         Route::get('/asisten/tambah', [AsistenController::class, 'create']);
         Route::post('/asisten/simpan', [AsistenController::class, 'store']);
@@ -50,7 +52,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
     //Resepsionis
-    Route::prefix('pendaftaran')->middleware(['UserAccess:resepsionis'])->group(function () {
+    Route::prefix('pendaftaran')->group(function () {
         Route::get('/resepsionis', [ResepsionisController::class, 'index']);
         Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
         Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
@@ -60,20 +62,20 @@ Route::middleware(['auth'])->group(function () {
     });
 
     //Apoteker
-    Route::prefix('obat')->middleware(['UserAccess:apoteker'])->group(function () {
+    Route::prefix('obat')->group(function () {
         Route::get('/apoteker', [ApotekerController::class, 'index']);
-        Route::get('/Apoteker/tambah', [ApotekerController::class, 'create']);
-        Route::post('/Apoteker/simpan', [ApotekerController::class, 'store']);
-        Route::get('/Apoteker/edit/{id}', [ApotekerController::class, 'edit']);
-        Route::post('/Apoteker/edit/simpan', [ApotekerController::class, 'update']);
-        Route::delete('/Apoteker/hapus', [ApotekerController::class, 'destroy']);
+        Route::get('/apoteker/tambah', [ApotekerController::class, 'create']);
+        Route::post('/apoteker/simpan', [ApotekerController::class, 'store']);
+        Route::get('/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
+        Route::post('/apoteker/edit/simpan', [ApotekerController::class, 'update']);
+        Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
     });
 
     //Transaksi klinik
-    Route::prefix('transaksi')->middleware(['UserAccess:resepsionis,asisten,apoteker'])->group(function () {
+    Route::prefix('transaksi')->group(function () {
         Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
         Route::post('/klinik/hapus', [TransaksiKlinikController::class, 'destroy']);
     });
 
     Route::get('/logout', [AuthController::class, 'logout']);
-});
+// });
