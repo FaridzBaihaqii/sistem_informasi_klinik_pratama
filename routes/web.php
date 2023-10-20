@@ -81,7 +81,6 @@ Route::get('/home', function () {
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
-
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
     Route::get('/akun/tambah', [AkunController::class, 'create']);

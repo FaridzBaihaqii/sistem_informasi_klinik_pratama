@@ -37,7 +37,7 @@
                                             <a href="akun/edit/{{ $a->id_user }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $a->id_user }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $a->id_user }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -63,7 +63,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let Username = $(this).closest('.btnHapus').attr('Username');
+            let idHapus = $(this).closest('.btnHapus').attr('idHapus');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -78,7 +78,7 @@
                         type: 'DELETE',
                         url: 'akun/hapus',
                         data: {
-                            username: Username,
+                            id_user: idHapus,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
