@@ -44,8 +44,8 @@ class ApotekerController extends Controller
                 'foto_obat'    => 'required',
             ]
         );
-        // dd($data);
-        // //Proses Insert
+
+        //Proses Insert
         if ($request->hasFile('foto_obat') && $request->file('foto_obat')->isValid()) {
             $foto_file = $request->file('foto_obat');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
@@ -72,7 +72,7 @@ class ApotekerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataObat $apoteker)
+    public function edit(DataObat $apoteker, string $id)
     {
         $data = [
             'apoteker' =>  DataObat::where('id_obat', $id)->first()
@@ -91,8 +91,8 @@ class ApotekerController extends Controller
                 'nama_obat'    => 'required',
                 'tipe_obat'    => 'required',
                 'stok_obat'    => 'required',
-                'tgl_exp'    => 'required',
-                'foto_obat'    => 'required|file',
+                'tgl_exp'      => 'required',
+                'foto_obat'    => 'sometimes',
             ]
         );
 
@@ -124,7 +124,7 @@ class ApotekerController extends Controller
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data jenis surat berhasil dihapus'
+                'pesan'   => 'Data Obat Berhasil Dihapus'
             ];
         } else {
             // Pesan Gagal

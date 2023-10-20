@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Daftar Surat')
+@section('title', 'Daftar Pasien')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -45,9 +45,7 @@
                                         </td> -->
                                         <td>{{ $p->no_telp }}</td>
                                         <td>
-                                            <a href="pasien/edit/{{ $p->username }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
+                                            <a href="pasien/edit/{{ $p->username }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>
                                         </td>
                                     </tr>

@@ -44,12 +44,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('admin/asisten') }}">Asisten Dokter</a>
                     </li>
+                    <!-- @endif -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
-                    </li>
-                    <!-- @endif -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
                     </li>
                 </ul>
                 <form class="d-flex mt-2">
