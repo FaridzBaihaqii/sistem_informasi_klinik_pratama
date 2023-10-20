@@ -1,53 +1,57 @@
 @extends('layout.layout')
-@section('title', 'Daftar Surat')
+@section('title', 'Data Obat')
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="">
+            <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Akun Pegawai
+                        Rekam Medis Pasien
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        <div class="col-md-4">
+                            <a href="apoteker/tambah">
+                                <btn class="btn btn-success">Tambah Rekam Medis</btn>
+                            </a>
+
+                        </div>
                         <p>
                             <hr>
-                        <table class="table table-hover ">
-                            <thead class='table-dark'>
+                        <table class="table table-hover table-bordered DataTable">
+                            <thead>
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Peran</th>
-                                    {{-- <th>Foto</th> --}}
+                                    <th>NAMA OBAT</th>
+                                    <th>TIPE OBAT</th>
+                                    <th>STOK OBAT</th>
+                                    <th>TANGGAL EXP</th>
+                                    <th>FOTO OBAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($akun as $a)
+                                @foreach ($apoteker as $a)
                                     <tr>
-                                        <td>{{ $a->username }}</td>
-                                        <td>{{ $a->peran }}</td>
-                                        {{-- <td>
+                                        <td>{{ $a->nama_obat }}</td>
+                                        <td>{{ $a->tipe_obat }}</td>
+                                        <td>{{ $a->stok_obat }}</td>
+                                        <td>{{ $a->tgl_exp }}</td>
+                                        <td>
                                             @if ($a->file)
                                                 <img src="{{ url('foto') . '/' . $a->file }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
-                                        </td> --}}
-                                        <td class="grid gap-3">
-                                            <a href="akun/edit/{{ $a->id_user }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $a->id_user }}">HAPUS</btn>
+                                        </td>
+                                        <td>
+                                            <a href="apoteker/edit/{{ $a->username }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-4 float-m-end">
-                    <a href="akun/tambah">
-                        <btn class="btn btn-success">Tambah Akun</btn>
-                    </a>
-
                 </div>
                 <div class="card-footer">
 
@@ -61,7 +65,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idHapus = $(this).closest('.btnHapus').attr('idHapus');
+            let idObat = $(this).closest('.btnHapus').attr('idObat');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -74,9 +78,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'akun/hapus',
+                        url: 'apoteker/hapus',
                         data: {
-                            id_user: idJenis,
+                            id_obat: idJenis,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
