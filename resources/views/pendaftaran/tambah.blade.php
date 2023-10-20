@@ -23,11 +23,7 @@
                         </div>
                         <div class="form-group">
                             <label>Poli</label>
-                            <select name="id_poli" class="form-control">
-                                <option disabled selected>Poli</option>
-                                <option name="nama poli">poli umum</option>
-                                <option name="nama_poli">poli gigi</option>
-                            </select>
+                            <input typr="text" class="form-control" name="id_poli"
                         </div>
                         <div class="form-group">
                             <label for="keluhan">keluhan</label>

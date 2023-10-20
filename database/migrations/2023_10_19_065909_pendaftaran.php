@@ -37,8 +37,7 @@ return new class extends Migration
                 ->on('poli')
                 ->onDelete('cascade');
         });
-    });
-}
+    }
 
     /**
      * Reverse the migrations.
@@ -47,4 +46,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('pendaftaran');
     }
+
 };
