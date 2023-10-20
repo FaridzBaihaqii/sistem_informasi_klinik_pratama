@@ -1,41 +1,49 @@
 @extends('layout.layout')
-@section('title', 'Daftar Surat')
+@section('title', 'Data Obat')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="">
+                <br/>
                 <div class="card-header">
                     <span class="h1">
-                        Data Akun Pegawai
+                        Rekam Medis Pasien
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
+                        
                         <p>
                             <hr>
-                        <table class="table table-hover ">
-                            <thead class='table-dark'>
+                        <table class="table table-hover table-bordered DataTable">
+                            <thead>
                                 <tr>
-                                    <th>Username</th>
-                                    <th>Peran</th>
-                                    {{-- <th>Foto</th> --}}
+                                    <th>NAMA PASIEN</th>
+                                    <th>RUANGAN</th>
+                                    <th>KELUHAN</th>
+                                    <th>DIAGNOSIS</th>
+                                    <th>TANGGAL PELAYANAN</th>
+                                    <th>FOTO PASIEN</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($akun as $a)
+                                @foreach ($rekam as $r)
                                     <tr>
-                                        <td>{{ $a->username }}</td>
-                                        <td>{{ $a->peran }}</td>
-                                        {{-- <td>
-                                            @if ($a->file)
-                                                <img src="{{ url('foto') . '/' . $a->file }} "
-                                                    style="max-width: 250px; height: auto;" />
+                                        <td>{{ $r->nama_pasien }}</td>
+                                        <td>{{ $r->ruangan}}</td>
+                                        <td>{{ $r->keluhan_rm }}</td>
+                                        <td>{{ $r->diagnosis }}</td>
+                                        <td>{{ $r->tgl_pelayanan }}</td>
+                                        <td>
+                                            @if ($r->foto_pasien)
+                                                <img src="{{ url('foto') . '/' . $r->foto_pasien }} "
+                                                    style="max-width: 150px; height: auto;" />
                                             @endif
-                                        </td> --}}
-                                        <td class="grid gap-3">
-                                            <a href="akun/edit/{{ $a->id_user }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $a->id_user }}">HAPUS</btn>
+                                        </td>
+                                        <td>
+                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -43,17 +51,17 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4 float-m-end">
-                    <a href="akun/tambah">
-                        <btn class="btn btn-success">Tambah Akun</btn>
-                    </a>
-
-                </div>
                 <div class="card-footer">
+                    <div class="col-md-4">
+                        <a href="asisten/tambah">
+                            <btn class="btn btn-success">Tambah Rekam Medis</btn>
+                        </a>
 
+                    </div>
                 </div>
             </div>
         </div>
+        <br/>
     </div>
 @endsection
 
@@ -74,9 +82,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'akun/hapus',
+                        url: 'asisten/hapus',
                         data: {
-                            id_user: idJenis,
+                            id_obat: idJenis,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

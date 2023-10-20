@@ -54,20 +54,20 @@ class ApotekerController extends Controller
         }
 
         if ($apoteker->create($data)) {
-            return redirect('/obat/apoteker')->with('success', 'Data Obat Baru Berhasil Ditambah');
+            return redirect('/obat/apoteker')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Data Obat Gagal Ditambahkan');
+        return back()->with('error', 'Rekam Meids Gagal Ditambahkan');
     }
     
 
     /**
      * Display the specified resource.
      */
-    public function show(Apoteker $apoteker)
-    {
-        //
-    }
+    // public function show(Apoteker $apoteker)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -103,7 +103,7 @@ class ApotekerController extends Controller
             $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
 
             if ($dataUpdate) {
-                return redirect('obat/apoteker')->with('success', 'Data Obat Berhasil Diupdate');
+                return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
             } else {
                 return back()->with('error', 'Data Obat Gagal Diupdate');
             }

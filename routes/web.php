@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\RekamMedisController;
 use App\Models\Resepsionis;
 use App\Http\Middleware\UserAccess;
 
@@ -74,6 +75,16 @@ Route::get('/home', function () {
         Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
     });
 
+    //Rekam Medis
+    Route::prefix('rekam')->group(function () {
+        Route::get('/asisten', [RekamMedisController::class, 'index']);
+        Route::get('/asisten/tambah', [RekamMedisController::class, 'create']);
+        Route::post('/asisten/simpan', [RekamMedisController::class, 'store']);
+        Route::get('/asisten/edit/{id}', [RekamMedisController::class, 'edit']);
+        Route::post('/asisten/edit/simpan', [RekamMedisController::class, 'update']);
+        Route::delete('/asisten/hapus', [RekamMedisController::class, 'destroy']);
+    });
+
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
         Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
@@ -83,3 +94,22 @@ Route::get('/home', function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
 // });
+
+
+Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
+});
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/akun', [AkunController::class, 'index']);
+    Route::get('/akun/tambah', [AkunController::class, 'create']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
+    Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
+    Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
+});
+
+

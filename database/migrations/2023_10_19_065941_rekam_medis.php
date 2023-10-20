@@ -10,17 +10,13 @@ return new class extends Migration
     {
         Schema::create('rekam_medis', function (Blueprint $table) {
             $table->integer('no_rm', true)->nullable(false);
-            $table->integer('id_pendaftaran');
-            $table->integer('id_asisten');
-            $table->integer('id_dokter');
+            $table->string('nama_pasien');
+            $table->enum('ruangan', ['A1','A2','B3','B4']);
             $table->date('tgl_pelayanan');
             $table->string('keluhan_rm', 60);
             $table->text('diagnosis');
+            $table->text('foto_pasien')->nullable(true);
             $table->timestamps();
-
-            $table->foreign('id_pendaftaran')->references('id_pendaftaran')->on('pendaftaran');
-            $table->foreign('id_asisten')->references('id_asisten')->on('asisten_dokter')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_dokter')->references('id_dokter')->on('dokter')->onDelete('cascade')->onUpdate('cascade');
         });
 
     }
