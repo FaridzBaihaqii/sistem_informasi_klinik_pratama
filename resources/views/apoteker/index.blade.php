@@ -40,11 +40,11 @@
                                         <td>
                                             @if ($a->foto_obat)
                                                 <img src="{{ url('foto') . '/' . $a->foto_obat }} "
-                                                    style="max-width: 250px; height: auto;" />
+                                                    style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="apoteker/edit/{{ $a->username }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <a href="apoteker/edit/{{ $a->id_obat }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
                                         </td>
                                     </tr>

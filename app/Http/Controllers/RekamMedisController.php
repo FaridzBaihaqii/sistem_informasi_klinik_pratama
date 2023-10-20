@@ -42,20 +42,20 @@ class RekamMedisController extends Controller
                 'tgl_pelayanan'    => 'required',
                 'keluhan_rm'      => 'required',
                 'diagnosis'      => 'required',
-                'foto_pasien'    => 'required|file',
+                'foto_pasien'    => 'sometimes',
             ]
         );
 
         //Proses Insert
-        if ($request->hasFile('file')) {
-            $foto_file = $request->file('foto_obat');
+        if ($request->hasFile('foto_pasien') && $request->file('foto_pasien')->isValid()) {
+            $foto_file = $request->file('foto_pasien');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
             $foto_file->move(public_path('foto'), $foto_nama);
-            $data['foto_obat'] = $foto_nama;
+            $data['foto_pasien'] = $foto_nama;
         }
 
         if ($rekam->create($data)) {
-            return redirect('/obat/rekam')->with('success', 'Data Obat Baru Berhasil Ditambah');
+            return redirect('/rekam/asisten')->with('success', 'Data Obat Baru Berhasil Ditambah');
         }
 
         return back()->with('error', 'Data Obat Gagal Ditambahkan');
@@ -76,7 +76,7 @@ class RekamMedisController extends Controller
     public function edit(RekamMedis $rekam, string $id)
     {
         $data = [
-            'rekam' =>  RekamMedis::where('id_obat', $id)->first()
+            'rekam' =>  RekamMedis::where('no_rm', $id)->first()
         ];
 
         return view('rekam.edit', $data);
@@ -89,19 +89,20 @@ class RekamMedisController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_obat'    => 'required',
-                'tipe_obat'    => 'required',
-                'stok_obat'    => 'required',
-                'tgl_exp'    => 'required',
-                'foto_obat'    => 'required|file',
+                'nama_pasien'    => 'required',
+                'ruangan'    => 'required',
+                'tgl_pelayanan'    => 'required',
+                'keluhan_rm'      => 'required',
+                'diagnosis'      => 'required',
+                'foto_pasien'    => 'required|file',
             ]
         );
 
-        $id_obat = $request->input('id_obat');
+        $no_rm = $request->input('no_rm');
 
-        if ($id_obat !== null) {
+        if ($no_rm !== null) {
             // Process Update
-            $dataUpdate = $rekam->where('id_obat', $id_obat)->update($data);
+            $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);
 
             if ($dataUpdate) {
                 return redirect('obat/rekam')->with('success', 'Data Obat Berhasil Diupdate');
@@ -116,10 +117,10 @@ class RekamMedisController extends Controller
      */
     public function destroy(RekamMedis $rekam, Request $request)
     {
-        $id_obat = $request->input('id_obat');
+        $no_rm = $request->input('no_rm');
 
         // Hapus 
-        $aksi = $rekam->where('id_obat', $id_obat)->delete();
+        $aksi = $rekam->where('no_rm', $no_rm)->delete();
 
         if ($aksi) {
             // Pesan Berhasil

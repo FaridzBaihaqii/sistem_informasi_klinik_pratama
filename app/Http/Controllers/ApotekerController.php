@@ -44,8 +44,8 @@ class ApotekerController extends Controller
                 'foto_obat'    => 'required',
             ]
         );
-        // dd($data);
-        // //Proses Insert
+
+        //Proses Insert
         if ($request->hasFile('foto_obat') && $request->file('foto_obat')->isValid()) {
             $foto_file = $request->file('foto_obat');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
@@ -54,10 +54,10 @@ class ApotekerController extends Controller
         }
 
         if ($apoteker->create($data)) {
-            return redirect('/obat/apoteker')->with('success', 'Data Obat Baru Berhasil Ditambah');
+            return redirect('/obat/apoteker')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Data Obat Gagal Ditambahkan');
+        return back()->with('error', 'Rekam Meids Gagal Ditambahkan');
     }
     
 
@@ -91,8 +91,8 @@ class ApotekerController extends Controller
                 'nama_obat'    => 'required',
                 'tipe_obat'    => 'required',
                 'stok_obat'    => 'required',
-                'tgl_exp'    => 'required',
-                'foto_obat'    => 'required|file',
+                'tgl_exp'      => 'required',
+                'foto_obat'    => 'sometimes',
             ]
         );
 
@@ -103,7 +103,7 @@ class ApotekerController extends Controller
             $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
 
             if ($dataUpdate) {
-                return redirect('obat/apoteker')->with('success', 'Data Obat Berhasil Diupdate');
+                return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
             } else {
                 return back()->with('error', 'Data Obat Gagal Diupdate');
             }
@@ -124,7 +124,7 @@ class ApotekerController extends Controller
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data jenis surat berhasil dihapus'
+                'pesan'   => 'Data Obat Berhasil Dihapus'
             ];
         } else {
             // Pesan Gagal
