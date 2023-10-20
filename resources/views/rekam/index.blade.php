@@ -54,7 +54,7 @@
                 <div class="card-footer">
                     <div class="col-md-4">
                         <a href="asisten/tambah">
-                            <btn class="btn btn-success">Tambah Rekam Medis</btn>
+                            <btn class="btn btn-success btn">Tambah Rekam Medis</btn>
                         </a>
 
                     </div>
@@ -82,9 +82,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'asisten/hapus',
+                        url: '/rekam/asisten/hapus',
                         data: {
-                            id_obat: idJenis,
+                             no_rm: no_rm,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
