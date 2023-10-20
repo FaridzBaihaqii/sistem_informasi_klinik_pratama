@@ -4,6 +4,7 @@ use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResepsionisController;
+use App\Http\Controllers\PasienController;
 use App\Models\Resepsionis;
 use App\Http\Middleware\UserAccess;
 
@@ -33,14 +34,14 @@ Route::get('/home', function () {
 
 // Route::middleware(['auth'])->group(function () {
 
-    //Dashboard
+    //Pasien
     Route::prefix('dashboard')->group(function () {
-        Route::get('/pasien', [DashboardController::class, 'index']);
-        Route::get('/pasien/tambah', [DashboardController::class, 'create']);
-        Route::post('/pasien/simpan', [DashboardController::class, 'store']);
-        Route::get('/pasien/edit/{id}', [DashboardController::class, 'edit']);
-        Route::post('/pasien/edit/simpan', [DashboardController::class, 'update']);
-        Route::delete('/pasien/hapus', [DashboardController::class, 'destroy']);
+        Route::get('/pasien', [PasienController::class, 'index']);
+        Route::get('/pasien/tambah', [PasienController::class, 'create']);
+        Route::post('/pasien/simpan', [PasienController::class, 'store']);
+        Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
+        Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
+        Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
 
     //Asisten
@@ -63,6 +64,16 @@ Route::get('/home', function () {
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
     });
 
+    // Pasien
+    Route::prefix('Pasien')->group(function () {
+        Route::get('/pasien', [PasienController::class, 'index']);
+        Route::get('/pasien/tambah', [PasienController::class, 'create']);
+        Route::post('/pasien/simpan', [PasienController::class, 'store']);
+        Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
+        Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
+        Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
+    });
+
     //Apoteker
     Route::prefix('obat')->group(function () {
         Route::get('/apoteker', [ApotekerController::class, 'index']);
@@ -81,9 +92,19 @@ Route::get('/home', function () {
 
     Route::get('/logout', [AuthController::class, 'logout']);
 
+Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
+});
+
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
     Route::get('/akun/tambah', [AkunController::class, 'create']);
     Route::post('/akun/simpan', [AkunController::class, 'store']);
     Route::delete('/akun/hapus/', [AkunController::class, 'destroy']);
+    Route::post('/akun/simpan', [AkunController::class, 'store']);
+    Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
+    Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
+    Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
 });

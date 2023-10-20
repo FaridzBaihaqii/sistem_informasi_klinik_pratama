@@ -40,14 +40,15 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url('dashboard/pasien') }}">Dashboard</a>
                     </li>
-                    <!-- @if (Auth::check() && Auth::user()->role == 'asisten') -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('pasien/resepsionis') }}">Resepsionis</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('admin/asisten') }}">Asisten Dokter</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
                     </li>
-                    <!-- @endif -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
                     </li>

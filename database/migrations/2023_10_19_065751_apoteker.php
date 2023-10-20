@@ -16,11 +16,6 @@ return new class extends Migration
             $table->string('username', 255);
             $table->string('nama_apoteker', 60);
             $table->text('foto_profil');
-            
-            $table->foreign('username')
-                ->references('username')
-                ->on('akun')
-                ->onDelete('cascade');
         });
     }
 

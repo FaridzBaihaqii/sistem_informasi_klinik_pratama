@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('no_telp');
             $table->text('foto_profil');
             
-            $table->foreign('username')->references('username')->on('akun')->onDelete('cascade');
         });
     }
 

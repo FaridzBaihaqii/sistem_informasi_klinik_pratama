@@ -6,14 +6,14 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Pendaftaran
+                        Data Pasien
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="resepsionis/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
+                            <a href="pasien/tambah">
+                                <btn class="btn btn-success">Tambah Data Pasien</btn>
                             </a>
 
                         </div>
@@ -22,27 +22,36 @@
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>KELUHAN</th>
-                                    <th>TANGGAL PENDAFTARAN</th>
-                                    <th>POLI</th>
-                                    <th>JADWAL PELAYANAN</th>
-                                    <th>INFO JANJI TEMU</th>
+                                    <th>NAMA PASIEN</th>
+                                    <th>JENKEL</th>
+                                    <th>TANGGAL LAHIR</th>
+                                    <th>ALAMAT</th>
+                                    <th>NO TELP</th>
+                                    <th>NO BPJS</th>
+                                    <th>FOTO PROFIL</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pendaftaran as $p)
+                                @foreach ($pasien as $p)
                                     <tr>
-                                        <td>{{ $p->keluhan }}</td>
-                                        <td>{{ $p->tgl_pendaftaran }}</td>
-                                        <td>{{ $p->poli }}</td>
-                                        <td>{{ $p->jadwal_pelayanan }}</td>
-                                        <td>{{ $p->info_janji }}</td>
+                                        <td>{{ $p->nama_pasien }}</td>
+                                        <td>{{ $p->jenkel }}</td>
+                                        <td>{{ $p->tgl_lahir }}</td>
+                                        <td>{{ $p->alamat }}</td>
+                                        <td>{{ $p->no_telp }}</td>
+                                        <td>{{ $p->no_bpjs }}</td>
                                         <td>
-                                            <a href="resepsionis/edit/{id}{{ $p->id_pendaftaran }}">
+                                        @if ($p-> foto_profil)
+                                                <img src="{{ url('foto') . '/' . $p->foto_profil }} "
+                                                    style="max-width: 250px; height: auto;" />
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="pasien/edit/{{ $p->id_pasien }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $p->id_pendaftaran }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach

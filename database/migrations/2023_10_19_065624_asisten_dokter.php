@@ -17,8 +17,7 @@ return new class extends Migration
             $table->string('nama_asisten', 255);
             $table->bigInteger('no_telp');
             $table->text('foto_profil');
-                    
-            $table->foreign('id_user')->on('akun')->references('id_user')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

@@ -12,11 +12,7 @@ class DashboardController extends Controller
      */
     public function index(Pasien $pasien)
     {
-
-        $data = [
-            'pasien' => $pasien->all()
-        ];
-        return view('dashboard.index', $data);
+        //
     }
 
 
@@ -26,7 +22,7 @@ class DashboardController extends Controller
 
     public function create()
     {
-        return view('user.tambah');
+        //
     }
 
     /**

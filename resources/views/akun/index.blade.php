@@ -34,9 +34,7 @@
                                             @endif
                                         </td> --}}
                                         <td class="grid gap-3">
-                                            <a href="akun/edit/{{ $a->id_user }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
+                                            <a href="akun/edit/{{ $a->id_user }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idHapus="{{ $a->id_user }}">HAPUS</btn>
                                         </td>
                                     </tr>
@@ -78,7 +76,7 @@
                         type: 'DELETE',
                         url: 'akun/hapus',
                         data: {
-                            id_user: idHapus,
+                            id_user: idJenis,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
@@ -92,6 +90,9 @@
                     });
                 }
             });
+        });
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
         });
     </script>
 

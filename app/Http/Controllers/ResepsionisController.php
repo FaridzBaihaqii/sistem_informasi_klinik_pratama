@@ -11,7 +11,7 @@ class ResepsionisController extends Controller
 {
     //halaman manage penggunaan, admin only
     protected $userModel;
-    public function __construct()
+    public function construct()
     {
         $this->userModel = new Pendaftaran;    
     }
@@ -30,13 +30,10 @@ class ResepsionisController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create(Pendaftaran $jenis)
+    public function create(Pendaftaran $pendaftaran)
     {
-        $jenisPendaftaran = $jenis->all();
 
-        return view('pendaftaran.tambah', [
-            'JenisPendaftaran' => $jenisPendaftaran,
-        ]);
+        return view('pendaftaran.tambah');
     }
 
     /**
@@ -48,42 +45,24 @@ class ResepsionisController extends Controller
         // data dari form di view yang dikumpulkan berbentuk array akan di vilter sesuai validasi yang ditentukan
         $data = $request->validate(
             [
-                'username' => ['required'],
-                'password' => ['required'],
-                'peran' => ['required'],
+                'keluhan' => ['required'],
+                'poli' => ['required'],
+                'tgl_pendaftaran' => ['required'],
+                'jadwal_pelayanan' => ['required'],
+                'info_janji' => ['required'],
             ]
             );
-            if($request->input('id_user') !== null){
-                //Proses Update
-                $dataUpdate = $pendaftaran::where('username', $request->input('username'))
-                    ->update($data); 
-                if($dataUpdate){
-                    return redirect('dashboard/')->with('success', 'data Akun berhasil diupdate');
-                } else {
-                    return back()->with('error', 'data Akun gagal di update');
-                }
+
+            if ($pendaftaran->create($data)) {
+                return redirect('/dashboard/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
-            else{
-             //Proses Insert
-            if($data):
-            //Simpan jika data terisi semua
-                $data['password'] = Akun::make($request->input('password'));
-                if($this->userModel->create($data));
-                return redirect('/dashboard/akun')->with('success','Data Pendaftaran baru berhasil ditambah');
-            else:
-            //Kembali ke form tambah data
-                return back()->with('error','Data Pendaftaran gagal ditambahkan');
-            endif;
+            return back()->with('error','Pendaftaran Gagal Ditambahkan');
         }
-    }
+    
     
     /**
      * Display the specified resource.
      */
-    public function show(Akun $Akun)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
