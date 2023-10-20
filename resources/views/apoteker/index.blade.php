@@ -38,8 +38,8 @@
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>
-                                            @if ($a->file)
-                                                <img src="{{ url('foto') . '/' . $a->file }} "
+                                            @if ($a->foto_obat)
+                                                <img src="{{ url('foto') . '/' . $a->foto_obat }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
                                         </td>
@@ -78,9 +78,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'apoteker/hapus',
+                        url: '/obat/apoteker/hapus',
                         data: {
-                            id_obat: idJenis,
+                            id_obat: idObat,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

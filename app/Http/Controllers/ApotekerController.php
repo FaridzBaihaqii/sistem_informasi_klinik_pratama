@@ -41,12 +41,12 @@ class ApotekerController extends Controller
                 'tipe_obat'    => 'required',
                 'stok_obat'    => 'required',
                 'tgl_exp'      => 'required',
-                'foto_obat'    => 'required|file',
+                'foto_obat'    => 'required',
             ]
         );
-
-        //Proses Insert
-        if ($request->hasFile('file')) {
+        // dd($data);
+        // //Proses Insert
+        if ($request->hasFile('foto_obat') && $request->file('foto_obat')->isValid()) {
             $foto_file = $request->file('foto_obat');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
             $foto_file->move(public_path('foto'), $foto_nama);
@@ -113,7 +113,7 @@ class ApotekerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataObat $apoteker)
+    public function destroy(DataObat $apoteker, Request $request)
     {
         $id_obat = $request->input('id_obat');
 
