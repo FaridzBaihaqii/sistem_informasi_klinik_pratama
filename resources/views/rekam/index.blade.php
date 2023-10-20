@@ -3,7 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
+                <br/>
                 <div class="card-header">
                     <span class="h1">
                         Rekam Medis Pasien
@@ -11,41 +12,38 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
-                            <a href="apoteker/tambah">
-                                <btn class="btn btn-success">Tambah Rekam Medis</btn>
-                            </a>
-
-                        </div>
+                        
                         <p>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>NAMA OBAT</th>
-                                    <th>TIPE OBAT</th>
-                                    <th>STOK OBAT</th>
-                                    <th>TANGGAL EXP</th>
-                                    <th>FOTO OBAT</th>
+                                    <th>NAMA PASIEN</th>
+                                    <th>RUANGAN</th>
+                                    <th>KELUHAN</th>
+                                    <th>DIAGNOSIS</th>
+                                    <th>TANGGAL PELAYANAN</th>
+                                    <th>FOTO PASIEN</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($apoteker as $a)
+                                @foreach ($rekam as $r)
                                     <tr>
-                                        <td>{{ $a->nama_obat }}</td>
-                                        <td>{{ $a->tipe_obat }}</td>
-                                        <td>{{ $a->stok_obat }}</td>
-                                        <td>{{ $a->tgl_exp }}</td>
+                                        <td>{{ $r->nama_pasien }}</td>
+                                        <td>{{ $r->ruangan}}</td>
+                                        <td>{{ $r->keluhan_rm }}</td>
+                                        <td>{{ $r->diagnosis }}</td>
+                                        <td>{{ $r->tgl_pelayanan }}</td>
                                         <td>
-                                            @if ($a->file)
-                                                <img src="{{ url('foto') . '/' . $a->file }} "
-                                                    style="max-width: 250px; height: auto;" />
+                                            @if ($r->foto_pasien)
+                                                <img src="{{ url('foto') . '/' . $r->foto_pasien }} "
+                                                    style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="apoteker/edit/{{ $a->username }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
+                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -54,10 +52,16 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    <div class="col-md-4">
+                        <a href="asisten/tambah">
+                            <btn class="btn btn-success">Tambah Rekam Medis</btn>
+                        </a>
 
+                    </div>
                 </div>
             </div>
         </div>
+        <br/>
     </div>
 @endsection
 
@@ -65,7 +69,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idObat = $(this).closest('.btnHapus').attr('idObat');
+            let idHapus = $(this).closest('.btnHapus').attr('idHapus');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -78,7 +82,7 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'apoteker/hapus',
+                        url: 'asisten/hapus',
                         data: {
                             id_obat: idJenis,
                             _token: "{{ csrf_token() }}"

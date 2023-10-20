@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\RekamMedisController;
 use App\Models\Resepsionis;
 use App\Http\Middleware\UserAccess;
 
@@ -74,6 +75,16 @@ Route::get('/home', function () {
         Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
     });
 
+    //Rekam Medis
+    Route::prefix('rekam')->group(function () {
+        Route::get('/asisten', [RekamMedisController::class, 'index']);
+        Route::get('/asisten/tambah', [RekamMedisController::class, 'create']);
+        Route::post('/asisten/simpan', [RekamMedisController::class, 'store']);
+        Route::get('/asisten/edit/{id}', [RekamMedisController::class, 'edit']);
+        Route::post('/asisten/edit/simpan', [RekamMedisController::class, 'update']);
+        Route::delete('/asisten/hapus', [RekamMedisController::class, 'destroy']);
+    });
+
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
         Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
@@ -83,7 +94,7 @@ Route::get('/home', function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
 // });
-<<<<<<< HEAD
+
 
 Route::prefix('auth')->group(function(){
     Route::get('/',[AuthController::class, 'index']);
@@ -101,5 +112,4 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
 });
 
-=======
->>>>>>> 58c42c020eacd96fc4c7d75f9b32d2fc85389488
+
