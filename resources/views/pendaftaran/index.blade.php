@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="dashboard/tambah">
+                            <a href="resepsionis/tambah">
                                 <btn class="btn btn-success">Tambah Pasien</btn>
                             </a>
 
@@ -31,7 +31,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pasien as $p)
+                                @foreach ($pendaftaran as $p)
                                     <tr>
                                         <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->nama_pasien }}</td>

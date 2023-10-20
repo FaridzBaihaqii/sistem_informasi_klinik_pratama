@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('pendaftaran', function (Blueprint $table) 
+        {
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->integer('id_pendaftaran');
             $table->unsignedBigInteger('id_resepsionis');
@@ -36,7 +38,8 @@ return new class extends Migration
                 ->on('poli')
                 ->onDelete('cascade');
         });
-    }
+    });
+}
 
     /**
      * Reverse the migrations.

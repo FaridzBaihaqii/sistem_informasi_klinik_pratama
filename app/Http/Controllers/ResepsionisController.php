@@ -21,17 +21,22 @@ class ResepsionisController extends Controller
     public function index(Pendaftaran $pendaftaran)
     {
     $data = [
-            'pasien' => $this->userModel->all()
+            'pendaftaran' => $this->userModel->all()
     ];
-    return view ('pasien.index', $data);
+    return view ('pendaftaran.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Pendaftaran $pendaftaran)
+
+    public function create(Pendaftaran $jenis)
     {
-        return view('pasien.tambah');
+        $jenisPendaftaran = $jenis->all();
+
+        return view('pendaftaran.tambah', [
+            'JenisPendaftaran' => $jenisPendaftaran,
+        ]);
     }
 
     /**
@@ -62,7 +67,7 @@ class ResepsionisController extends Controller
              //Proses Insert
             if($data):
             //Simpan jika data terisi semua
-                $data['password'] = Hash::make($request->input('password'));
+                $data['password'] = Akun::make($request->input('password'));
                 if($this->userModel->create($data));
                 return redirect('/dashboard/akun')->with('success','Data Pendaftaran baru berhasil ditambah');
             else:
