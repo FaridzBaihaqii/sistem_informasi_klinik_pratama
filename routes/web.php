@@ -83,6 +83,7 @@ Route::get('/home', function () {
     Route::get('/logout', [AuthController::class, 'logout']);
 
 // });
+<<<<<<< HEAD
 
 Route::prefix('auth')->group(function(){
     Route::get('/',[AuthController::class, 'index']);
@@ -100,3 +101,5 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
 });
 
+=======
+>>>>>>> 58c42c020eacd96fc4c7d75f9b32d2fc85389488

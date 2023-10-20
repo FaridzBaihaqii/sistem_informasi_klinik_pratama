@@ -10,7 +10,7 @@
                     </span>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="simpan">
+                    <form method="POST" action="/obat/apoteker/simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
