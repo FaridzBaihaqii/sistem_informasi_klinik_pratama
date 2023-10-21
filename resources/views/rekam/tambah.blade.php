@@ -3,12 +3,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Obat
+                        Tambah Rekam Medis
                     </span>
                 </div>
+                <br>
+             
                 <div class="card-body">
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">

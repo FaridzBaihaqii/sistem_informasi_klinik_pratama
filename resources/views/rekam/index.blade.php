@@ -6,7 +6,7 @@
             <div class="">
                 <br/>
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
                         Rekam Medis Pasien
                     </span>
                 </div>
@@ -15,7 +15,7 @@
                         
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>NAMA PASIEN</th>
@@ -43,7 +43,7 @@
                                         </td>
                                         <td>
                                             <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $r->no_rm }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +69,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idHapus = $(this).closest('.btnHapus').attr('idHapus');
+            let idRekam = $(this).closest('.btnHapus').attr('idRekam');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -84,7 +84,7 @@
                         type: 'DELETE',
                         url: '/rekam/asisten/hapus',
                         data: {
-                             no_rm: no_rm,
+                            no_rm: idRekam,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

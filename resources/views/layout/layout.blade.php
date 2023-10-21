@@ -113,7 +113,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: #EEFFF3;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -181,7 +181,7 @@
                 </li>
                
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
+                    <a class="nav-link" href="{{ url('Pasien/pasien') }}">Resepsionis</a>
                 </li>
                 <br>
                 <br>
@@ -216,12 +216,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
                     </li>
-<<<<<<< HEAD
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
-                    </li>
-=======
->>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96
                 </ul>
                 <form class="d-flex mt-2">
                     <a class="btn btn-outline-danger" href="{{ url('logout') }}">Logout</a>

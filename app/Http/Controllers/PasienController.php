@@ -60,7 +60,7 @@ class PasienController extends Controller
             }
 
             if ($pasien->create($data)) {
-                return redirect('/dashboard/pasien')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
+                return redirect('/Pasien/pasien')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
             return back()->with('error','Pendaftaran Gagal Ditambahkan');
         }

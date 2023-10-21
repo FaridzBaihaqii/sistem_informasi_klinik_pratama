@@ -55,7 +55,7 @@ class RekamMedisController extends Controller
         }
 
         if ($rekam->create($data)) {
-            return redirect('/rekam/asisten')->with('success', 'Data Obat Baru Berhasil Ditambah');
+            return redirect('/rekam/asisten')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
         return back()->with('error', 'Data Obat Gagal Ditambahkan');
@@ -94,7 +94,7 @@ class RekamMedisController extends Controller
                 'tgl_pelayanan'    => 'required',
                 'keluhan_rm'      => 'required',
                 'diagnosis'      => 'required',
-                'foto_pasien'    => 'required|file',
+                'foto_pasien'    => 'sometimes',
             ]
         );
 
@@ -105,9 +105,9 @@ class RekamMedisController extends Controller
             $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);
 
             if ($dataUpdate) {
-                return redirect('obat/rekam')->with('success', 'Data Obat Berhasil Diupdate');
+                return redirect('/rekam/asisten')->with('success', 'Rekam Medis Berhasil Diupdate');
             } else {
-                return back()->with('error', 'Data Obat Gagal Diupdate');
+                return back()->with('error', 'Rekam Medis Gagal Diupdate');
             }
         }
     }
