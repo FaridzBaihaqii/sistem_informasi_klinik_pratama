@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Tambah Pendaftaran ')
+@section('title', 'Tambah Pasien ')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -14,27 +14,33 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Keluhan</label>
-                                    <input type="text" class="form-control" name="keluhan" />
+                                    <label>Nama Pasien</label>
+                                    <input type="text" class="form-control" name="nama_pasien" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Tanggal Pendaftaran</label>
-                                    <input type="date" class="form-control" name="tgl_pendaftaran" />
-                                </div>
-                                <div class="form-">
-                                <label>Poli</label><br>
-                                <select name="poli" class="form-control">
-                                    <option value="poli_umum">Poli Umum</option>
-                                    <option value="poli_gigi">Poli Gigi</option>
+                                <label>Jenkel</label><br>
+                                <select name="jenkel" class="form-control">
+                                    <option value="laki-laki">Laki-Laki</option>
+                                    <option value="perempuan">Perempuan</option>
                                 </select>
+                                <div class="form-group">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tgl_lahir" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Jadwal Pelayanan</label>
-                                    <input type="date" class="form-control" name="jadwal_pelayanan" />
+                                    <label>Alamat</label>
+                                    <input type="text" class="form-control" name="alamat" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Info Janji Temu</label>
-                                    <input type="text" class="form-control" name="info_janji" />
+                                    <label>No Telp</label>
+                                    <input type="number" class="form-control" name="no_telp" />
+                                </div>
+                                <div class="form-group">
+                                    <label>No BPJS</label>
+                                    <input type="number" class="form-control" name="no_bpjs" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Foto Profil</label>
+                                    <input type="file" class="form-control" name="foto_profil" />
                                 </div>
                                 @csrf
                                 <div class="d-flex mt-3">

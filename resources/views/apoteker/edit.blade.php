@@ -10,12 +10,12 @@
                     </span>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="simpan">
+                    <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Nama Obat</label>
-                                    <input type="text" class="form-control" name="nama_obat" value="{{ $apoteker->id_obat }}" />
+                                    <input type="text" class="form-control" name="nama_obat" value="{{ $apoteker->nama_obat }}" />
                                 </div>
                                 <div class="form-group">
                                     <label>Tipe Obat</label>
@@ -32,6 +32,9 @@
                                 <div class="form-group">
                                     <label>Foto Obat</label>
                                     <input type="file" class="form-control" name="foto_obat" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" name="id_obat" value="{{ $apoteker->id_obat }}"/>
                                 </div>
                                 </div>
                                 @csrf

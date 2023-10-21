@@ -3,12 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Akun;
-use App\Models\tblUser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class TblUserSeeder extends Seeder
+class AkunSeeder extends Seeder
 {
     /**
      * Run the database seeds.

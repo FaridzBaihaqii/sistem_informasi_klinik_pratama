@@ -1,5 +1,9 @@
 @extends('layout.layout')
-@section('title', 'Daftar Surat')
+<<<<<<< HEAD:resources/views/pasien/index.blade.php
+@section('title', 'Data Pendaftaran')
+=======
+@section('title', 'Daftar Pasien')
+>>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96:resources/views/dashboard/index.blade.php
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -12,8 +16,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="dashboard/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
+                            <a href="pasien/tambah">
+                                <btn class="btn btn-success">Tambah Data Pasien</btn>
                             </a>
 
                         </div>
@@ -22,33 +26,41 @@
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>TANGGAL LAHIR</th>
                                     <th>NAMA PASIEN</th>
+                                    <th>JENKEL</th>
+                                    <th>TANGGAL LAHIR</th>
                                     <th>ALAMAT</th>
-                                    <th>JENIS KELAMIN</th>
-                                    <th>NO. TELP</th>
+                                    <th>NO TELP</th>
+                                    <th>NO BPJS</th>
+                                    <th>FOTO PROFIL</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($pasien as $p)
                                     <tr>
-                                        <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->nama_pasien }}</td>
-                                        <td>{{ $p->alamat }}</td>
                                         <td>{{ $p->jenkel }}</td>
-                                        <!-- <td>
-                                            @if ($p->file)
-                                                <img src="{{ url('foto') . '/' . $p->file }} "
+                                        <td>{{ $p->tgl_lahir }}</td>
+                                        <td>{{ $p->alamat }}</td>
+                                        <td>{{ $p->no_telp }}</td>
+                                        <td>{{ $p->no_bpjs }}</td>
+                                        <td>
+                                        @if ($p-> foto_profil)
+                                                <img src="{{ url('foto') . '/' . $p->foto_profil }} "
                                                     style="max-width: 250px; height: auto;" />
                                             @endif
-                                        </td> -->
-                                        <td>{{ $p->no_telp }}</td>
+                                        </td>
                                         <td>
-                                            <a href="pasien/edit/{{ $p->username }}">
+<<<<<<< HEAD:resources/views/pasien/index.blade.php
+                                            <a href="pasien/edit/{{ $p->id_pasien }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->id_pasien }}">HAPUS</btn>
+=======
+                                            <a href="pasien/edit/{{ $p->username }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>
+>>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96:resources/views/dashboard/index.blade.php
                                         </td>
                                     </tr>
                                 @endforeach

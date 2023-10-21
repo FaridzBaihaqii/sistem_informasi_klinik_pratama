@@ -20,6 +20,18 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
+        $credentials = [
+            'username' => $validatedData['username'],
+            'password' => $validatedData['password'],
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            if ($user->peran == 'resepsionis' || $user->peran == 'asisten' || $user->peran == 'apoteker') {
+                return redirect('dashboard/pasien')->with('_token', Session::token());
+            } 
+
         if (Auth::attempt($postData)) {
             $request->session()->regenerate();
             if (Auth::user()->peran == ['asisten dokter', 'apoteker', 'resepsionis']) {
@@ -48,4 +60,4 @@ class AuthController extends Controller
         Session::regenerateToken();
         return redirect('/auth');
     }
-}
+    }}

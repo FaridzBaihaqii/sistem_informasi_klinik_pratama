@@ -187,7 +187,7 @@
                 <br>
                 <br>
                 <li class="nav-item">
-                    <a class="logout" href="{{ url('logout') }}">Logout</a>
+                    <a class="logout btn btn-outline-danger" style="color:white; background-color:red; width: 100px; margin-left:20px; padding-right:90px" href="{{ url('logout') }}">Logout</a>
                 </li>
                 
             </ul>
@@ -203,17 +203,25 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="{{ url('dashboard/pasien') }}">Dashboard</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('pasien/resepsionis') }}">Resepsionis</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('rekam/asisten') }}">Asisten Dokter</a>
                     </li>
+                    <!-- @endif -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
+                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
                     </li>
-                   
+<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
                     </li>
+=======
+>>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96
                 </ul>
                 <form class="d-flex mt-2">
                     <a class="btn btn-outline-danger" href="{{ url('logout') }}">Logout</a>
@@ -224,7 +232,7 @@
 
     <div class="container">
         <br/>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">▶ </a>
         @include('layout.flash-message')
         @yield('content')
        <br/>

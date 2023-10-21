@@ -15,5 +15,4 @@ class Akun extends Authenticatable
     protected $casts = [
         'password' => 'hashed',
     ];
-
 }
