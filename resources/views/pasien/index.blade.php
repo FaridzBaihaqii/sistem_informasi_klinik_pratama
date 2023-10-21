@@ -23,7 +23,7 @@
                             <thead>
                                 <tr>
                                     <th>NAMA PASIEN</th>
-                                    <th>JENKEL</th>
+                                    <th>JENIS KELAMIN</th>
                                     <th>TANGGAL LAHIR</th>
                                     <th>ALAMAT</th>
                                     <th>NO TELP</th>
