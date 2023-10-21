@@ -19,8 +19,8 @@
                                 </div>
                                 <label>Jenkel</label><br>
                                 <select name="jenkel" class="form-control" value="{{ $pasien->jenkel }}">
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
+                                    <option value="laki-laki" {{ $pasien->jenkel == 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
+                                    <option value="perempuan" {{ $pasien->jenkel == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                                 <div class="form-group">
                                     <label>Tanggal Lahir</label>

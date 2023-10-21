@@ -51,7 +51,7 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #92E3A9;
+    background: #3eb772;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -113,11 +113,13 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: #fff;
+    text-shadow: 1px 1px 2px #FFCC70, 0 0 25px blue, 0 0 5px darkblue;
+
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #fff;
+    color: #D2E9E9;
     background: none;
 }
 
@@ -165,7 +167,7 @@
             <ul class="sidebar-nav">
                 <br/>
                 <li class="sidebar-brand">
-                    <a href="#" class="h2">
+                    <a href="{{ url('dashboard/pasien') }}" class="h2">
                         SEHATKUU
                     </a>
                 </li>
@@ -190,48 +192,11 @@
                 <br>
                 <br>
                 <li class="nav-item">
-                    <a class="logout btn btn-outline-danger" style="color:white; background-color:red; width: 100px; margin-left:20px; padding-right:90px" href="{{ url('logout') }}">Logout</a>
+                    <a class="logout btn btn-outline-danger" style="color:white; background-color:red; width: 100px; margin-left:20px; padding-right:95px; " href="{{ url('logout') }}">Logout</a>
                 </li>
                 
             </ul>
         </div>
-    {{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SEHATKUU</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('dashboard/pasien') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('pasien/resepsionis') }}">Resepsionis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('rekam/asisten') }}">Asisten Dokter</a>
-                    </li>
-                    <!-- @endif -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
-                    </li>
-<<<<<<< HEAD
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
-                    </li>
-=======
->>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96
-                </ul>
-                <form class="d-flex mt-2">
-                    <a class="btn btn-outline-danger" href="{{ url('logout') }}">Logout</a>
-                </form>
-            </div>
-        </div>
-    </nav> --}}
 
     <div class="container">
         <br/>

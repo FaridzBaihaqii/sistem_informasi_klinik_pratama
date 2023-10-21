@@ -39,9 +39,7 @@
                                         <td>{{ $p->jadwal_pelayanan }}</td>
                                         <td>{{ $p->info_janji }}</td>
                                         <td>
-                                            <a href="resepsionis/edit/{{ $p->id_pendaftaran }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
+                                            <a href="resepsionis/edit/{{ $p->id_pendaftaran }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idPendaftaran="{{ $p->id_pendaftaran }}">HAPUS</btn>
                                         </td>
                                     </tr>
