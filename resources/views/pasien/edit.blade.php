@@ -38,9 +38,13 @@
                                     <label>No BPJS</label>
                                     <input type="number" class="form-control" name="no_bpjs" value="{{ $pasien->no_bpjs }}" />
                                 </div>
-                                <!-- <div class="form-group">
-                                    <input type="hidden" class="form-control" name="id_" value="{{ $pasien->id_ }}"/>
-                                </div> -->
+                                <div class="form-group">
+                                    <label>Foto Profil</label>
+                                    <input type="file" class="form-control" name="foto_profil" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" name="id_pasien" value="{{ $pasien->id_pasien }}"/>
+                                </div>
                                 </div>
                                 @csrf
                                 <div class="d-flex mt-3">

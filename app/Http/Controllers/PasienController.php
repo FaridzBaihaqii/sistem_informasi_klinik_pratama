@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Akun;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PasienController extends Controller
 {
@@ -79,28 +80,60 @@ class PasienController extends Controller
      */
     public function edit(Pasien $pasien, Request $request)
     {
-        //
         $data = [
-            'Pasien' => Akun::where('id_user', $request->id)->first()
+            'pasien' => Pasien::where('id_pasien', $request->id)->first()
         ];
-        return view('Pasien.edit', $data);
+        return view('pasien.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Akun $Akun)
+    public function update(Request $request, Pasien $pasien)
     {
-        //
+        $id_pasien = $request->input('id_pasien');
+
+        $data = $request->validate([
+            'nama_pasien' => 'sometimes',
+            'jenkel' => 'sometimes',
+            'tgl_lahir' => 'sometimes',
+            'alamat' => 'sometimes',
+            'no_telp' => 'sometimes',
+            'no_bpjs' => 'sometimes',
+            'foto_profil' => 'sometimes',
+        ]);
+
+        if ($id_pasien !==null){
+            if ($request->hasFile('foto_profil')){
+                $foto_file = $request->file('foto_profil');
+                $foto_extension = $foto_file->getClientOriginalExtension();
+                $foto_nama= md5($foto_file->getClientOriginalName() . time()) . ' .' . $foto_extension;
+                $foto_file->move(public_path('foto'), $foto_nama);            
+
+                $update_data = $pasien->where('id_pasien', $id_pasien)->first();
+                File::delete(public_path('foto') . '/' . $update_data->file);
+
+                $data['foto_profil'] = $foto_nama;
+            }
+
+            $dataUpdate = $pasien->where('id_pasien', $id_pasien)->update($data);
+
+            if($dataUpdate) {
+                return redirect('dashboard/pasien')->with('success', 'Data berhasil diupdate');
+            }
+        }
+
+        return back()->with('error', 'Data Gagal diupdate');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Akun $Akun)
+    public function destroy(Request $request, Pasien $pasien)
     {
-        $id_user = $request->input('id_user');
-        $aksi = $Akun->where('id_user',$id_user)->delete();
+        $id_pasien = $request->input('id_pasien');
+        $aksi = $pasien->where('id_pasien', $id_pasien)->delete();
             if($aksi)
             {
                 $pesan = [

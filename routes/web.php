@@ -22,7 +22,7 @@ use App\Http\Controllers\RekamMedisController;
 // Jika belom login, maka muncul
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login');
-    Route::post('/', [AuthController::class, 'login']);
+    Route::post('/', [AuthController::class, 'check']);
 });
 
 // Jika sudah login, kembali ke dalam halaman 
@@ -53,7 +53,7 @@ Route::get('/home', function () {
     });
 
     // Pasien
-    Route::prefix('Pasien')->group(function () {
+    Route::prefix('dashboard')->group(function () {
         Route::get('/pasien', [PasienController::class, 'index']);
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);

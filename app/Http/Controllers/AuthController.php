@@ -21,8 +21,8 @@ class AuthController extends Controller
         ]);
 
         $credentials = [
-            'username' => $validatedData['username'],
-            'password' => $validatedData['password'],
+            'username' => $postData['username'],
+            'password' => $postData['password'],
         ];
 
         if (Auth::attempt($credentials)) {
@@ -32,7 +32,7 @@ class AuthController extends Controller
                 return redirect('dashboard/pasien')->with('_token', Session::token());
             } 
 
-        if (Auth::attempt($postData)) {
+        if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->peran == ['asisten dokter', 'apoteker', 'resepsionis']) {
                 return response([
