@@ -179,6 +179,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('pendaftaran/resepsionis') }}">Resepsionis</a>
+                </li>
                
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>

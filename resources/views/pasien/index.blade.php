@@ -1,9 +1,5 @@
 @extends('layout.layout')
-<<<<<<< HEAD:resources/views/pasien/index.blade.php
 @section('title', 'Data Pendaftaran')
-=======
-@section('title', 'Daftar Pasien')
->>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96:resources/views/dashboard/index.blade.php
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -52,15 +48,10 @@
                                             @endif
                                         </td>
                                         <td>
-<<<<<<< HEAD:resources/views/pasien/index.blade.php
                                             <a href="pasien/edit/{{ $p->id_pasien }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->id_pasien }}">HAPUS</btn>
-=======
-                                            <a href="pasien/edit/{{ $p->username }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->username }}">HAPUS</btn>
->>>>>>> 9e96b97336651f8fd02f42d1337502e9c395cf96:resources/views/dashboard/index.blade.php
+                                            <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -80,7 +71,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let Username = $(this).closest('.btnHapus').attr('Username');
+            let idPasien = $(this).closest('.btnHapus').attr('idPasien');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -95,7 +86,7 @@
                         type: 'DELETE',
                         url: 'pasien/hapus',
                         data: {
-                            username: Username,
+                            id_pasien: idPasien,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

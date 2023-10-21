@@ -17,7 +17,7 @@
                                     <label>Nama Pasien</label>
                                     <input type="text" class="form-control" name="nama_pasien" />
                                 </div>
-                                <label>Jenkel</label><br>
+                                <label>Jenis Kelamin</label><br>
                                 <select name="jenkel" class="form-control">
                                     <option value="laki-laki">Laki-Laki</option>
                                     <option value="perempuan">Perempuan</option>

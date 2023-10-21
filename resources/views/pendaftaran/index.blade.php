@@ -39,10 +39,10 @@
                                         <td>{{ $p->jadwal_pelayanan }}</td>
                                         <td>{{ $p->info_janji }}</td>
                                         <td>
-                                            <a href="resepsionis/edit/{id}{{ $p->id_pendaftaran }}">
+                                            <a href="resepsionis/edit/{{ $p->id_pendaftaran }}">
                                                 <btn class="btn btn-primary">EDIT</btn>
                                             </a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $p->id_pendaftaran }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idPendaftaran="{{ $p->id_pendaftaran }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -62,7 +62,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let Username = $(this).closest('.btnHapus').attr('Username');
+            let idPendaftaran = $(this).closest('.btnHapus').attr('idPendaftaran');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -75,9 +75,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'pasien/hapus',
+                        url: 'resepsionis/hapus',
                         data: {
-                            username: Username,
+                            id_pendaftaran: idPendaftaran,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

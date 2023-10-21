@@ -27,13 +27,13 @@ class AkunSeeder extends Seeder
             ],
             [
                 'username' => 'asisten_dokter',
-                'peran' => 'asisten_dokter',
+                'peran' => 'asisten dokter',
                 'password' => Hash::make('123')
             ]
         ];
 
         // looping data dengan foreach
-        foreach ($userData as $user => $val) {
+        foreach ($userData as $val) {
             Akun::create($val);
         }
     }
