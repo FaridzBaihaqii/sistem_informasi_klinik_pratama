@@ -48,6 +48,7 @@ Route::get('/home', function () {
         Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
         Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
         Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
     });
@@ -58,6 +59,7 @@ Route::get('/home', function () {
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
+        Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });

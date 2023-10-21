@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Data Obat')
+@section('title', 'Data Rekam Medis')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -43,7 +43,7 @@
                                         </td>
                                         <td>
                                             <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idHapus="{{ $r->no_rm }}">HAPUS</btn>
+                                            <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -69,7 +69,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idHapus = $(this).closest('.btnHapus').attr('idHapus');
+            let idRekam = $(this).closest('.btnHapus').attr('idRekam');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -84,7 +84,7 @@
                         type: 'DELETE',
                         url: 'asisten/hapus',
                         data: {
-                            id_obat: idJenis,
+                            id_rm: idRekam,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
