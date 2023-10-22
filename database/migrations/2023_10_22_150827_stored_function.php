@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -21,6 +22,18 @@ return new class extends Migration
             RETURN total;
         END
         ');
+
+
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalRekamMedis');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalRekamMedis() RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM rekam_medis;
+            RETURN total;
+        END
+        ');
     }
 
     /**
@@ -29,5 +42,6 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalDataObat');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalRekamMedis');
     }
 };

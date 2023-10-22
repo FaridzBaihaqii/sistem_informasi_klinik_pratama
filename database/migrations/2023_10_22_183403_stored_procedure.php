@@ -14,10 +14,10 @@ return new class extends Migration
     {
         DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
         DB::unprepared("
-        CREATE PROCEDURE CreatePasien(
+        CREATE PROCEDURE CreateDokter(
             IN new_nama_dokter VARCHAR(255),
-            IN new_no_telp BIGINT,
-            IN new_foto_profil TEXT,
+            IN new_no_telp INT,
+            IN new_foto_profil TEXT
         )
         BEGIN
             DECLARE new_id_dokter INT;
@@ -25,9 +25,9 @@ return new class extends Migration
             INSERT INTO dokter (nama_dokter, no_telp, foto_profil)
             VALUES (new_nama_dokter, new_no_telp, new_foto_profil); 
 
-
+            INSERT INTO dokter (id_dokter) VALUES (new_id_dokter);
     END
-        ");
+        ");
     }
 
     /**
@@ -36,6 +36,6 @@ return new class extends Migration
     public function down(): void
     {
         //
-
+        DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
     }
 };

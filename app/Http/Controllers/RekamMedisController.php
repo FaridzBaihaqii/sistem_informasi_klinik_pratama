@@ -21,23 +21,14 @@ class RekamMedisController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index(RekamMedis $rekam)
     {
-        // join view
-        // $test = RekamMedis::join('dokter', 'dokter.id_dokter','=','rekam_medis.id_dokter')
-        // ->join('pasien', 'pasien.id_pasien','=','rekam_medis.id_pasien')
-        // ->get(['dokter.nama_dokter','pasien.nama_pasien','rekam_medis.id_dokter','rekam_medis.ruangan','rekam_medis.tgl_pelayanan','rekam_medis.keluhan_rm','rekam_medis.diagnosis','rekam_medis.foto_pasien']);
-        // Mengirim data agar ditampilkan ke dalam view dengan isi array data rekam
-        
-        // $data = [
-        //     'rekam' => $test        
-        // ];
+        $totalRekam = DB::select('SELECT CountTotalRekamMedis() AS totalRekam')[0]->totalRekam;
         $data = [
-            'rekam' => DB::table('v_rekam_medis_table')->get()
+            'rekam' => DB::table('v_rekam_medis_table')->get(),
+            'jumlahRekam' => $totalRekam
         ];
-
-        // return view('rekam.index', $data);
-    
         return view('rekam.index', $data);
     }
 

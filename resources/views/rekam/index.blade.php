@@ -10,10 +10,11 @@
                         Rekam Medis Pasien
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        
-                        <p>
+                <div class="card-header">
+                    <span class="h3">
+                        Jumlah Rekam Mwdis Yang Tercatat : {{$jumlahRekam}}
+                    </span>
+                </div>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
