@@ -19,7 +19,7 @@
                             <table class="table table-hover table-bordered DataTable mt-2">
                                 <thead>
                                     <tr>
-                                        <th>TRANSAKSI SURAT</th>
+                                        <th>TRANSAKSI</th>
                                         <th>Hapus</th>
                                     </tr>
                                 </thead>

@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('logs', function (Blueprint $table) {
-            $table->integer('id_logs', true)->nullable(false);
-            $table->text('logs')->nullable(false);
+            $table->integer('id_log', true);
+            $table->string('tabel', 60);
+            $table->date('tanggal');
+            $table->time('jam');
+            $table->string('aksi', 60);
+            $table->string('record', 225);
+            
         });
     }
 
@@ -22,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('logs');
     }
 };
