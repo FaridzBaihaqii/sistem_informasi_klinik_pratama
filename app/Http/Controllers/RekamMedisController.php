@@ -148,9 +148,6 @@ class RekamMedisController extends Controller
             // Process Update
             $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);
 
-            
-            
-
             if ($dataUpdate) {
 
                 return redirect('/rekam/asisten')->with('success', 'Rekam Medis Berhasil Diupdate');

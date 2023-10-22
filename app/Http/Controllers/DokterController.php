@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Akun;
 use App\Models\Dokter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class DokterController extends Controller
@@ -56,7 +57,7 @@ class DokterController extends Controller
                 $data['foto_profil'] = $foto_nama;
             }
 
-            if ($dokter->create($data)) {
+            if (DB::statement("CALL CreateDokter(?,?,?)", [$data['nama_dokter'], $data['no_telp'], $data['foto_profil']])) {
                 return redirect('/dashboard/dokter')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
             return back()->with('error','Pendaftaran Gagal Ditambahkan');
