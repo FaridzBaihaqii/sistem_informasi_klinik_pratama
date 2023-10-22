@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('id_user', true, false)->nullable(false);
             $table->string('username', 255)->nullable(false);
             $table->text('password');
-            $table->enum('peran', ['resepsionis','asisten dokter', 'apoteker']);
+            $table->enum('peran', ['resepsionis','asisten', 'apoteker']);
         });   
     }
 

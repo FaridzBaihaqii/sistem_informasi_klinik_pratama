@@ -209,7 +209,7 @@ svg {
                 <br>
                 <br>
                 <li class="nav-item">
-                    <a class="logout btn btn-outline-danger" style="color:white; background-color:red; width: 100px; margin-left:20px; padding-right:95px; " href="{{ url('logout') }}">Logout</a>
+                    <a class="logout btn btn-outline-danger" style="color:white; background-color:red; width: 100px; margin-left:20px; padding-right:95px; " href="{{ url('/auth/logout') }}">Logout</a>
                 </li>
                 
             </ul>

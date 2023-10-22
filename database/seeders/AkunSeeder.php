@@ -26,8 +26,8 @@ class AkunSeeder extends Seeder
                 'password' => Hash::make('123')
             ],
             [
-                'username' => 'asisten_dokter',
-                'peran' => 'asisten dokter',
+                'username' => 'asisten',
+                'peran' => 'asisten',
                 'password' => Hash::make('123')
             ]
         ];

@@ -91,9 +91,6 @@ Route::get('/home', function () {
         Route::post('/klinik/hapus', [TransaksiController::class, 'destroy']);
     });
 
-    //Logout
-    Route::get('/logout', [AuthController::class, 'logout']);
-
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
     Route::get('/akun/tambah', [AkunController::class, 'create']);
@@ -103,4 +100,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
     Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
+});
+
+ //Logout
+ Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
 });
