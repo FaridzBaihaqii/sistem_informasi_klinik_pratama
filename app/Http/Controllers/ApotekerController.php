@@ -52,6 +52,8 @@ class ApotekerController extends Controller
      */
     public function store(Request $request, DataObat $apoteker)
     {
+
+        //Array Untuk memvalidasi request dari user
         $data = $request->validate(
             [
                 'nama_obat'    => 'required',
