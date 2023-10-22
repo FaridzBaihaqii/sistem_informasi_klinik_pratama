@@ -140,9 +140,11 @@ class RekamMedisController extends Controller
             
 
             if ($dataUpdate) {
+
                 return redirect('/rekam/asisten')->with('success', 'Rekam Medis Berhasil Diupdate');
             } else {
                 return back()->with('error', 'Rekam Medis Gagal Diupdate');
+
             }
         }
     }

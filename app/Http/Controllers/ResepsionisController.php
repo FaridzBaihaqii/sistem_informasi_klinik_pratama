@@ -84,6 +84,7 @@ class ResepsionisController extends Controller
         $id_pendaftaran = $request->input('id_pendaftaran');
 
         $data = $request->validate([
+            'nama_pasien' => 'sometimes',
             'keluhan' => 'sometimes',
             'tgl_pendaftaran' => 'sometimes',
             'poli' => 'sometimes',

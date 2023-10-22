@@ -7,6 +7,7 @@ use App\Http\Controllers\ResepsionisController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,7 @@ Route::get('/home', function () {
         Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
         Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
         Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
     });
@@ -58,6 +60,7 @@ Route::get('/home', function () {
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
+        Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
@@ -84,17 +87,9 @@ Route::get('/home', function () {
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
-        Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
-        Route::post('/klinik/hapus', [TransaksiKlinikController::class, 'destroy']);
+        Route::get('/klinik', [TransaksiController::class, 'index']);
+        Route::post('/klinik/hapus', [TransaksiController::class, 'destroy']);
     });
-
-    Route::get('/logout', [AuthController::class, 'logout']);
-
-Route::prefix('auth')->group(function(){
-    Route::get('/',[AuthController::class, 'index']);
-    Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class, 'check']);
-});
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
@@ -105,4 +100,11 @@ Route::prefix('dashboard')->group(function () {
     Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
     Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
+});
+
+ //Logout
+ Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
 });
