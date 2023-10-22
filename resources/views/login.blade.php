@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="col-lg-4 tengah">
-                    <form method="POST">
+                    <form method="POST" >
                         <div class="card">
                             <div class="card-header">
                                 Silakan Login 

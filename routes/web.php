@@ -7,6 +7,7 @@ use App\Http\Controllers\ResepsionisController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,17 +87,12 @@ Route::get('/home', function () {
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
-        Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
-        Route::post('/klinik/hapus', [TransaksiKlinikController::class, 'destroy']);
+        Route::get('/klinik', [TransaksiController::class, 'index']);
+        Route::post('/klinik/hapus', [TransaksiController::class, 'destroy']);
     });
 
+    //Logout
     Route::get('/logout', [AuthController::class, 'logout']);
-
-Route::prefix('auth')->group(function(){
-    Route::get('/',[AuthController::class, 'index']);
-    Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class, 'check']);
-});
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);

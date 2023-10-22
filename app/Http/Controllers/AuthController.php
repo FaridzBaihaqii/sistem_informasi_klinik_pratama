@@ -37,7 +37,7 @@ class AuthController extends Controller
             if (Auth::user()->peran == ['asisten dokter', 'apoteker', 'resepsionis']) {
                 return response([
                     'success' => true,
-                    'redirect_url' => 'dashboard/',
+                    'redirect_url' => 'dashboard/auth',
                     'pesan' => 'login berhasil'
                 ], 200);
             } else {
@@ -52,12 +52,13 @@ class AuthController extends Controller
                 'success' => false
             ], 401);
         }
-    }
-
-    function logout()
+    }}
+    
+    //logout
+    public function logout()
     {
         Auth::logout();
         Session::regenerateToken();
-        return redirect('/auth');
+        return redirect('/logout');
     }
-    }}
+    }
