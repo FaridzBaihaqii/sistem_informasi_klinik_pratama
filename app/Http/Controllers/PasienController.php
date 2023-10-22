@@ -109,10 +109,8 @@ class PasienController extends Controller
                 $foto_extension = $foto_file->getClientOriginalExtension();
                 $foto_nama= md5($foto_file->getClientOriginalName() . time()) . ' .' . $foto_extension;
                 $foto_file->move(public_path('foto'), $foto_nama);            
-
                 $update_data = $pasien->where('id_pasien', $id_pasien)->first();
                 File::delete(public_path('foto') . '/' . $update_data->file);
-
                 $data['foto_profil'] = $foto_nama;
             }
 

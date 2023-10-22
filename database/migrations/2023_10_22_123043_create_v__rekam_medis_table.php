@@ -19,8 +19,6 @@ return new class extends Migration
                 INNER JOIN pasien ON pasien.id_pasien = rekam_medis.id_pasien;
             '
         );
-
-        
     }
 
     /**

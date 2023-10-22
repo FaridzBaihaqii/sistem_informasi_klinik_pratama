@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\DataObat;
+use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ApotekerController extends Controller
@@ -100,13 +102,23 @@ class ApotekerController extends Controller
 
         if ($id_obat !== null) {
             // Process Update
-            $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
 
-            if ($dataUpdate) {
+            DB::beginTransaction();
+            try {
+                $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
+                DB::commit();
                 return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
-            } else {
-                return back()->with('error', 'Data Obat Gagal Diupdate');
+
+            } catch (Exception $e) {
+                DB::rollback();
+                dd($e->getMessage());
             }
+
+            // if ($dataUpdate) {
+            //     return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
+            // } else {
+            //     return back()->with('error', 'Data Obat Gagal Diupdate');
+            // }
         }
     }
 
@@ -137,3 +149,4 @@ class ApotekerController extends Controller
         return response()->json($pesan);
     }
 }
+

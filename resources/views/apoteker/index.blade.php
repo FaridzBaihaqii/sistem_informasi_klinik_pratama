@@ -19,7 +19,7 @@
                         </div>
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered ">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>NAMA OBAT</th>
@@ -63,7 +63,7 @@
 
 @section('footer')
     <script type="module">
-        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
             let idObat = $(this).closest('.btnHapus').attr('idObat');
             swal.fire({

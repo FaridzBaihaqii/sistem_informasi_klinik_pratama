@@ -86,7 +86,9 @@
                         type: 'DELETE',
                         url: 'asisten/hapus',
                         data: {
+
                             no_rm: idRekam,
+
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

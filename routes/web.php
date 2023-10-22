@@ -9,6 +9,8 @@ use App\Http\Controllers\ApotekerController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
+use App\Http\Controllers\TransaksiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -98,17 +100,9 @@ Route::get('/home', function () {
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
-        Route::get('/klinik', [TransaksiKlinikController::class, 'index']);
-        Route::post('/klinik/hapus', [TransaksiKlinikController::class, 'destroy']);
+        Route::get('/klinik', [TransaksiController::class, 'index']);
+        Route::post('/klinik/hapus', [TransaksiController::class, 'destroy']);
     });
-
-    Route::get('/logout', [AuthController::class, 'logout']);
-
-Route::prefix('auth')->group(function(){
-    Route::get('/',[AuthController::class, 'index']);
-    Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class, 'check']);
-});
 
 Route::prefix('dashboard')->group(function () {
     Route::get('/akun', [AkunController::class, 'index']);
@@ -121,6 +115,7 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
 });
 
+
 Route::prefix('dashboard')->group(function () {
     Route::get('/dokter', [DokterController::class, 'index']);
     Route::get('/dokter/tambah', [DokterController::class, 'create']);
@@ -132,4 +127,12 @@ Route::prefix('dashboard')->group(function () {
     Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
 });
 
+
+
+ //Logout
+ Route::prefix('auth')->group(function(){
+    Route::get('/',[AuthController::class, 'index']);
+    Route::get('/logout',[AuthController::class, 'logout']);
+    Route::post('/check',[AuthController::class, 'check']);
+});
 

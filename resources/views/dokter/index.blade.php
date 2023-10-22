@@ -6,7 +6,7 @@
             <div class="">
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                        Data Pasien
+                        Data Dokter
                     </span>
                 </div>
                 <div class="card-body">
@@ -17,7 +17,7 @@
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>NAMA Dokter</th>
+                                    <th>NAMA DOKTER</th>
                                     <th>NO TELP</th>
                                     <th>FOTO PROFIL</th>
                                     <th>AKSI</th>
