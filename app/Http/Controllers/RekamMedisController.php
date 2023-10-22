@@ -3,20 +3,40 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
+use App\Models\Dokter;
 use App\Models\RekamMedis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RekamMedisController extends Controller
 {
+    protected $pasienModel;
+    protected $dokterModel;
+    public function __construct()
+    {
+        $this->pasienModel = new Pasien;   
+        $this->dokterModel = new Dokter;    
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(RekamMedis $rekam)
     {
-
+        // join view
+        // $test = RekamMedis::join('dokter', 'dokter.id_dokter','=','rekam_medis.id_dokter')
+        // ->join('pasien', 'pasien.id_pasien','=','rekam_medis.id_pasien')
+        // ->get(['dokter.nama_dokter','pasien.nama_pasien','rekam_medis.id_dokter','rekam_medis.ruangan','rekam_medis.tgl_pelayanan','rekam_medis.keluhan_rm','rekam_medis.diagnosis','rekam_medis.foto_pasien']);
+        // Mengirim data agar ditampilkan ke dalam view dengan isi array data rekam
+        
+        // $data = [
+        //     'rekam' => $test        
+        // ];
         $data = [
-            'rekam' => $rekam->all()
+            'rekam' => DB::table('v_rekam_medis_table')->get()
         ];
+
+        // return view('rekam.index', $data);
+    
         return view('rekam.index', $data);
     }
 
@@ -25,9 +45,13 @@ class RekamMedisController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create()
+    public function create(Pasien $pasien, Dokter $dokter)
     {
-        return view('rekam.tambah');
+    $data = [
+        'pasien' => $this->pasienModel->all(),
+        'dokter' => $this->dokterModel->all()
+    ];
+        return view('rekam.tambah', $data);
     }
 
     /**
@@ -37,7 +61,8 @@ class RekamMedisController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_pasien'    => 'required',
+                'id_pasien'    => 'required',
+                'id_dokter'    => 'required',
                 'ruangan'    => 'required',
                 'tgl_pelayanan'    => 'required',
                 'keluhan_rm'      => 'required',
@@ -55,7 +80,7 @@ class RekamMedisController extends Controller
         }
 
         if ($rekam->create($data)) {
-            return redirect('/rekam/asisten')->with('success', 'Data Obat Baru Berhasil Ditambah');
+            return redirect('/rekam/asisten')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
         return back()->with('error', 'Data Obat Gagal Ditambahkan');
@@ -65,18 +90,16 @@ class RekamMedisController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(rekam $rekam)
-    // {
-    //     //
-    // }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RekamMedis $rekam, string $id)
+    public function edit(RekamMedis $rekam, string $id, Pasien $pasien, Dokter $dokter)
     {
         $data = [
-            'rekam' =>  RekamMedis::where('no_rm', $id)->first()
+            'rekam' =>  RekamMedis::where('no_rm', $id)->first(),
+            'pasien' => $this->pasienModel->all(),
+            'dokter' => $this->dokterModel->all()
         ];
 
         return view('rekam.edit', $data);
@@ -89,25 +112,39 @@ class RekamMedisController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_pasien'    => 'required',
+                'id_pasien'    => 'required',
+                'id_dokter'    => 'required',
                 'ruangan'    => 'required',
                 'tgl_pelayanan'    => 'required',
                 'keluhan_rm'      => 'required',
                 'diagnosis'      => 'required',
-                'foto_pasien'    => 'required|file',
+                'foto_pasien'    => 'sometimes',
             ]
         );
 
         $no_rm = $request->input('no_rm');
 
         if ($no_rm !== null) {
+
+            //Proses Insert
+            if ($request->hasFile('foto_pasien') && $request->file('foto_pasien')->isValid()) {
+                $foto_file = $request->file('foto_pasien');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $data['foto_pasien'] = $foto_nama;
+            }
             // Process Update
             $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);
 
+            
+            
+
             if ($dataUpdate) {
-                return redirect('obat/rekam')->with('success', 'Data Rekam Medis Berhasil Diupdate');
+
+                return redirect('/rekam/asisten')->with('success', 'Rekam Medis Berhasil Diupdate');
             } else {
-                return back()->with('error', 'Data Rekam Medis Gagal Diupdate');
+                return back()->with('error', 'Rekam Medis Gagal Diupdate');
+
             }
         }
     }
@@ -115,7 +152,7 @@ class RekamMedisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RekamMedis $rekam, Request $request)
+    public function destroy(Request $request, RekamMedis $rekam)
     {
         $no_rm = $request->input('no_rm');
 

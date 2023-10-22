@@ -6,7 +6,7 @@
             <div class="">
                 <br/>
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
                         Rekam Medis Pasien
                     </span>
                 </div>
@@ -24,6 +24,7 @@
                                     <th>DIAGNOSIS</th>
                                     <th>TANGGAL PELAYANAN</th>
                                     <th>FOTO PASIEN</th>
+                                    <th>NAMA DOKTER</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -41,6 +42,7 @@
                                                     style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
+                                        <td>{{ $r->nama_dokter }}</td>
                                         <td>
                                             <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
@@ -54,7 +56,7 @@
                 <div class="card-footer">
                     <div class="col-md-4">
                         <a href="asisten/tambah">
-                            <btn class="btn btn-success">Tambah Rekam Medis</btn>
+                            <btn class="btn btn-success btn">Tambah Rekam Medis</btn>
                         </a>
 
                     </div>
@@ -84,7 +86,9 @@
                         type: 'DELETE',
                         url: 'asisten/hapus',
                         data: {
-                            id_rm: idRekam,
+
+                            no_rm: idRekam,
+
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
