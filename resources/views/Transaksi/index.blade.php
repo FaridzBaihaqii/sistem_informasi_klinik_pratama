@@ -10,27 +10,30 @@
                 </span>
             </div>
             <div class="card-body">
-                <form action="surat/hapus" method="post">
-                    @csrf
-                    <div class="row">
-                        <div class="col-12">
-                            <button class="btn btn-danger" type="submit">Hapus</button>
-                            <table class="table table-hover table-bordered DataTable mt-2">
-                                <thead>
-                                    <tr>
-                                        <th>TRANSAKSI</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($transaksi as $tx)
-                                    <tr>
-                                        <td>{{ $tx->log }}</td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                </form>
+            <table class="table table-bordered DataTable">
+            <thead class="thead table-dark">
+                <tr class="">
+                    <th scope="col">No</th>
+                    <th scope="col">Tabel</th>
+                    <th scope="col">Tanggal </th>
+                    <th scope="col">Jam</th>
+                    <th scope="col">Aksi</th>
+                    <th scope="col">Record</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($logs as $i)
+                    <tr>
+                        <td>{{ $loop->index + 1 }}</td>
+                        <td>{{ $i->tabel }}</td>
+                        <td>{{ $i->tanggal }}</td>
+                        <td>{{ $i->jam }}</td>
+                        <th>{{ $i->aksi }}</th>
+                        <th>{{ $i->record }}</th>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
             </div>
             <div class="card-footer">
 

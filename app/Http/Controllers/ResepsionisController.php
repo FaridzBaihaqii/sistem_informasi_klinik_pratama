@@ -20,6 +20,7 @@ class ResepsionisController extends Controller
      */
     public function index(Pendaftaran $pendaftaran)
     {
+        // Mengirim data agar ditampilkan kedalam view dengan isi array data pendaftaran
     $data = [
             'pendaftaran' => $this->userModel->all()
     ];
