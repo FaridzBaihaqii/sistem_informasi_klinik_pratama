@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\Dokter;
 use App\Models\RekamMedis;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -132,6 +133,17 @@ class RekamMedisController extends Controller
                 $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
                 $foto_file->move(public_path('foto'), $foto_nama);
                 $data['foto_pasien'] = $foto_nama;
+            }
+
+            DB::beginTransaction();
+            try {
+                $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);
+                DB::commit();
+                return redirect('rekam/asisten')->with('success', 'Data Berhasil Diupdate');
+                
+            } catch (Exception $e) {
+                DB::rollback();
+                dd($e->getMessage());
             }
             // Process Update
             $dataUpdate = $rekam->where('no_rm', $no_rm)->update($data);

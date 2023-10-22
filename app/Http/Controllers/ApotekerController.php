@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\DataObat;
+use Exception;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;

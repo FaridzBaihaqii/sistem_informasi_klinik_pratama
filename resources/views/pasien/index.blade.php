@@ -1,8 +1,5 @@
 @extends('layout.layout')
-
 @section('title', 'Daftar Pasien')
-
-
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -48,8 +45,8 @@
                                         <td>
 
                                             <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->id_pasien }}">HAPUS</btn>
 
+                                            <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
