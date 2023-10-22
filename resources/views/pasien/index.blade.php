@@ -1,10 +1,5 @@
 @extends('layout.layout')
-<<<<<<< HEAD
 @section('title', 'Daftar Pasien')
-
-=======
-@section('title', 'Data Pendaftaran')
->>>>>>> fc72757a2b9237ca0efa0186c69befb01e7f422f
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -23,7 +18,7 @@
                             <thead>
                                 <tr>
                                     <th>NAMA PASIEN</th>
-                                    <th>JENKEL</th>
+                                    <th>JENIS KELAMIN</th>
                                     <th>TANGGAL LAHIR</th>
                                     <th>ALAMAT</th>
                                     <th>NO TELP</th>
@@ -48,15 +43,9 @@
                                             @endif
                                         </td>
                                         <td>
-<<<<<<< HEAD
+
                                             <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $p->id_pasien }}">HAPUS</btn>
-=======
-                                            <a href="pasien/edit/{{ $p->id_pasien }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
                                             <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
->>>>>>> fc72757a2b9237ca0efa0186c69befb01e7f422f
                                         </td>
                                     </tr>
                                 @endforeach

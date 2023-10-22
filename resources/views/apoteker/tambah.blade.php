@@ -13,14 +13,22 @@
                     <form method="POST" action="/obat/apoteker/simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="form-group">
+                               <div class="form-group">
                                     <label>Nama Obat</label>
-                                    <input type="text" class="form-control" name="nama_obat" />
+                                    <input type="text" class="form-control" name="nama_obat" style="text-transform: capitalize" />
                                 </div>
-                                <div class="form-group">
-                                    <label>Tipe Obat</label>
-                                    <input type="text" class="form-control" name="tipe_obat" />
-                                </div>
+                                <label>Tipe Obat</label><br>
+                                <select name="tipe_obat" class="form-control">
+                                    <option value="default" hidden>- pilih opsi -</option>
+                                    <option value="tablet">Tablet</option>
+                                    <option value="kaplet">Kaplet</option>
+                                    <option value="pil">Pil</option>
+                                    <option value="sirup">Sirup</option>
+                                    <option value="puyer">Puyer</option>
+                                    <option value="kapsul">Kapsul</option>
+                                    <option value="salep">Salep</option>
+                                    <option value="obat tetes">Obat Tetes</option>
+                                </select>
                                 <div class="form-group">
                                     <label>Stok Obat</label>
                                     <input type="text" class="form-control" name="stok_obat" />

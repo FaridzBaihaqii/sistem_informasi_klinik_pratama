@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('asisten_dokter', function (Blueprint $table) {
             $table->integer('id_asisten');
-            $table->string('id_user', 255)->index('id_user');
+            $table->string('username', 255);
             $table->string('nama_asisten', 255);
             $table->bigInteger('no_telp');
             $table->text('foto_profil');

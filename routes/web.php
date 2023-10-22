@@ -6,7 +6,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResepsionisController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\ResepDokterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,7 @@ Route::get('/home', function () {
         Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
         Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
         Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
     });
@@ -58,6 +61,7 @@ Route::get('/home', function () {
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
+        Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
@@ -81,6 +85,16 @@ Route::get('/home', function () {
         Route::post('/asisten/edit/simpan', [RekamMedisController::class, 'update']);
         Route::delete('/asisten/hapus', [RekamMedisController::class, 'destroy']);
     });
+
+        //Resep Dokter
+        Route::prefix('resep')->group(function () {
+            Route::get('/asisten', [ResepDokterController::class, 'index']);
+            Route::get('/asisten/tambah', [ResepDokterController::class, 'create']);
+            Route::post('/asisten/simpan', [ResepDokterController::class, 'store']);
+            Route::get('/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
+            Route::post('/asisten/edit/simpan', [ResepDokterController::class, 'update']);
+            Route::delete('/asisten/hapus', [ResepDokterController::class, 'destroy']);
+        });
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
@@ -106,3 +120,16 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
     Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
 });
+
+Route::prefix('dashboard')->group(function () {
+    Route::get('/dokter', [DokterController::class, 'index']);
+    Route::get('/dokter/tambah', [DokterController::class, 'create']);
+    Route::post('/dokter/simpan', [DokterController::class, 'store']);
+    Route::delete('/dokter/hapus/', [DokterController::class, 'destroy']);
+    Route::post('/dokter/simpan', [DokterController::class, 'store']);
+    Route::get('/dokter/edit/{id}', [DokterController::class, 'edit']);
+    Route::post('/dokter/edit/simpan', [DokterController::class, 'update']);
+    Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
+});
+
+
