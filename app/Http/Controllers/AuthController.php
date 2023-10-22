@@ -59,6 +59,6 @@ class AuthController extends Controller
     {
         Auth::logout();
         Session::regenerateToken();
-        return redirect('/logout');
+        return redirect('/');
     }
     }
