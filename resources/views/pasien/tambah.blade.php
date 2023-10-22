@@ -19,6 +19,7 @@
                                 </div>
                                 <label>Jenis Kelamin</label><br>
                                 <select name="jenkel" class="form-control">
+                                    <option value="default" hidden>- pilih opsi -</option>
                                     <option value="laki-laki">Laki-Laki</option>
                                     <option value="perempuan">Perempuan</option>
                                 </select>

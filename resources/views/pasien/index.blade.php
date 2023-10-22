@@ -44,13 +44,11 @@
                                         <td>
                                         @if ($p-> foto_profil)
                                                 <img src="{{ url('foto') . '/' . $p->foto_profil }} "
-                                                    style="max-width: 250px; height: auto;" />
+                                                    style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="pasien/edit/{{ $p->id_pasien }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
+                                            <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>
                                     </tr>

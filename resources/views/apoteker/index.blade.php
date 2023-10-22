@@ -19,7 +19,7 @@
                         </div>
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered ">
                             <thead>
                                 <tr>
                                     <th>NAMA OBAT</th>

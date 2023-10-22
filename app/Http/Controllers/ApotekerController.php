@@ -54,10 +54,10 @@ class ApotekerController extends Controller
         }
 
         if ($apoteker->create($data)) {
-            return redirect('/obat/apoteker')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
+            return redirect('/obat/apoteker')->with('success', 'Data Obat Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Rekam Meids Gagal Ditambahkan');
+        return back()->with('error', 'Data Obat Gagal Ditambahkan');
     }
     
 
@@ -88,10 +88,10 @@ class ApotekerController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_obat'    => 'required',
-                'tipe_obat'    => 'required',
-                'stok_obat'    => 'required',
-                'tgl_exp'      => 'required',
+                'nama_obat'    => 'sometimes',
+                'tipe_obat'    => 'sometimes',
+                'stok_obat'    => 'sometimes',
+                'tgl_exp'      => 'sometimes',
                 'foto_obat'    => 'sometimes',
             ]
         );
