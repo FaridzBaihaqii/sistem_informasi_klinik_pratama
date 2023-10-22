@@ -15,7 +15,7 @@
                         
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
                                     <th>NAMA PASIEN</th>
@@ -82,7 +82,7 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: '/rekam/asisten/hapus',
+                        url: 'asisten/hapus',
                         data: {
                             no_rm: idRekam,
                             _token: "{{ csrf_token() }}"

@@ -13,7 +13,7 @@ class RekamMedisController extends Controller
      */
     public function index(RekamMedis $rekam)
     {
-
+        // Mengirim data agar ditampilkan ke dalam view dengan isi array data rekam
         $data = [
             'rekam' => $rekam->all()
         ];
@@ -65,10 +65,6 @@ class RekamMedisController extends Controller
     /**
      * Display the specified resource.
      */
-    // public function show(rekam $rekam)
-    // {
-    //     //
-    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -115,7 +111,7 @@ class RekamMedisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RekamMedis $rekam, Request $request)
+    public function destroy(Request $request, RekamMedis $rekam)
     {
         $no_rm = $request->input('no_rm');
 
