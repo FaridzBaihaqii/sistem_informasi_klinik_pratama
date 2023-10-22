@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>Tabel</th>
                                         <th>Tanggal</th>
-                                        <th>Jam</th>
+                                        <th>Waktu</th>
                                         <th>Aksi</th>
                                         <th>Record</th>
                                     </tr>

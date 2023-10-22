@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\DataObat;
 use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class ApotekerController extends Controller
@@ -15,8 +16,12 @@ class ApotekerController extends Controller
     public function index(DataObat $apoteker)
     {
 
+        $totalObat = DB::select('SELECT CountTotalDataObat() AS totalObat')[0]->totalObat;
+        
+                
         $data = [
-            'apoteker' => $apoteker->all()
+            'apoteker' => $apoteker->all(),
+            'jumlahObat' => $totalObat
         ];
         return view('apoteker.index', $data);
     }
@@ -100,7 +105,14 @@ class ApotekerController extends Controller
         $id_obat = $request->input('id_obat');
 
         if ($id_obat !== null) {
+            
             // Process Update
+            if ($request->hasFile('foto_obat') && $request->file('foto_obat')->isValid()) {
+                $foto_file = $request->file('foto_obat');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $data['foto_obat'] = $foto_nama;
+            }
 
             DB::beginTransaction();
             try {

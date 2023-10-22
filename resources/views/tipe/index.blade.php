@@ -9,11 +9,6 @@
                         Data Obat
                     </span>
                 </div>
-                <div class="card-header">
-                    <span class="h3">
-                        Jumlah Obat Yang Tersedia : {{$jumlahObat}}
-                    </span>
-                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
