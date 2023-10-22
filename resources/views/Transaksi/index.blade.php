@@ -14,22 +14,17 @@
                     @csrf
                     <div class="row">
                         <div class="col-12">
-                            <button class="btn btn-warning" type="button" id="checkAll">Select Semua</button>
                             <button class="btn btn-danger" type="submit">Hapus</button>
                             <table class="table table-hover table-bordered DataTable mt-2">
                                 <thead>
                                     <tr>
                                         <th>TRANSAKSI</th>
-                                        <th>Hapus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($transaksi as $tx)
                                     <tr>
-                                        <td>{{ $tx->logs }}</td>
-                                        <td>
-                                            <input type="checkbox" class="checkbox" name="id_logs[]" value="{{ $tx->id_logs }}">
-                                        </td>
+                                        <td>{{ $tx->log }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
