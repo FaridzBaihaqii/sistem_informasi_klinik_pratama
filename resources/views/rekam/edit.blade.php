@@ -15,7 +15,30 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Nama Pasien</label>
-                                    <input type="text" class="form-control" name="nama_pasien" value="{{ $rekam->nama_pasien }}" />
+                                    <select name="id_pasien" id="id_pasien" class="form-control" required>
+                                        <option value="">Pilih Pasien</option>
+                                        @foreach ($pasien as $r)
+                                        <option value="{{ $r->id_pasien }}" <?php 
+                                        if ($r->id_pasien == $rekam->id_pasien) {
+                                            echo "selected";
+                                        }
+                                        ?>>{{ $r->nama_pasien }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Dokter</label>
+                                    <select name="id_dokter" id="id_dokter" class="form-control" required>
+                                        <option value="">Pilih Dokter</option>
+                                        @foreach ($dokter as $r)
+                                        <option value="{{ $r->id_dokter }}" <?php 
+                                        if ($r->id_dokter == $rekam->id_dokter) {
+                                            echo "selected";
+                                        }
+                                        ?>
+                                        >{{ $r->nama_dokter }}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Ruang</label><br>
@@ -24,7 +47,6 @@
                                         <option value="A2"  {{$rekam->ruangan == 'A2' ? 'checked' : ''}}>A2</option>
                                         <option value="B3"  {{$rekam->ruangan == 'B3' ? 'checked' : ''}}>B3</option>
                                         <option value="B4"  {{$rekam->ruangan == 'B4' ? 'checked' : ''}}>B4</option>
-                                       
                                     </select>
                                 </div>
                                 <div class="form-group">

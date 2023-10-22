@@ -1,51 +1,47 @@
 @extends('layout.layout')
-@section('title', 'Data Rekam Medis')
+@section('title', 'Daftar Pasien')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="">
-                <br/>
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                        Rekam Medis Pasien
+                        Data Pasien
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        
+                       
                         <p>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
-                                    <th>NAMA PASIEN</th>
-                                    <th>RUANGAN</th>
-                                    <th>KELUHAN</th>
-                                    <th>DIAGNOSIS</th>
-                                    <th>TANGGAL PELAYANAN</th>
-                                    <th>FOTO PASIEN</th>
-                                    <th>NAMA DOKTER</th>
+                                    <th>NAMA Dokter</th>
+                                    <th>NO TELP</th>
+                                    <th>FOTO PROFIL</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($rekam as $r)
+                                @foreach ($dokter as $d)
                                     <tr>
-                                        <td>{{ $r->nama_pasien }}</td>
-                                        <td>{{ $r->ruangan}}</td>
-                                        <td>{{ $r->keluhan_rm }}</td>
-                                        <td>{{ $r->diagnosis }}</td>
-                                        <td>{{ $r->tgl_pelayanan }}</td>
+                                        <td>{{ $d->nama_dokter }}</td>
+                                        <td>{{ $d->no_telp }}</td>
                                         <td>
-                                            @if ($r->foto_pasien)
-                                                <img src="{{ url('foto') . '/' . $r->foto_pasien }} "
+                                        @if ($d-> foto_profil)
+                                                <img src="{{ url('foto') . '/' . $d->foto_profil }} "
                                                     style="max-width: 150px; height: auto;" />
                                             @endif
                                         </td>
-                                        <td>{{ $r->nama_dokter }}</td>
                                         <td>
-                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
+
+                                            <a href="dokter/edit/{{ $d->id_dokter }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $d->id_dokter }}">HAPUS</btn>
+
+                                            <a href="dokter/edit/{{ $d->id_dokter }}">
+                                                <btn class="btn btn-primary">EDIT</btn>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -53,17 +49,17 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <div class="col-md-4">
-                        <a href="asisten/tambah">
-                            <btn class="btn btn-success btn">Tambah Rekam Medis</btn>
-                        </a>
+                <div class="col-md-4">
+                    <a href="dokter/tambah">
+                        <btn class="btn btn-success">Tambah Data Dokter</btn>
+                    </a>
 
-                    </div>
+                </div>
+                <div class="card-footer">
+
                 </div>
             </div>
         </div>
-        <br/>
     </div>
 @endsection
 
@@ -71,7 +67,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idRekam = $(this).closest('.btnHapus').attr('idRekam');
+            let idPasien = $(this).closest('.btnHapus').attr('idPasien');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -84,9 +80,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'asisten/hapus',
+                        url: 'pasien/hapus',
                         data: {
-                            no_rm: idRekam,
+                            id_pasien: idPasien,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
@@ -100,9 +96,6 @@
                     });
                 }
             });
-        });
-        $(document).ready(function() {
-            $('.DataTable').DataTable();
         });
     </script>
 

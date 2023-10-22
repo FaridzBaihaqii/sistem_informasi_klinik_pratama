@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Pendaftaran
+                        Tambah Data Dokter
                     </span>
                 </div>
                 <div class="card-body">
@@ -14,30 +14,12 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Nama Pasien</label>
-                                    <input type="text" class="form-control" name="nama_pasien" />
-                                </div>
-                                <label>Jenis Kelamin</label><br>
-                                <select name="jenkel" class="form-control">
-                                    <option value="default" hidden>- pilih opsi -</option>
-                                    <option value="laki-laki">Laki-Laki</option>
-                                    <option value="perempuan">Perempuan</option>
-                                </select>
-                                <div class="form-group">
-                                    <label>Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tgl_lahir" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" />
+                                    <label>Nama Dokter</label>
+                                    <input type="text" class="form-control" name="nama_dokter" />
                                 </div>
                                 <div class="form-group">
                                     <label>No Telp</label>
                                     <input type="number" class="form-control" name="no_telp" />
-                                </div>
-                                <div class="form-group">
-                                    <label>No BPJS</label>
-                                    <input type="number" class="form-control" name="no_bpjs" />
                                 </div>
                                 <div class="form-group">
                                     <label>Foto Profil</label>
