@@ -10,6 +10,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TipeController;
 
 
 /*
@@ -76,6 +77,16 @@ Route::get('/home', function () {
         Route::get('/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
         Route::post('/apoteker/edit/simpan', [ApotekerController::class, 'update']);
         Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
+    });
+
+    //Tipe Obat
+    Route::prefix('obat')->group(function () {
+        Route::get('/tipe', [TipeController::class, 'index']);
+        Route::get('/tipe/tambah', [TipeController::class, 'create']);
+        Route::post('/tipe/simpan', [TipeController::class, 'store']);
+        Route::get('/tipe/edit/{id}', [TipeController::class, 'edit']);
+        Route::post('/tipe/edit/simpan', [TipeController::class, 'update']);
+        Route::delete('/tipe/hapus', [TipeController::class, 'destroy']);
     });
 
     //Rekam Medis

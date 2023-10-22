@@ -23,6 +23,17 @@ return new class extends Migration
     ');
 
     DB::unprepared('
+        CREATE TRIGGER add_data_pasien
+        BEFORE INSERT ON pasien
+        FOR EACH ROW
+        BEGIN
+            INSERT logs(tabel, tanggal, jam, aksi, record)
+            VALUES ("pasien", CURDATE(), CURTIME(), "Tambah", "Sukses");
+        END
+    ');
+    
+    DB::unprepared('
+
     CREATE TRIGGER add_rekam_medis
     BEFORE INSERT ON rekam_medis
     FOR EACH ROW
@@ -39,6 +50,7 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared('DROP TRIGGER add_data_obat');
+        DB::unprepared('DROP TRIGGER add_data_pasien');
         DB::unprepared('DROP TRIGGER add_rekam_medis');
     }
 };

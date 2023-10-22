@@ -17,17 +17,11 @@
                                     <label>Nama Obat</label>
                                     <input type="text" class="form-control" name="nama_obat" value="{{ $apoteker->nama_obat }}" />
                                 </div>
-                                <label>Tipe Obat</label><br>
-                                <select name="tipe_obat" class="form-control">
-                                    <option value="tablet" {{ $apoteker->tipe_obat == 'tablet' ? 'selected' : '' }}>Tablet</option>
-                                    <option value="kaplet" {{ $apoteker->tipe_obat == 'kaplet' ? 'selected' : '' }}>Kaplet</option>
-                                    <option value="pil" {{ $apoteker->tipe_obat == 'pil' ? 'selected' : '' }}>Pil</option>
-                                    <option value="sirup" {{ $apoteker->tipe_obat == 'sirup' ? 'selected' : '' }}>Sirup</option>
-                                    <option value="puyer" {{ $apoteker->tipe_obat == 'puyer' ? 'selected' : '' }}>Puyer</option>
-                                    <option value="kapsul" {{ $apoteker->tipe_obat == 'kapsul' ? 'selected' : '' }}>Kapsul</option>
-                                    <option value="salep" {{ $apoteker->tipe_obat == 'salep' ? 'selected' : '' }}>Salep</option>
-                                    <option value="obat tetes" {{ $apoteker->tipe_obat == 'obat tetes' ? 'selected' : '' }}>Obat Tetes</option>
-                                </select>
+                                
+                                <div class="form-group">
+                                    <label>Tipe Obat</label>
+                                    <input type="text" class="form-control" name="nama_tipe" value="{{ $apoteker->nama_tipe }}" />
+                                </div>
                                 <div class="form-group">
                                     <label>Stok Obat</label>
                                     <input type="text" class="form-control" name="stok_obat" value="{{ $apoteker->stok_obat }}" />
