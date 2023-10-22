@@ -10,6 +10,7 @@ use App\Http\Controllers\DokterController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TipeController;
 
 
 /*

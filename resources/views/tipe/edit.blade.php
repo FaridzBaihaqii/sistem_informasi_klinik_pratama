@@ -1,47 +1,21 @@
 @extends('layout.layout')
-@section('title', 'Edit Obat ')
+@section('title', 'Tambah Obat ')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Edit Data Obat
+                        Tambah Data Obat
                     </span>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="form-group">
-                                    <label>Nama Obat</label>
-                                    <input type="text" class="form-control" name="nama_obat" value="{{ $apoteker->nama_obat }}" />
-                                </div>
-                                <label>Tipe Obat</label><br>
-                                <select name="tipe_obat" class="form-control">
-                                    <option value="tablet" {{ $apoteker->tipe_obat == 'tablet' ? 'selected' : '' }}>Tablet</option>
-                                    <option value="kaplet" {{ $apoteker->tipe_obat == 'kaplet' ? 'selected' : '' }}>Kaplet</option>
-                                    <option value="pil" {{ $apoteker->tipe_obat == 'pil' ? 'selected' : '' }}>Pil</option>
-                                    <option value="sirup" {{ $apoteker->tipe_obat == 'sirup' ? 'selected' : '' }}>Sirup</option>
-                                    <option value="puyer" {{ $apoteker->tipe_obat == 'puyer' ? 'selected' : '' }}>Puyer</option>
-                                    <option value="kapsul" {{ $apoteker->tipe_obat == 'kapsul' ? 'selected' : '' }}>Kapsul</option>
-                                    <option value="salep" {{ $apoteker->tipe_obat == 'salep' ? 'selected' : '' }}>Salep</option>
-                                    <option value="obat tetes" {{ $apoteker->tipe_obat == 'obat tetes' ? 'selected' : '' }}>Obat Tetes</option>
-                                </select>
-                                <div class="form-group">
-                                    <label>Stok Obat</label>
-                                    <input type="text" class="form-control" name="stok_obat" value="{{ $apoteker->stok_obat }}" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Tanggal EXP</label>
-                                    <input type="date" class="form-control" name="tgl_exp" value="{{ $apoteker->tgl_exp }}" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Foto Obat</label>
-                                    <input type="file" class="form-control" name="foto_obat" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" name="id_obat" value="{{ $apoteker->id_obat }}"/>
+                               <div class="form-group">
+                                    <label>Tipe Obat</label>
+                                    <input type="text" class="form-control" name="nama_tipe" value="{{ $tipe->nama_tipe }}" />
                                 </div>
                                 </div>
                                 @csrf

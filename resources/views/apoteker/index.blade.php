@@ -39,7 +39,7 @@
                                 @foreach ($apoteker as $a)
                                     <tr>
                                         <td>{{ $a->nama_obat }}</td>
-                                        <td>{{ $a->tipe_obat }}</td>
+                                        <td>{{ $a->nama_tipe }}</td>
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>

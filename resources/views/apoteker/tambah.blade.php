@@ -18,16 +18,11 @@
                                     <input type="text" class="form-control" name="nama_obat" style="text-transform: capitalize" />
                                 </div>
                                 <label>Tipe Obat</label><br>
-                                <select name="tipe_obat" class="form-control">
-                                    <option value="default" hidden>- pilih opsi -</option>
-                                    <option value="tablet">Tablet</option>
-                                    <option value="kaplet">Kaplet</option>
-                                    <option value="pil">Pil</option>
-                                    <option value="sirup">Sirup</option>
-                                    <option value="puyer">Puyer</option>
-                                    <option value="kapsul">Kapsul</option>
-                                    <option value="salep">Salep</option>
-                                    <option value="obat tetes">Obat Tetes</option>
+                                <select name="id_tipe" id="id_tipe" class="form-control" required>
+                                        <option value="default" hidden>- pilih opsi -</option>
+                                        @foreach ($tipe as $t)
+                                        <option value="{{ $t->id_tipe }}">{{ $t->nama_tipe }}</option>
+                                    @endforeach
                                 </select>
                                 <div class="form-group">
                                     <label>Stok Obat</label>

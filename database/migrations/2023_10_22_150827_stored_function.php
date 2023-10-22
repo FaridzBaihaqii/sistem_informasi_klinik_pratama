@@ -11,6 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalDataObat');
+
         DB::unprepared('
         CREATE FUNCTION CountTotalDataObat() RETURNS INT
         BEGIN

@@ -23,7 +23,6 @@ return new class extends Migration
     ');
 
     DB::unprepared('
-<<<<<<< HEAD
         CREATE TRIGGER add_data_pasien
         BEFORE INSERT ON pasien
         FOR EACH ROW

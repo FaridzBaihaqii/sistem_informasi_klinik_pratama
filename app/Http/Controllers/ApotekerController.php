@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pasien;
 use App\Models\DataObat;
+use App\Models\Tipe;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -11,6 +12,12 @@ use Illuminate\Http\Request;
 
 class ApotekerController extends Controller
 {
+
+    protected $tipeModel;
+    public function __construct()
+    {
+        $this->tipeModel = new Tipe;   
+    }
     /**
      * Display a listing of the resource.
      */
@@ -21,7 +28,7 @@ class ApotekerController extends Controller
         
                 
         $data = [
-            'apoteker' => $apoteker->all(),
+            'apoteker' => DB::table('view_tipe')->get(),
             'jumlahObat' => $totalObat
         ];
         return view('apoteker.index', $data);
@@ -32,10 +39,13 @@ class ApotekerController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create()
-    {
-        return view('apoteker.tambah');
-    }
+     public function create(Tipe $tipe,)
+     {
+     $data = [
+         'tipe' => $this->tipeModel->all(),
+     ];
+         return view('apoteker.tambah', $data);
+     }
 
     /**
      * Store a newly created resource in storage.
@@ -45,7 +55,7 @@ class ApotekerController extends Controller
         $data = $request->validate(
             [
                 'nama_obat'    => 'required',
-                'tipe_obat'    => 'required',
+                'id_tipe'    => 'required',
                 'stok_obat'    => 'required',
                 'tgl_exp'      => 'required',
                 'foto_obat'    => 'required',
@@ -96,7 +106,7 @@ class ApotekerController extends Controller
         $data = $request->validate(
             [
                 'nama_obat'    => 'sometimes',
-                'tipe_obat'    => 'sometimes',
+                'id_obat'      => 'sometimes',
                 'stok_obat'    => 'sometimes',
                 'tgl_exp'      => 'sometimes',
                 'foto_obat'    => 'sometimes',
@@ -106,7 +116,7 @@ class ApotekerController extends Controller
         $id_obat = $request->input('id_obat');
 
         if ($id_obat !== null) {
-            
+
             // Process Update
             if ($request->hasFile('foto_obat') && $request->file('foto_obat')->isValid()) {
                 $foto_file = $request->file('foto_obat');
