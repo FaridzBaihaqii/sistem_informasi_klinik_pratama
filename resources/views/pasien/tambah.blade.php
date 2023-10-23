@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Pendaftaran
+                        Tambah Data Pasien
                     </span>
                 </div>
                 <div class="card-body">
