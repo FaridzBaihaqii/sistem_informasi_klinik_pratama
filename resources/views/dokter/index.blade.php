@@ -1,0 +1,102 @@
+@extends('layout.layout')
+@section('title', 'Daftar Pasien')
+@section('content')
+    <div class="row">
+        <div class="col-md-12">
+            <div class="">
+                <div class="card-header">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
+                        Data Dokter
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                       
+                        <p>
+                            <hr>
+                        <table class="table table-hover table-bordered DataTable">
+                            <thead>
+                                <tr>
+                                    <th>NAMA DOKTER</th>
+                                    <th>NO TELP</th>
+                                    <th>FOTO PROFIL</th>
+                                    <th>AKSI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($dokter as $d)
+                                    <tr>
+                                        <td>{{ $d->nama_dokter }}</td>
+                                        <td>{{ $d->no_telp }}</td>
+                                        <td>
+                                        @if ($d-> foto_profil)
+                                                <img src="{{ url('foto') . '/' . $d->foto_profil }} "
+                                                    style="max-width: 150px; height: auto;" />
+                                            @endif
+                                        </td>
+                                        <td>
+
+                                            <a href="dokter/edit/{{ $d->id_dokter }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" Username="{{ $d->id_dokter }}">HAPUS</btn>
+
+                                            <a href="dokter/edit/{{ $d->id_dokter }}">
+                                                <btn class="btn btn-primary">EDIT</btn>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="dokter/tambah">
+                        <btn class="btn btn-success">Tambah Data Dokter</btn>
+                    </a>
+
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('footer')
+    <script type="module">
+        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+            a.preventDefault();
+            let idPasien = $(this).closest('.btnHapus').attr('idPasien');
+            swal.fire({
+                title: "Apakah anda ingin menghapus data ini?",
+                showCancelButton: true,
+                confirmButtonText: 'Setuju',
+                cancelButtonText: `Batal`,
+                confirmButtonColor: 'red'
+
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //Ajax Delete
+                    $.ajax({
+                        type: 'DELETE',
+                        url: 'pasien/hapus',
+                        data: {
+                            id_pasien: idPasien,
+                            _token: "{{ csrf_token() }}"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                swal.fire('Berhasil di hapus!', '', 'success').then(function() {
+                                    //Refresh Halaman
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+@endsection

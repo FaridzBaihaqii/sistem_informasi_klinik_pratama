@@ -9,6 +9,11 @@
                         Data Obat
                     </span>
                 </div>
+                <div class="card-header">
+                    <span class="h3">
+                        Jumlah Obat Yang Tersedia : {{$jumlahObat}}
+                    </span>
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
@@ -34,7 +39,7 @@
                                 @foreach ($apoteker as $a)
                                     <tr>
                                         <td>{{ $a->nama_obat }}</td>
-                                        <td>{{ $a->tipe_obat }}</td>
+                                        <td>{{ $a->nama_tipe }}</td>
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>

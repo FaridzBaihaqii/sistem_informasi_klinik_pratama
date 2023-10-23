@@ -3,18 +3,33 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Obat
+                        Tambah Rekam Medis
                     </span>
                 </div>
+                <br>
                 <div class="card-body">
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                                 <div class="form-group">
                                     <label>Nama Pasien</label>
-                                    <input type="text" class="form-control" name="nama_pasien" />
+                                    <select name="id_pasien" id="id_pasien" class="form-control" required>
+                                        <option value="">Pilih Pasien</option>
+                                        @foreach ($pasien as $r)
+                                        <option value="{{ $r->id_pasien }}">{{ $r->nama_pasien }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Nama Dokter</label>
+                                    <select name="id_dokter" id="id_dokter" class="form-control" required>
+                                        <option value="">Pilih Dokter</option>
+                                        @foreach ($dokter as $r)
+                                        <option value="{{ $r->id_dokter }}">{{ $r->nama_dokter }}</option>
+                                    @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Ruangan</label>

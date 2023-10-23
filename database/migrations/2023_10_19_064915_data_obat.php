@@ -15,9 +15,11 @@ return new class extends Migration
             $table->integer('id_obat', true);
             $table->string('nama_obat', 60)->nullable(false);
             $table->integer('stok_obat')->nullable(false);
-            $table->string('tipe_obat', 60)->nullable(false);
+            $table->integer('id_tipe');
             $table->date('tgl_exp')->nullable(false)->default('2024-01-01');
             $table->text('foto_obat')->nullable(true);
+
+
         });
     }
 

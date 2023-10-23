@@ -23,6 +23,7 @@ return new class extends Migration
     ');
 
     DB::unprepared('
+<<<<<<< HEAD
         CREATE TRIGGER add_pendaftaran
         BEFORE INSERT ON pendaftaran
         FOR EACH ROW
@@ -31,6 +32,27 @@ return new class extends Migration
             VALUES ("data_obat", CURDATE(), CURTIME(), "Tambah", "Sukses");
         END
     ');
+=======
+        CREATE TRIGGER add_data_pasien
+        BEFORE INSERT ON pasien
+        FOR EACH ROW
+        BEGIN
+            INSERT logs(tabel, tanggal, jam, aksi, record)
+            VALUES ("pasien", CURDATE(), CURTIME(), "Tambah", "Sukses");
+        END
+    ');
+    
+    DB::unprepared('
+
+    CREATE TRIGGER add_rekam_medis
+    BEFORE INSERT ON rekam_medis
+    FOR EACH ROW
+    BEGIN
+        INSERT logs(tabel, tanggal, jam, aksi, record)
+        VALUES ("rekam_medis", CURDATE(), CURTIME(), "Tambah", "Sukses");
+    END
+');
+>>>>>>> ab29a22d7d61c5a9515862ef60154959e3ffac52
     }
 
     /**
@@ -39,6 +61,11 @@ return new class extends Migration
     public function down(): void
     {
         DB::unprepared('DROP TRIGGER add_data_obat');
+<<<<<<< HEAD
         DB::unprepared('DROP TRIGGER add_data_pendaftaran');
+=======
+        DB::unprepared('DROP TRIGGER add_data_pasien');
+        DB::unprepared('DROP TRIGGER add_rekam_medis');
+>>>>>>> ab29a22d7d61c5a9515862ef60154959e3ffac52
     }
 };
