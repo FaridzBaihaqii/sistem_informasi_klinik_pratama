@@ -28,6 +28,25 @@ return new class extends Migration
             INSERT INTO dokter (id_dokter) VALUES (new_id_dokter);
     END
         ");
+        
+        DB::unprepared('DROP Procedure IF EXISTS CreateDataObat');
+        DB::unprepared("
+        CREATE PROCEDURE CreateDataObat(
+            IN new_nama_obat VARCHAR(60),
+            IN new_stock_obat INT,
+            IN new_id_tipe INT,
+            IN new_tgl_exp date,
+            IN new_foto_obat TEXT
+        )
+        BEGIN
+            DECLARE new_id_obat INT;
+        
+            INSERT INTO data_obat (nama_obat, stok_obat, id_tipe, tgl_exp, foto_obat)
+            VALUES (new_nama_obat, new_stok_obat, new_id_tipe, new_tgl_exp, new_foto_obat); 
+
+            INSERT INTO data_obat (id_obat) VALUES (new_id_obat);
+    END
+        ");
     }
 
     /**
@@ -37,5 +56,6 @@ return new class extends Migration
     {
         //
         DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
+        DB::unprepared('DROP Procedure IF EXISTS CreateDataObat');
     }
 };
