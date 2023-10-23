@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Edit Data Pasien
+                        Edit Data Dokter
                     </span>
                 </div>
                 <div class="card-body">
@@ -14,36 +14,19 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label>Nama Pasien</label>
-                                    <input type="text" class="form-control" name="nama_pasien" value="{{ $pasien->nama_pasien }}" />
-                                </div>
-                                <label>Jenkel</label><br>
-                                <select name="jenkel" class="form-control" value="{{ $pasien->jenkel }}">
-                                    <option value="laki-laki" {{ $pasien->jenkel == 'laki-laki' ? 'selected' : '' }}>Laki-Laki</option>
-                                    <option value="perempuan" {{ $pasien->jenkel == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                                </select>
-                                <div class="form-group">
-                                    <label>Tanggal Lahir</label>
-                                    <input type="date" class="form-control" name="tgl_lahir" value="{{ $pasien->tgl_lahir }}" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Alamat</label>
-                                    <input type="text" class="form-control" name="alamat" value="{{ $pasien->alamat }}" />
+                                    <label>Nama Dokter</label>
+                                    <input type="text" class="form-control" name="nama_dokter" value="{{ $dokter->nama_dokter }}" />
                                 </div>
                                 <div class="form-group">
                                     <label>No Telp</label>
-                                    <input type="number" class="form-control" name="no_telp" value="{{ $pasien->no_telp }}" />
-                                </div>
-                                <div class="form-group">
-                                    <label>No BPJS</label>
-                                    <input type="number" class="form-control" name="no_bpjs" value="{{ $pasien->no_bpjs }}" />
+                                    <input type="number" class="form-control" name="no_telp" value="{{ $dokter->no_telp }}" />
                                 </div>
                                 <div class="form-group">
                                     <label>Foto Profil</label>
                                     <input type="file" class="form-control" name="foto_profil" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control" name="id_pasien" value="{{ $pasien->id_pasien }}"/>
+                                    <input type="hidden" class="form-control" name="id_dokter" value="{{ $dokter->id_dokter }}"/>
                                 </div>
                                 </div>
                                 @csrf

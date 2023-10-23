@@ -34,6 +34,8 @@ return new class extends Migration
             RETURN total;
         END
         ');
+
+        
     }
 
     /**

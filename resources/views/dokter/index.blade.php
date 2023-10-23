@@ -37,11 +37,7 @@
                                         <td>
 
                                             <a href="dokter/edit/{{ $d->id_dokter }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" Username="{{ $d->id_dokter }}">HAPUS</btn>
-
-                                            <a href="dokter/edit/{{ $d->id_dokter }}">
-                                                <btn class="btn btn-primary">EDIT</btn>
-                                            </a>
+                                            <btn class="btn btn-danger btnHapus" idDokter="{{ $d->id_dokter }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -67,7 +63,7 @@
     <script type="module">
         $('.DataTable tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idPasien = $(this).closest('.btnHapus').attr('idPasien');
+            let idDokter = $(this).closest('.btnHapus').attr('idDokter');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -80,9 +76,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'pasien/hapus',
+                        url: 'dokter/hapus',
                         data: {
-                            id_pasien: idPasien,
+                            id_dokter: idDokter,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
