@@ -20,17 +20,9 @@ return new class extends Migration
             IN new_foto_profil TEXT
         )
         BEGIN
-            DECLARE new_id_dokter INT;
-        
             -- Sisipkan data ke dalam tabel dokter
             INSERT INTO dokter (nama_dokter, no_telp, foto_profil)
             VALUES (new_nama_dokter, new_no_telp, new_foto_profil); 
-        
-            -- Dapatkan ID dokter yang baru disisipkan
-            SET new_id_dokter = LAST_INSERT_ID();
-        
-            -- Update kolom id_dokter dengan nilai yang baru disisipkan
-            UPDATE dokter SET id_dokter = new_id_dokter WHERE id_dokter IS NULL;
         END
         
         
@@ -40,18 +32,14 @@ return new class extends Migration
         DB::unprepared("
         CREATE PROCEDURE CreateDataObat(
             IN new_nama_obat VARCHAR(60),
-            IN new_stock_obat INT,
+            IN new_stok_obat INT,
             IN new_id_tipe INT,
             IN new_tgl_exp date,
             IN new_foto_obat TEXT
         )
         BEGIN
-            DECLARE new_id_obat INT;
-        
             INSERT INTO data_obat (nama_obat, stok_obat, id_tipe, tgl_exp, foto_obat)
             VALUES (new_nama_obat, new_stok_obat, new_id_tipe, new_tgl_exp, new_foto_obat); 
-
-            INSERT INTO data_obat (id_obat) VALUES (new_id_obat);
     END
         ");
     }
