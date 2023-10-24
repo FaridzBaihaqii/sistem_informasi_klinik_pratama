@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-header">
                     <span class="h3">
-                        Jumlah Rekam Mwdis Yang Tercatat : {{$jumlahRekam}}
+                        Jumlah Rekam Medis Yang Tercatat : {{$jumlahRekam}}
                     </span>
                 </div>
                             <hr>

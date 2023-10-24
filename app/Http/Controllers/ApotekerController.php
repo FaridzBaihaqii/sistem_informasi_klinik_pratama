@@ -72,7 +72,7 @@ class ApotekerController extends Controller
             $data['foto_obat'] = $foto_nama;
         }
 
-        if ($apoteker->create($data)) {
+        if (DB::statement("CALL CreateDataObat(?,?,?,?,?)", [$data['nama_obat'], $data['stok_obat'], $data['id_tipe'], $data['tgl_exp'], $data['foto_obat']])) {
             return redirect('/obat/apoteker')->with('success', 'Data Obat Baru Berhasil Ditambah');
         }
 

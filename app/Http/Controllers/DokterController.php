@@ -78,9 +78,9 @@ class DokterController extends Controller
     public function edit(Dokter $dokter, Request $request)
     {
         $data = [
-            'Dokter' => Dokter::where('id_Dokter', $request->id)->first()
+            'dokter' => Dokter::where('id_dokter', $request->id)->first()
         ];
-        return view('Dokter.edit', $data);
+        return view('dokter.edit', $data);
     }
 
     /**
@@ -88,35 +88,31 @@ class DokterController extends Controller
      */
     public function update(Request $request, Dokter $dokter)
     {
-        $id_Dokter = $request->input('id_Dokter');
+        $id_dokter = $request->input('id_dokter');
 
         $data = $request->validate([
-            'nama_Dokter' => 'sometimes',
-            'jenkel' => 'sometimes',
-            'tgl_lahir' => 'sometimes',
-            'alamat' => 'sometimes',
+            'nama_dokter' => 'sometimes',
             'no_telp' => 'sometimes',
-            'no_bpjs' => 'sometimes',
             'foto_profil' => 'sometimes',
         ]);
 
-        if ($id_Dokter !==null){
+        if ($id_dokter !==null){
             if ($request->hasFile('foto_profil')){
                 $foto_file = $request->file('foto_profil');
                 $foto_extension = $foto_file->getClientOriginalExtension();
                 $foto_nama= md5($foto_file->getClientOriginalName() . time()) . ' .' . $foto_extension;
                 $foto_file->move(public_path('foto'), $foto_nama);            
 
-                $update_data = $dokter->where('id_Dokter', $id_Dokter)->first();
+                $update_data = $dokter->where('id_dokter', $id_dokter)->first();
                 File::delete(public_path('foto') . '/' . $update_data->file);
 
                 $data['foto_profil'] = $foto_nama;
             }
 
-            $dataUpdate = $dokter->where('id_Dokter', $id_Dokter)->update($data);
+            $dataUpdate = $dokter->where('id_dokter', $id_dokter)->update($data);
 
             if($dataUpdate) {
-                return redirect('dashboard/Dokter')->with('success', 'Data berhasil diupdate');
+                return redirect('dashboard/dokter')->with('success', 'Data berhasil diupdate');
             }
         }
 
@@ -129,8 +125,8 @@ class DokterController extends Controller
      */
     public function destroy(Request $request, Dokter $dokter)
     {
-        $id_Dokter = $request->input('id_Dokter');
-        $aksi = $dokter->where('id_Dokter', $id_Dokter)->delete();
+        $id_dokter = $request->input('id_dokter');
+        $aksi = $dokter->where('id_dokter', $id_dokter)->delete();
             if($aksi)
             {
                 $pesan = [
