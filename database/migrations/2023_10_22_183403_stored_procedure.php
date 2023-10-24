@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -42,6 +40,22 @@ return new class extends Migration
             VALUES (new_nama_obat, new_stok_obat, new_id_tipe, new_tgl_exp, new_foto_obat); 
     END
         ");
+
+        DB::unprepared('DROP Procedure IF EXISTS CreatePendaftaran');
+        DB::unprepared("
+        CREATE PROCEDURE CreatePendaftaran(
+            IN new_nama_pendaftar VARCHAR(60),
+            IN new_keluhan VARCHAR(60),
+            IN new_tgl_pendaftaran DATE,
+            IN new_id_poli INT,
+            IN new_jadwal_pelayanan DATE,
+            IN new_info_janji VARCHAR(60)
+        )
+        BEGIN
+            INSERT INTO pendaftaran (nama_pendaftar, keluhan, tgl_pendaftaran, id_poli, jadwal_pelayanan, info_janji)
+            VALUES (new_nama_pendaftar, new_keluhan, new_tgl_pendaftaran, new_id_poli, new_jadwal_pelayanan, new_info_janji); 
+    END
+        ");
     }
 
     /**
@@ -52,5 +66,6 @@ return new class extends Migration
         //
         DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
         DB::unprepared('DROP Procedure IF EXISTS CreateDataObat');
+        DB::unprepared('DROP Procedure IF EXISTS CreatePendaftaran');
     }
 };

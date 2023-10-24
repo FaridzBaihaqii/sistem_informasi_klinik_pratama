@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('poli', function (Blueprint $table) {
             $table->integer('id_poli', true);
-            $table->string('poli', 60)->nullable(false);
+            $table->string('nama_poli', 60)->nullable(false);
 
         });
     }

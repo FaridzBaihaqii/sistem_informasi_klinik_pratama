@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Akun;
 use App\Models\Pendaftaran;
+use App\Models\Poli;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -12,21 +12,21 @@ use Illuminate\Support\Facades\Hash;
 class ResepsionisController extends Controller
 {
     //halaman manage penggunaan, admin only
-    protected $userModel;
+    protected $poliModel;
     public function __construct()
     {
-        $this->userModel = new Pendaftaran;    
+        $this->poliModel = new Poli;   
     }
     /**
      * Display a listing of the resource.
      */
-    public function index(Pendaftaran $pendaftaran)
+    public function index(Poli $resepsionis)
     {
         $totalPendaftaran = DB::select('SELECT CountTotalPendaftaran() AS totalPendaftaran')[0]->totalPendaftaran;
         // Mengirim data agar ditampilkan kedalam view dengan isi array data pendaftaran
         // Array dari model pendaftaran yang disimpan dalam variabel data
     $data = [
-            'pendaftaran' => $this->userModel->all(),
+            'pendaftaran' => DB::table('view_poli')->get(),
             'jumlahPendaftaran' => $totalPendaftaran
     ];
     return view ('pendaftaran.index', $data);
@@ -36,12 +36,14 @@ class ResepsionisController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create(Pendaftaran $pendaftaran)
-    {
-
-        return view('pendaftaran.tambah');
-    }
-
+     public function create(Poli $poli,)
+     {
+     $data = [
+         'poli' => $this->poliModel->all(),
+     ];
+         return view('pendaftaran.tambah', $data);
+     }
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -53,22 +55,18 @@ class ResepsionisController extends Controller
             [
                 'nama_pendaftar' => ['required'],
                 'keluhan' => ['required'],
-                'poli' => ['required'],
                 'tgl_pendaftaran' => ['required'],
+                'id_poli' => ['required'],
                 'jadwal_pelayanan' => ['required'],
                 'info_janji' => ['required'],
             ]
             );
 
-            DB::beginTransaction();
-            try{
-                DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?)", [$data['nama_pendaftar'],$data['keluhan'],$data['tgl_pendaftaran'],$data['poli'],$data['jadwal_pelayanan'],$data['info_janji']  ]);
-                DB::commit();
+            if (DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?)",[$data['nama_pendaftar'],$data['keluhan'],$data['tgl_pendaftaran'],$data['id_poli'],$data['jadwal_pelayanan'],$data['info_janji']]))  {
                 return redirect('/pendaftaran/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
-            }catch(Exception $e){
-                DB::rollBack();
-                return back()->with('error','Pendaftaran Gagal Ditambahkan');
             }
+    
+            return back()->with('error', 'Data Pendaftaran Gagal Ditambahkan');
         }
     
     

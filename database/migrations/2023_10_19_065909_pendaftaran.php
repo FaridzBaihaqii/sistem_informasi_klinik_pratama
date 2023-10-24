@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('info_janji', 60);
 
             // Foreign
-            $table->foreign('id_poli')->on('poli')
-                ->references('id_poli')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_poli')->on('poli')->references('id_poli')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

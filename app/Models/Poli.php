@@ -9,7 +9,7 @@ class Poli extends Model
 {
     use HasFactory;
     protected $table = 'poli';
-    protected $fillable = ['nama_poli','diagnosis'];
+    protected $fillable = ['nama_poli'];
     protected $primarykey = 'id_poli';
     public $timestamps = false;
 }
