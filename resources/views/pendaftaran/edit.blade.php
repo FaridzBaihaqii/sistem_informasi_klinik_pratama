@@ -13,7 +13,10 @@
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-5">
-                            <div class="col-md-5">
+                            <div class="form-group">
+                                    <label>Nama Pendaftar</label>
+                                    <input type="text" class="form-control" name="nama_pendaftar" value="{{ $pendaftaran->nama_pendaftar }}"/>
+                                </div>
                                 <div class="form-group">
                                     <label>Keluhan</label>
                                     <input type="text" class="form-control" name="keluhan" value="{{ $pendaftaran->keluhan }}"/>

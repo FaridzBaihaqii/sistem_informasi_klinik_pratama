@@ -37,16 +37,6 @@ Route::get('/home', function () {
 
 // Route::middleware(['auth'])->group(function () {
 
-    //Asisten
-    Route::prefix('admin')->group(function () {
-        Route::get('/asisten', [AsistenController::class, 'index']);
-        Route::get('/asisten/tambah', [AsistenController::class, 'create']);
-        Route::post('/asisten/simpan', [AsistenController::class, 'store']);
-        Route::get('/asisten/edit/{id}', [AsistenController::class, 'edit']);
-        Route::post('/asisten/edit/simpan', [AsistenController::class, 'update']);
-        Route::delete('/asisten/hapus', [AsistenController::class, 'destroy']);
-    });
-
     //Resepsionis
     Route::prefix('pendaftaran')->group(function () {
         Route::get('/resepsionis', [ResepsionisController::class, 'index']);
@@ -144,6 +134,5 @@ Route::prefix('dashboard')->group(function () {
  Route::prefix('auth')->group(function(){
     Route::get('/',[AuthController::class, 'index']);
     Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class, 'check']);
+    Route::post('/check',[AuthController::class,'check']);
 });
-

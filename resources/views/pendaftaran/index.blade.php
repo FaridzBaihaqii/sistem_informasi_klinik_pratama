@@ -9,19 +9,24 @@
                         Data Pendaftaran
                     </span>
                 </div>
+                <div class="card-header">
+                    <span class="h3">
+                        Jumlah Pendaftaran Yang Tercatat : {{$jumlahPendaftaran}}
+                    </span>
+                </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
                             <a href="resepsionis/tambah">
-                                <btn class="btn btn-success">Tambah Pasien</btn>
+                                <btn class="btn btn-success">Tambah Pendaftaran</btn>
                             </a>
-
                         </div>
                         <p>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
+                                    <th>NAMA PENDAFTAR</th>
                                     <th>KELUHAN</th>
                                     <th>TANGGAL PENDAFTARAN</th>
                                     <th>POLI</th>
@@ -33,6 +38,7 @@
                             <tbody>
                                 @foreach ($pendaftaran as $p)
                                     <tr>
+                                        <td>{{ $p->nama_pendaftar }}</td>
                                         <td>{{ $p->keluhan }}</td>
                                         <td>{{ $p->tgl_pendaftaran }}</td>
                                         <td>{{ $p->poli }}</td>
