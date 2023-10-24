@@ -127,16 +127,16 @@ class ApotekerController extends Controller
                 $data['foto_obat'] = $foto_nama;
             }
 
-            DB::beginTransaction();
-            try {
-                $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
-                DB::commit();
-                return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
+                DB::beginTransaction();
+                try {
+                    $dataUpdate = $apoteker->where('id_obat', $id_obat)->update($data);
+                    DB::commit();
+                    return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');
 
-            } catch (Exception $e) {
-                DB::rollback();
-                dd($e->getMessage());
-            }
+                } catch (Exception $e) {
+                    DB::rollback();
+                    dd($e->getMessage());
+                }
 
             // if ($dataUpdate) {
             //     return redirect('obat/apoteker')->with('success', 'Data Berhasil Diupdate');

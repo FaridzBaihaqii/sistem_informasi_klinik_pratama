@@ -131,18 +131,7 @@ svg {
 }
 
 .sidebar-nav > .sidebar-brand a {
-<<<<<<< HEAD
-<<<<<<< HEAD
     color: #EEFFF3;
-=======
-    color: #fff;
-
->>>>>>> a53b7d2eec0631fa70a17574a1fd11864382103b
-=======
-
-    color: #EEFFF3;
-
->>>>>>> 3e641cf3b7e1f2e07c77a4a86c929c3cb7866c15
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
