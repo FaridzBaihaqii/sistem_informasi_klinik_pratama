@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tipe_obat', function (Blueprint $table) {
-            $table->integer('id_tipe', true);
-            $table->string('nama_tipe', 60)->nullable(false);
+            $table->integer('id_tipe', true, false)->nullable(false);
+            $table->string('nama_tipe', 60);
         });
     }
 
