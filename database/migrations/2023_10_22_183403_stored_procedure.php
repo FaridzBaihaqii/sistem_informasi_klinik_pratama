@@ -52,9 +52,23 @@ return new class extends Migration
             IN new_info_janji VARCHAR(60)
         )
         BEGIN
+           DECLARE pesan_error CHAR(5) DEFAULT '000';
+           DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING
+        
+           BEGIN
+           GET DIAGNOSTICS CONDITION 1
+           pesan_error = RETURNED_SQLSTATE;
+           END;
+
+           START TRANSACTION;
+           savepoint satu;
             INSERT INTO pendaftaran (nama_pendaftar, keluhan, tgl_pendaftaran, id_poli, jadwal_pelayanan, info_janji)
-            VALUES (new_nama_pendaftar, new_keluhan, new_tgl_pendaftaran, new_id_poli, new_jadwal_pelayanan, new_info_janji); 
-    END
+            VALUES (new_nama_pendaftar, new_keluhan, new_tgl_pendaftaran, new_id_poli, new_jadwal_pelayanan,new_info_janji);
+            
+            IF pesan_error != '000' THEN ROLLBACK TO satu;
+            END IF;
+            COMMIT;
+    END;
         ");
     }
 
@@ -67,5 +81,24 @@ return new class extends Migration
         DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
         DB::unprepared('DROP Procedure IF EXISTS CreateDataObat');
         DB::unprepared('DROP Procedure IF EXISTS CreatePendaftaran');
+        // DB::unprepared('
+        // CREATE PROCEDURE CreatePendaftaran( IN new_nama_pendaftar VARCHAR(60), IN new_keluhan VARCHAR(60), IN new_tgl_pendaftaran DATE, IN new_id_poli INT, IN new_jadwal_pelayanan DATE, IN new_info_janji VARCHAR(60))
+        
+        // BEGIN
+        // DECLARE pesan_error CHAR(%) DEFAULT "000";
+        // DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING
+        
+        // BEGIN
+        // GET DIAGNOSTICS CONDITION 1
+        // pesan_error = RETURNED_SQLSTATE;
+        // END;
+
+        // START TRANSACTION;
+        // savepoint satu;
+        // INSERT INTO 
+
+        // IF pesan_error != "000" THEN ROLLBACK TO SATU
+
+        // ');
     }
 };
