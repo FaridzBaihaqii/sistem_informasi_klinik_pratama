@@ -2,26 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Akun;
 use App\Models\Pendaftaran;
+use App\Models\Poli;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class ResepsionisController extends Controller
 {
     //halaman manage penggunaan, admin only
-    protected $userModel;
+    protected $poliModel;
     public function __construct()
     {
-        $this->userModel = new Pendaftaran;    
+        $this->poliModel = new Poli;   
     }
     /**
      * Display a listing of the resource.
      */
-    public function index(Pendaftaran $pendaftaran)
+    public function index(Poli $resepsionis)
     {
+        $totalPendaftaran = DB::select('SELECT CountTotalPendaftaran() AS totalPendaftaran')[0]->totalPendaftaran;
+        // Mengirim data agar ditampilkan kedalam view dengan isi array data pendaftaran
+        // Array dari model pendaftaran yang disimpan dalam variabel data
     $data = [
-            'pendaftaran' => $this->userModel->all()
+            'pendaftaran' => DB::table('view_poli')->get(),
+            'jumlahPendaftaran' => $totalPendaftaran
     ];
     return view ('pendaftaran.index', $data);
     }
@@ -30,12 +36,14 @@ class ResepsionisController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create(Pendaftaran $pendaftaran)
-    {
-
-        return view('pendaftaran.tambah');
-    }
-
+     public function create(Poli $poli,)
+     {
+     $data = [
+         'poli' => $this->poliModel->all(),
+     ];
+         return view('pendaftaran.tambah', $data);
+     }
+ 
     /**
      * Store a newly created resource in storage.
      */
@@ -45,18 +53,20 @@ class ResepsionisController extends Controller
         // data dari form di view yang dikumpulkan berbentuk array akan di vilter sesuai validasi yang ditentukan
         $data = $request->validate(
             [
+                'nama_pendaftar' => ['required'],
                 'keluhan' => ['required'],
-                'poli' => ['required'],
                 'tgl_pendaftaran' => ['required'],
+                'id_poli' => ['required'],
                 'jadwal_pelayanan' => ['required'],
                 'info_janji' => ['required'],
             ]
             );
 
-            if ($pendaftaran->create($data)) {
+            if (DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?)",[$data['nama_pendaftar'],$data['keluhan'],$data['tgl_pendaftaran'],$data['id_poli'],$data['jadwal_pelayanan'],$data['info_janji']]))  {
                 return redirect('/pendaftaran/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
-            return back()->with('error','Pendaftaran Gagal Ditambahkan');
+    
+            return back()->with('error', 'Data Pendaftaran Gagal Ditambahkan');
         }
     
     
@@ -75,7 +85,7 @@ class ResepsionisController extends Controller
         ];
         return view('pendaftaran.edit', $data);
     }
-
+ 
     /**
      * Update the specified resource in storage.
      */
@@ -84,7 +94,7 @@ class ResepsionisController extends Controller
         $id_pendaftaran = $request->input('id_pendaftaran');
 
         $data = $request->validate([
-            'nama_pasien' => 'sometimes',
+            'nama_pendaftar' => 'sometimes',
             'keluhan' => 'sometimes',
             'tgl_pendaftaran' => 'sometimes',
             'poli' => 'sometimes',
@@ -92,13 +102,17 @@ class ResepsionisController extends Controller
             'info_janji' => 'sometimes',
         ]);
 
-        $dataUpdate = $pendaftaran->where('id_pendaftaran', $id_pendaftaran)->update($data);
-
-            if($dataUpdate) {
-                return redirect('pendaftaran/resepsionis')->with('success', 'Data Pendaftaran Berhasil diupdate');
+        DB::beginTransaction();
+            try {
+                $dataUpdate = $pendaftaran->where('id_pendaftaran', $id_pendaftaran)->update($data);
+                DB::commit();
+                return redirect('pendaftaran/resepsionis')->with('success', 'Data Berhasil Diupdate');
+                
+            } catch (Exception $e) {
+                DB::rollback();
+                dd($e->getMessage());
             }
 
-            return back()->with('error', 'Data Pendaftaran Gagal diupdate');
     }
 
     /**

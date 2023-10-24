@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipe_obat', function (Blueprint $table) {
-            $table->integer('id_tipe', true);
-            $table->string('nama_tipe', 60)->nullable(false);
+        Schema::create('poli', function (Blueprint $table) {
+            $table->integer('id_poli', true);
+            $table->string('nama_poli', 60)->nullable(false);
+
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipe_obat');
+        Schema::dropIfExists('poli');
     }
 };

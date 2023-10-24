@@ -35,8 +35,18 @@ return new class extends Migration
         END
         ');
 
-        
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPendaftaran');
+
+        DB::unprepared('
+        CREATE FUNCTION CountTotalPendaftaran() RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM pendaftaran;
+            RETURN total;
+        END
+        ');
     }
+
 
     /**
      * Reverse the migrations.
@@ -45,5 +55,6 @@ return new class extends Migration
     {
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalDataObat');
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalRekamMedis');
+        DB::unprepared('DROP FUNCTION IF EXISTS CountTotalPendaftaran');
     }
 };

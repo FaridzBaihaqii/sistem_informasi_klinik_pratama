@@ -14,6 +14,10 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
+                                    <label>Nama Pendaftar</label>
+                                    <input type="text" class="form-control" name="nama_pendaftar" />
+                                </div>
+                                <div class="form-group">
                                     <label>Keluhan</label>
                                     <input type="text" class="form-control" name="keluhan" />
                                 </div>
@@ -21,13 +25,13 @@
                                     <label>Tanggal Pendaftaran</label>
                                     <input type="date" class="form-control" name="tgl_pendaftaran" />
                                 </div>
-                                <div class="form-">
-                                <label>Poli</label><br>
-                                <select name="poli" class="form-control">
-                                    <option value="poli_umum">Poli Umum</option>
-                                    <option value="poli_gigi">Poli Gigi</option>
+                                <label>Nama Poli</label>
+                                <select name="id_poli" id="id_poli" class="form-control" required>
+                                        <option value="default" hidden>- pilih opsi -</option>
+                                        @foreach ($poli as $p)
+                                        <option value="{{ $p->id_poli }}">{{ $p->nama_poli }}</option>
+                                    @endforeach
                                 </select>
-                                </div>
                                 <div class="form-group">
                                     <label>Jadwal Pelayanan</label>
                                     <input type="date" class="form-control" name="jadwal_pelayanan" />
@@ -45,7 +49,7 @@
                         </div>
                     </form>
                 </div>
-
+ 
             </div>
         </div>
     </div>

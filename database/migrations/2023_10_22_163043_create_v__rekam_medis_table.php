@@ -25,7 +25,7 @@ return new class extends Migration
         DB::unprepared("
         CREATE VIEW view_tipe AS
         SELECT
-            d.id_obat AS id_obat,
+            d.id_obat AS id_obat, 
             d.nama_obat AS nama_obat,
             d.stok_obat AS stok_obat,
             d.tgl_exp AS tgl_exp,
@@ -35,9 +35,25 @@ return new class extends Migration
         FROM data_obat d
         INNER JOIN tipe_obat t ON d.id_tipe = t.id_tipe
 
+        ");
+
+        DB::unprepared("DROP VIEW IF EXISTS view_poli;");
+
+        DB::unprepared("
+        CREATE VIEW view_poli AS
+        SELECT
+            pe.id_pendaftaran AS id_pendaftaran,
+            pe.nama_pendaftar AS nama_pendaftar,
+            pe.keluhan AS keluhan,
+            pe.tgl_pendaftaran AS tgl_pendaftaran,
+            pe.jadwal_pelayanan AS jadwal_pelayanan,
+            pe.info_janji AS info_janji,
+            p.id_poli AS id_poli,
+            p.nama_poli AS nama_poli
+        FROM pendaftaran pe
+        INNER JOIN poli p ON pe.id_poli = p.id_poli;
 
         ");
-        
     }
 
     /**
@@ -47,5 +63,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('v__rekam_medis');
         DB::unprepared("DROP VIEW IF EXISTS view_tipe;");
+        DB::unprepared("DROP VIEW IF EXISTS view_poli;");
     }
 };

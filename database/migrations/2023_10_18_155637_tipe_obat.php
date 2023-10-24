@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dokter', function (Blueprint $table) {
-            $table->integer('id_dokter', true, false)->nullable(false);
-            $table->string('nama_dokter', 60);
-            $table->bigInteger('no_telp');
-            $table->text('foto_profil');
-
+        Schema::create('tipe_obat', function (Blueprint $table) {
+            $table->integer('id_tipe', true, false)->nullable(false);
+            $table->string('nama_tipe', 60);
         });
-
     }
 
     /**
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dokter');
+        Schema::dropIfExists('tipe_obat');
     }
 };

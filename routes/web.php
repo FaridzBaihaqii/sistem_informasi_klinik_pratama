@@ -11,6 +11,7 @@ use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TipeController;
+use App\Http\Controllers\PoliController;
 
 
 /*
@@ -37,16 +38,6 @@ Route::get('/home', function () {
 
 // Route::middleware(['auth'])->group(function () {
 
-    //Asisten
-    Route::prefix('admin')->group(function () {
-        Route::get('/asisten', [AsistenController::class, 'index']);
-        Route::get('/asisten/tambah', [AsistenController::class, 'create']);
-        Route::post('/asisten/simpan', [AsistenController::class, 'store']);
-        Route::get('/asisten/edit/{id}', [AsistenController::class, 'edit']);
-        Route::post('/asisten/edit/simpan', [AsistenController::class, 'update']);
-        Route::delete('/asisten/hapus', [AsistenController::class, 'destroy']);
-    });
-
     //Resepsionis
     Route::prefix('pendaftaran')->group(function () {
         Route::get('/resepsionis', [ResepsionisController::class, 'index']);
@@ -56,6 +47,16 @@ Route::get('/home', function () {
         Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
+    });
+
+    //Poli
+    Route::prefix('pendaftaran')->group(function () {
+        Route::get('/poli', [PoliController::class, 'index']);
+        Route::get('/poli/tambah', [PoliController::class, 'create']);
+        Route::post('/poli/simpan', [PoliController::class, 'store']);
+        Route::get('/poli/edit/{id}', [PoliController::class, 'edit']);
+        Route::post('/poli/edit/simpan', [PoliController::class, 'update']);
+        Route::delete('/poli/hapus', [PoliController::class, 'destroy']);
     });
 
     // Pasien
@@ -99,15 +100,15 @@ Route::get('/home', function () {
         Route::delete('/asisten/hapus', [RekamMedisController::class, 'destroy']);
     });
 
-        //Resep Dokter
-        Route::prefix('resep')->group(function () {
-            Route::get('/asisten', [ResepDokterController::class, 'index']);
-            Route::get('/asisten/tambah', [ResepDokterController::class, 'create']);
-            Route::post('/asisten/simpan', [ResepDokterController::class, 'store']);
-            Route::get('/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
-            Route::post('/asisten/edit/simpan', [ResepDokterController::class, 'update']);
-            Route::delete('/asisten/hapus', [ResepDokterController::class, 'destroy']);
-        });
+    //Resep Dokter
+    Route::prefix('resep')->group(function () {
+        Route::get('/asisten', [ResepDokterController::class, 'index']);
+        Route::get('/asisten/tambah', [ResepDokterController::class, 'create']);
+        Route::post('/asisten/simpan', [ResepDokterController::class, 'store']);
+        Route::get('/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
+        Route::post('/asisten/edit/simpan', [ResepDokterController::class, 'update']);
+        Route::delete('/asisten/hapus', [ResepDokterController::class, 'destroy']);
+    });
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
@@ -115,28 +116,29 @@ Route::get('/home', function () {
         Route::post('/klinik/hapus', [TransaksiController::class, 'destroy']);
     });
 
-Route::prefix('dashboard')->group(function () {
-    Route::get('/akun', [AkunController::class, 'index']);
-    Route::get('/akun/tambah', [AkunController::class, 'create']);
-    Route::post('/akun/simpan', [AkunController::class, 'store']);
-    Route::delete('/akun/hapus/', [AkunController::class, 'destroy']);
-    Route::post('/akun/simpan', [AkunController::class, 'store']);
-    Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
-    Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
-    Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
-});
+    //Akun
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/akun', [AkunController::class, 'index']);
+        Route::get('/akun/tambah', [AkunController::class, 'create']);
+        Route::post('/akun/simpan', [AkunController::class, 'store']);
+        Route::delete('/akun/hapus/', [AkunController::class, 'destroy']);
+        Route::post('/akun/simpan', [AkunController::class, 'store']);
+        Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
+        Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
+        Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
+    });
 
-
-Route::prefix('dashboard')->group(function () {
-    Route::get('/dokter', [DokterController::class, 'index']);
-    Route::get('/dokter/tambah', [DokterController::class, 'create']);
-    Route::post('/dokter/simpan', [DokterController::class, 'store']);
-    Route::delete('/dokter/hapus/', [DokterController::class, 'destroy']);
-    Route::post('/dokter/simpan', [DokterController::class, 'store']);
-    Route::get('/dokter/edit/{id}', [DokterController::class, 'edit']);
-    Route::post('/dokter/edit/simpan', [DokterController::class, 'update']);
-    Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
-});
+    //Dokter
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/dokter', [DokterController::class, 'index']);
+        Route::get('/dokter/tambah', [DokterController::class, 'create']);
+        Route::post('/dokter/simpan', [DokterController::class, 'store']);
+        Route::delete('/dokter/hapus/', [DokterController::class, 'destroy']);
+        Route::post('/dokter/simpan', [DokterController::class, 'store']);
+        Route::get('/dokter/edit/{id}', [DokterController::class, 'edit']);
+        Route::post('/dokter/edit/simpan', [DokterController::class, 'update']);
+        Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
+    });
 
 
 
@@ -144,6 +146,5 @@ Route::prefix('dashboard')->group(function () {
  Route::prefix('auth')->group(function(){
     Route::get('/',[AuthController::class, 'index']);
     Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class, 'check']);
+    Route::post('/check',[AuthController::class,'check']);
 });
-

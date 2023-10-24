@@ -1,52 +1,38 @@
 @extends('layout.layout')
-@section('title', 'Data Pendaftaran')
+@section('title', 'Data Poli')
 @section('content')
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Pendaftaran
-                    </span>
-                </div>
-                <div class="card-header">
-                    <span class="h3">
-                        Jumlah Pendaftaran Yang Tercatat : {{$jumlahPendaftaran}}
+                        Data Poli
                     </span>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <a href="resepsionis/tambah">
-                                <btn class="btn btn-success">Tambah Pendaftaran</btn>
+                            <a href="poli/tambah">
+                                <btn class="btn btn-success">Tambah Poli</btn>
                             </a>
+
                         </div>
                         <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>NAMA PENDAFTAR</th>
-                                    <th>KELUHAN</th>
-                                    <th>TANGGAL PENDAFTARAN</th>
-                                    <th>POLI</th>
-                                    <th>JADWAL PELAYANAN</th>
-                                    <th>INFO JANJI TEMU</th>
+                                    <th>NAMA POLI</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($pendaftaran as $p)
+                                @foreach ($poli as $p)
                                     <tr>
-                                        <td>{{ $p->nama_pendaftar }}</td>
-                                        <td>{{ $p->keluhan }}</td>
-                                        <td>{{ $p->tgl_pendaftaran }}</td>
                                         <td>{{ $p->nama_poli }}</td>
-                                        <td>{{ $p->jadwal_pelayanan }}</td>
-                                        <td>{{ $p->info_janji }}</td>
                                         <td>
-                                            <a href="resepsionis/edit/{{ $p->id_pendaftaran }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idPendaftaran="{{ $p->id_pendaftaran }}">HAPUS</btn>
+                                            <a href="poli/edit/{{ $p->id_poli }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idPoli="{{ $p->id_poli }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -64,9 +50,9 @@
 
 @section('footer')
     <script type="module">
-        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idPendaftaran = $(this).closest('.btnHapus').attr('idPendaftaran');
+            let idPoli = $(this).closest('.btnHapus').attr('idPoli');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -79,9 +65,9 @@
                     //Ajax Delete
                     $.ajax({
                         type: 'DELETE',
-                        url: 'resepsionis/hapus',
+                        url: '/pendaftaran/poli/hapus',
                         data: {
-                            id_pendaftaran: idPendaftaran,
+                            id_poli: idPoli,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
@@ -95,6 +81,9 @@
                     });
                 }
             });
+        });
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
         });
     </script>
 
