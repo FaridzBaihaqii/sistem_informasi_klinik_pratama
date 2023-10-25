@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('data_obat', function (Blueprint $table) {
             $table->integer('id_obat', true);
-            $table->string('nama_obat', 60)->nullable(false);
-            $table->integer('stok_obat')->nullable(false);
-            $table->integer('id_tipe', true, false)->nullable(false);
-            $table->date('tgl_exp')->nullable(false)->default('2024-01-01');
-            $table->text('foto_obat')->nullable(true);
-
+            $table->string('nama_obat', 60);
+            $table->integer('stok_obat');
+            $table->integer('id_tipe');
+            $table->date('tgl_exp')->default('2024-01-01');
+            $table->text('foto_obat');
+            
             $table->foreign('id_tipe')->references('id_tipe')->on('tipe_obat')->onDelete('cascade')->onUpdate('cascade');
 
 
