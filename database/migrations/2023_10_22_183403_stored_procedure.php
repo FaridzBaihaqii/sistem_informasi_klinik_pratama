@@ -77,28 +77,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
         DB::unprepared('DROP Procedure IF EXISTS CreateDokter');
         DB::unprepared('DROP Procedure IF EXISTS CreateDataObat');
         DB::unprepared('DROP Procedure IF EXISTS CreatePendaftaran');
-        // DB::unprepared('
-        // CREATE PROCEDURE CreatePendaftaran( IN new_nama_pendaftar VARCHAR(60), IN new_keluhan VARCHAR(60), IN new_tgl_pendaftaran DATE, IN new_id_poli INT, IN new_jadwal_pelayanan DATE, IN new_info_janji VARCHAR(60))
-        
-        // BEGIN
-        // DECLARE pesan_error CHAR(%) DEFAULT "000";
-        // DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING
-        
-        // BEGIN
-        // GET DIAGNOSTICS CONDITION 1
-        // pesan_error = RETURNED_SQLSTATE;
-        // END;
-
-        // START TRANSACTION;
-        // savepoint satu;
-        // INSERT INTO 
-
-        // IF pesan_error != "000" THEN ROLLBACK TO SATU
-
-        // ');
     }
 };
