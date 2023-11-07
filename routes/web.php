@@ -140,11 +140,9 @@ Route::get('/home', function () {
         Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
     });
 
-
-
- //Logout
- Route::prefix('auth')->group(function(){
-    Route::get('/',[AuthController::class, 'index']);
-    Route::get('/logout',[AuthController::class, 'logout']);
-    Route::post('/check',[AuthController::class,'check']);
-});
+    //Logout
+    Route::prefix('auth')->group(function(){
+       Route::get('/',[AuthController::class, 'index']);
+       Route::get('/logout',[AuthController::class, 'logout']);
+       Route::post('/check',[AuthController::class,'check']);
+    });
