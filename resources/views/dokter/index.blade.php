@@ -11,7 +11,6 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                       
                         <p>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
