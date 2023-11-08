@@ -4,6 +4,14 @@
 <head>
     @vite(['resources/sass/app.scss','resources/js/app.js'])
 </head>
+<style>
+    .bg-login{
+        background-color: #98eeb1;
+    }
+    .bg-login:hover{
+        background-color: #6cee8c;
+    }
+</style>
 
 <body>
     <img src="{{ asset('gambar/color.png') }}" style="width: 100%; z-index:-999; position:absolute; height:100%;">
@@ -43,7 +51,7 @@
                                         </div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center pb-4">
-                                        <button type="submit" class="btn btn-success w-100 text-white p-2 fw-bold fs-5 rounded-2">LOGIN</button>
+                                        <button type="submit" class="btn w-100 text-white p-2 fw-bold fs-5 rounded-2 bg-login">LOGIN</button>
                                     </div>
                                 </form>
                             </div>
