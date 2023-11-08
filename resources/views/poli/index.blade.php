@@ -3,21 +3,12 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
                         Data Poli
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="poli/tambah">
-                                <btn class="btn btn-success">Tambah Poli</btn>
-                            </a>
-
-                        </div>
-                        <p>
                             <hr>
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -39,6 +30,11 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="poli/tambah">
+                        <btn class="btn btn-success">Tambah Poli</btn>
+                    </a>
                 </div>
                 <div class="card-footer">
 

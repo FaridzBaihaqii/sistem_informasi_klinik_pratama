@@ -3,27 +3,20 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
                         Data Pendaftaran
                     </span>
                 </div>
+                <br>
                 <div class="card-header">
-                    <span class="h3">
+                    <span class="h5">
                         Jumlah Pendaftaran Yang Tercatat : {{$jumlahPendaftaran}}
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="resepsionis/tambah">
-                                <btn class="btn btn-success">Tambah Pendaftaran</btn>
-                            </a>
-                        </div>
-                        <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>NAMA PENDAFTAR</th>
@@ -55,7 +48,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-
+                    <div class="col-md-4">
+                        <a href="resepsionis/tambah">
+                            <btn class="btn btn-success">Tambah Pendaftaran</btn>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

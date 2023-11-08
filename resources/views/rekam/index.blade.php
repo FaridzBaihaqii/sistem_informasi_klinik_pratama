@@ -10,13 +10,14 @@
                         Rekam Medis Pasien
                     </span>
                 </div>
+                <br>
                 <div class="card-header">
-                    <span class="h3">
+                    <span class="h5">
                         Jumlah Rekam Medis Yang Tercatat : {{$jumlahRekam}}
                     </span>
                 </div>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>NAMA PASIEN</th>
@@ -70,7 +71,7 @@
 
 @section('footer')
     <script type="module">
-        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
             let idRekam = $(this).closest('.btnHapus').attr('idRekam');
             swal.fire({
@@ -103,9 +104,6 @@
                     });
                 }
             });
-        });
-        $(document).ready(function() {
-            $('.DataTable').DataTable();
         });
     </script>
 

@@ -3,26 +3,18 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h1" style="color:#92E3A9; font-weight: bold;">
                         Data Obat
                     </span>
                 </div>
+                <br>
                 <div class="card-header">
-                    <span class="h3">
+                    <span class="h5">
                         Jumlah Obat Yang Tersedia : {{$jumlahObat}}
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <a href="apoteker/tambah">
-                                <btn class="btn btn-success">Tambah Obat</btn>
-                            </a>
-
-                        </div>
-                        <p>
                             <hr>
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -58,11 +50,16 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer">
-
+                <div class="col-md-4">
+                    <a href="apoteker/tambah">
+                        <btn class="btn btn-success">Tambah Obat</btn>
+                    </a>
+                </div>
+                <div class="card-footer"> 
                 </div>
             </div>
         </div>
+        <br>
     </div>
 @endsection
 

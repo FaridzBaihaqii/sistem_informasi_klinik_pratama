@@ -31,6 +31,16 @@ return new class extends Migration
             VALUES ("pendaftaran", CURDATE(), CURTIME(), "Tambah", "Sukses");
         END
     ');
+
+    DB::unprepared('
+        CREATE TRIGGER add_rekam_medis
+        BEFORE INSERT ON rekam_medis
+        FOR EACH ROW
+        BEGIN
+            INSERT logs(tabel, tanggal, jam, aksi, record)
+            VALUES ("rekam_medis", CURDATE(), CURTIME(), "Tambah", "Sukses");
+        END
+    ');
     }
 
     /**

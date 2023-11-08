@@ -155,7 +155,6 @@ svg {
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-    color: #D2E9E9;
     background: none;
 }
 
