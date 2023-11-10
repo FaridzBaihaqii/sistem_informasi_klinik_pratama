@@ -9,12 +9,8 @@
                         Data Dokter
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                       
-                        <p>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>NAMA DOKTER</th>
@@ -61,7 +57,7 @@
 
 @section('footer')
     <script type="module">
-        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        $(' tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
             let idDokter = $(this).closest('.btnHapus').attr('idDokter');
             swal.fire({

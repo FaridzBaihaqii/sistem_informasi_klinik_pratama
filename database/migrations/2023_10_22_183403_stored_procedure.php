@@ -18,9 +18,23 @@ return new class extends Migration
             IN new_foto_profil TEXT
         )
         BEGIN
+            DECLARE pesan_error CHAR(5) DEFAULT '000';
+            DECLARE CONTINUE HANDLER FOR SQLEXCEPTION, SQLWARNING
+        
+            BEGIN
+            GET DIAGNOSTICS CONDITION 1
+            pesan_error = RETURNED_SQLSTATE;
+            END;
+
             -- Sisipkan data ke dalam tabel dokter
+            START TRANSACTION;
+            savepoint satu;
             INSERT INTO dokter (nama_dokter, no_telp, foto_profil)
             VALUES (new_nama_dokter, new_no_telp, new_foto_profil); 
+
+            IF pesan_error != '000' THEN ROLLBACK TO satu;
+            END IF;
+            COMMIT;
         END
         
         
