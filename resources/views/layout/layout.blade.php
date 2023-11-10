@@ -225,47 +225,14 @@ svg {
             </ul>
         </div>
 
-    {{-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SEHATKUU</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{{ url('dashboard/pasien') }}">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('pasien/resepsionis') }}">Resepsionis</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('rekam/asisten') }}">Asisten Dokter</a>
-                    </li>
-                    <!-- @endif -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="{{ url('transaksi/klinik') }}">Transaksi Klinik</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('obat/apoteker') }}">Apoteker</a>
-                    </li>
-                </ul>
-                <form class="d-flex mt-2">
-                    <a class="btn btn-outline-danger" href="{{ url('logout') }}">Logout</a>
-                </form>
-            </div>
-        </div>
-    </nav> --}}
-
-
     <div class="container">
         <br/>
-        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">▶ </a>
-        @include('layout.flash-message')
-        @yield('content')
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">▶ </a>
+            @include('layout.flash-message')
+            @yield('content')
        <br/>
-        
     </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>

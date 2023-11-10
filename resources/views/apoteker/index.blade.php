@@ -5,12 +5,12 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <span class="h1">
+                    <span class="h2">
                         Data Obat
                     </span>
                 </div>
                 <div class="card-header">
-                    <span class="h3">
+                    <span class="h5">
                         Jumlah Obat Yang Tersedia : {{$jumlahObat}}
                     </span>
                 </div>

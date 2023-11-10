@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poli;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 
 class PoliController extends Controller
@@ -12,9 +14,8 @@ class PoliController extends Controller
      */
     public function index(Poli $poli)
     {
-        
         $data = [
-            'poli' => $poli->all()
+            'poli' => $poli->all(),
         ];
         return view('poli.index', $data);
     }
