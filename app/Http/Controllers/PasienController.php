@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Akun;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 
 class PasienController extends Controller
@@ -154,7 +155,6 @@ class PasienController extends Controller
                 ];
             }
             return response()->json($pesan);
-
     }
 }
 

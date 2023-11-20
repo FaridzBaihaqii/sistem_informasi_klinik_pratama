@@ -34,7 +34,7 @@ Route::middleware(['guest'])->group(function () {
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
-    return redirect('dashboard/pasien');
+    return redirect('/');
 });
 
 Route::middleware(['web'])->group(function () {
@@ -44,10 +44,10 @@ Route::middleware(['web'])->group(function () {
         Route::get('/', [ResepsionisController::class, 'index']);
         Route::get('/tambah', [ResepsionisController::class, 'create']);
         Route::post('/simpan', [ResepsionisController::class, 'store']);
-        Route::get('/resepsionis/detail/{id}', [ApotekerController::class, 'detail']);
         Route::get('/edit/{id}', [ResepsionisController::class, 'edit']);
         Route::get('/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/edit/simpan', [ResepsionisController::class, 'update']);
+        Route::post('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::get('/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
         Route::delete('/hapus', [ResepsionisController::class, 'destroy']);
     });
@@ -70,6 +70,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
         Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
+        Route::post('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
 

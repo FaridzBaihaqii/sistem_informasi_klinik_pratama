@@ -11,7 +11,7 @@
             <div class="">
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                    Detail Data Pendaftaran
+                    Detail Data Pasien
                     </span>
                 </div>
                 <hr>
@@ -22,32 +22,36 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <div class="container">
-                                    @foreach ($pendaftaran as $p)
+                                    @foreach ($pasien as $p)
                                         <table class="table table-bordered mt-3">
                                             <tbody>
                                                 <tr>
-                                                    <td class="fw-bolder" style="width: 250px;">Nama Pendaftar</td>
-                                                    <td style="width: 150px;">: {{$p->nama_pendaftar}}</td>
+                                                    <td class="fw-bolder" style="width: 250px;">Nama Pasien</td>
+                                                    <td style="width: 150px;">: {{$p->nama_pasien}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bolder">Keluhan</td>
-                                                    <td>: {{$p->keluhan}}</td>
+                                                    <td class="fw-bolder">Jenis Kelamin</td>
+                                                    <td>: {{$p->jenkel}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bolder">Tanggal Pendaftaran</td>
-                                                    <td>: {{$p->tgl_pendaftaran}}</td>
+                                                    <td class="fw-bolder">Tanggal Lahir</td>
+                                                    <td>: {{$p->tgl_lahir}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bolder">Poli</td>
-                                                    <td>: {{$p->nama_poli}}</td>
+                                                    <td class="fw-bolder">Alamat</td>
+                                                    <td>: {{$p->alamat}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bolder">Jadwal Pelayanan</td>
-                                                    <td>: {{$p->jadwal_pelayanan}}</td>
+                                                    <td class="fw-bolder">NO TELP</td>
+                                                    <td>: {{$p->no_telp}}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="fw-bolder">Info Temu Janji</td>
-                                                    <td>: {{$p->info_janji}}</td>
+                                                    <td class="fw-bolder">NO BPJS</td>
+                                                    <td>: {{$p->no_bpjs}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">Foto Profil</td>
+                                                    <td>: {{$p->foto_profil}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
