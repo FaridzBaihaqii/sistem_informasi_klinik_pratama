@@ -247,8 +247,7 @@ svg {
             <img src="{{ asset('gambar/avatar.jpg') }}" width="32" height="32" class="rounded-circle">
            </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="{{ url('/dashboard/profile') }}">Profile</a></li>
-            <li class="dropdown-divider"></li>
+            <!-- <li class="dropdown-divider"></li> -->
             <li><a class="dropdown-item" href="{{ url('/auth/logout') }}">Logout</a></li>
           </ul>
         </div>

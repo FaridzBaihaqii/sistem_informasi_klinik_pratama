@@ -141,13 +141,6 @@ Route::get('/home', function () {
         Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
     });
 
-     //Profil
-     Route::prefix('dashboard')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'index']);
-        Route::get('/profile/edit/{id}', [ProfileController::class, 'edit']);
-        Route::post('/profile/edit/simpan', [ProfileController::class, 'update']);
-    });
-
     //Logout
     Route::prefix('auth')->group(function(){
        Route::get('/',[AuthController::class, 'index']);
