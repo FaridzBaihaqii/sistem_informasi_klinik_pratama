@@ -6,7 +6,7 @@
             <div class="">
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                    Data Obat
+                        Data Obat
                     </span>
                 </div>
                 <br>
