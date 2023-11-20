@@ -34,21 +34,22 @@ Route::middleware(['guest'])->group(function () {
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
-    return redirect('dashboard/pasien');
+    return redirect('/');
 });
 
 Route::middleware(['web'])->group(function () {
 
     //Resepsionis
-    Route::prefix('pendaftaran')->group(function () {
-        Route::get('/resepsionis', [ResepsionisController::class, 'index']);
-        Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
-        Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
-        Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
-        Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
-        Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
-        Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
-        Route::get('/resepsionis/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
+    Route::prefix('resepsionis')->group(function () {
+        Route::get('/', [ResepsionisController::class, 'index']);
+        Route::get('/tambah', [ResepsionisController::class, 'create']);
+        Route::post('/simpan', [ResepsionisController::class, 'store']);
+        Route::get('/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::get('/detail/{id}', [ResepsionisController::class, 'detail']);
+        Route::post('/edit/simpan', [ResepsionisController::class, 'update']);
+        Route::post('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
+        Route::get('/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
+        Route::delete('/hapus', [ResepsionisController::class, 'destroy']);
     });
 
     //Poli
@@ -69,6 +70,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
         Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
+        Route::post('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
 

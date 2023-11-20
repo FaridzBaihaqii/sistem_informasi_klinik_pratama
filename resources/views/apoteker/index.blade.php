@@ -6,7 +6,6 @@
             <div class="">
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                        Data Obat
                     </span>
                 </div>
                 <br>
@@ -33,6 +32,7 @@
                                     <th>TIPE OBAT</th>
                                     <th>STOK OBAT</th>
                                     <th>TANGGAL EXP</th>
+                                    <th>FOTO OBAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -44,6 +44,12 @@
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>
+                                            @if ($a->foto_obat)
+                                                <img src="{{ url('foto') . '/' . $a->foto_obat }} "
+                                                    style="max-width: 150px; height: auto;" />
+                                            @endif
+                                        </td>
+                                        <td>
                                             <a href="apoteker/detail/{{ $a->id_obat }}"><btn class="btn btn-info">Detail</btn></a>
                                             <a href="apoteker/edit/{{ $a->id_obat }}"><btn class="btn btn-warning">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
@@ -53,6 +59,13 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="col-md-4">
+                    <a href="apoteker/tambah">
+                        <btn class="btn btn-success">Tambah Obat</btn>
+                    </a>
+                </div>
+                <div class="card-footer"> 
                 </div>
             </div>
         </div>
