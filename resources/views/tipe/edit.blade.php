@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Tambah Data Tipe Obat
+                        Edit Data Tipe Obat
                     </span>
                 </div>
                 <div class="card-body">
@@ -16,6 +16,7 @@
                                <div class="form-group">
                                     <label>Tipe Obat</label>
                                     <input type="text" class="form-control" name="nama_tipe" value="{{ $tipe->nama_tipe }}" />
+                                    <input type="hidden" class="form-control" name="id  _tipe" value="{{ $tipe->id_tipe }}" />
                                 </div>
                                 </div>
                                 @csrf

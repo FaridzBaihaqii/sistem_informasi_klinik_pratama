@@ -94,10 +94,22 @@ class ApotekerController extends Controller
     public function edit(DataObat $apoteker, string $id)
     {
         $data = [
-            'apoteker' =>  DataObat::where('id_obat', $id)->first()
+            'apoteker' =>  DataObat::where('id_obat', $id)->first(),
+            'apoteker' =>  DB::table('view_tipe')->where('id_obat', $id)->first (),
         ];
 
         return view('apoteker.edit', $data);
+    }
+
+    public function detail(DataObat $apoteker, string $id)
+    {
+        $data = [
+            'apoteker' =>  DataObat::where('id_obat', $id)->get(),
+            'apoteker' => DB::table('view_tipe')->where('id_obat', $id)->get(),
+
+        ];
+
+        return view('apoteker.detail', $data);
     }
 
     /**
