@@ -11,8 +11,9 @@
                 </div>
                             <hr>
                         <table class="table table-hover table-bordered DataTable">
-                            <thead>
-                                <tr>
+                            <thead >
+                                <tr class="" >
+                                    <div style="backgroundcolor: #92E3A9">
                                     <th>NAMA PASIEN</th>
                                     <th>JENIS KELAMIN</th>
                                     <th>TANGGAL LAHIR</th>
@@ -21,6 +22,7 @@
                                     <th>NO BPJS</th>
                                     <th>FOTO PROFIL</th>
                                     <th>AKSI</th>
+                                    </div>
                                 </tr>
                             </thead>
                             <tbody>

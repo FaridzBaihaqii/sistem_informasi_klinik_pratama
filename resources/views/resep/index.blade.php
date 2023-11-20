@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Data resep Medis')
+@section('title', 'Data Resep Dokter')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -7,37 +7,36 @@
                 <br/>
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-                        Resep Dokter Pasien
+                        Resep Dokter
                     </span>
                 </div>
-                <div class="card-body">
-                    <div class="row">
-                        
-                        <p>
+                <br>
+                <div class="card-header">
+                    <span class="h5">
+                        Jumlah Resep Dokter Yang Tercatat : {{$jumlahRekam}}
+                    </span>
+                </div>
                             <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                        <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>NAMA PASIEN</th>
+                                    <th>NO REKAM MEDIS</th>
                                     <th>TANGGAL PELAYANAN</th>
                                     <th>DIAGNOSIS</th>
-                                    <th>NAMA OBAT</th>
+                                    <th>OBAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($resep as $r)
                                     <tr>
-                                        <td>{{ $r->nama_pasien }}</td>
-                                        <td>{{ $r->tgl_pelayanan }}</td>
+                                        <td>{{ $r->no_rm }}</td>
+                                        <td>{{ $r->tgl_pelayanan}}</td>
+                                        <td>{{ $r->diagnosis }}</td>
+                                        <td>{{ $r->nama_obat }}</td>
                                         <td>
-                                        <>{{ $r->diagnosis }}</
-                                        <td>
-                                        <td>
-                                        <>{{ $r->nama_obat }}</
-                                        <td>
-                                            <a href="asisten/edit/{{ $r->id_resep }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idResep="{{ $r->id_resep }}">HAPUS</btn>
+                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -48,7 +47,7 @@
                 <div class="card-footer">
                     <div class="col-md-4">
                         <a href="asisten/tambah">
-                            <btn class="btn btn-success btn">Tambah resep Medis</btn>
+                            <btn class="btn btn-success btn">Tambah Rekam Medis</btn>
                         </a>
 
                     </div>
@@ -61,9 +60,9 @@
 
 @section('footer')
     <script type="module">
-        $('.DataTable tbody').on('click', '.btnHapus', function(a) {
+        $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idresep = $(this).closest('.btnHapus').attr('idResep');
+            let idRekam = $(this).closest('.btnHapus').attr('idRekam');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -78,7 +77,9 @@
                         type: 'DELETE',
                         url: 'asisten/hapus',
                         data: {
-                            id_resep: idResep,
+
+                            no_rm: idRekam,
+
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {
@@ -92,9 +93,6 @@
                     });
                 }
             });
-        });
-        $(document).ready(function() {
-            $('.DataTable').DataTable();
         });
     </script>
 

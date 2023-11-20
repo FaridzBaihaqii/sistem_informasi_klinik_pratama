@@ -36,7 +36,7 @@ Route::get('/home', function () {
     return redirect('dashboard/pasien');
 });
 
-// Route::middleware(['auth'])->group(function () {
+Route::middleware(['web'])->group(function () {
 
     //Resepsionis
     Route::prefix('pendaftaran')->group(function () {
@@ -101,14 +101,14 @@ Route::get('/home', function () {
     });
 
     //Resep Dokter
-    Route::prefix('resep')->group(function () {
-        Route::get('/asisten', [ResepDokterController::class, 'index']);
-        Route::get('/asisten/tambah', [ResepDokterController::class, 'create']);
-        Route::post('/asisten/simpan', [ResepDokterController::class, 'store']);
-        Route::get('/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
-        Route::post('/asisten/edit/simpan', [ResepDokterController::class, 'update']);
-        Route::delete('/asisten/hapus', [ResepDokterController::class, 'destroy']);
+    Route::prefix('resep/asisten')->group(function () {
+        Route::get('/', [ResepDokterController::class, 'index']);
+        Route::get('/tambah', [ResepDokterController::class, 'create']);
+        Route::get('/get-rekam-data', [ResepDokterController::class, 'getRekamData'])->name('getRekamData'); 
+        Route::post('/simpan', [ResepDokterController::class, 'store']);
     });
+    // routes/web.php
+
 
     //Transaksi klinik
     Route::prefix('transaksi')->group(function () {
@@ -146,3 +146,5 @@ Route::get('/home', function () {
        Route::get('/logout',[AuthController::class, 'logout']);
        Route::post('/check',[AuthController::class,'check']);
     });
+
+});
