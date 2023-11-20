@@ -244,12 +244,12 @@ svg {
             </ul>
         </nav>
         <div class="dropdown text-end">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" style="margin-right: 20px;" data-bs-toggle="dropdown" aria-expanded="false">
+           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="{{ asset('gambar/avatar.jpg') }}" width="32" height="32" class="rounded-circle">
-          </a>
+           </a>
           <ul class="dropdown-menu text-small">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{{ url('/dashboard/profile') }}">Profile</a></li>
+            <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="{{ url('/auth/logout') }}">Logout</a></li>
           </ul>
         </div>

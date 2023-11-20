@@ -1,18 +1,19 @@
 <?php
 
-use App\Http\Controllers\AkunController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ResepsionisController;
-use App\Http\Controllers\PasienController;
-use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\PoliController;
+use App\Http\Controllers\TipeController;
 use App\Http\Controllers\DokterController;
+use App\Http\Controllers\PasienController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\TipeController;
-use App\Http\Controllers\PoliController;
-
+use App\Http\Controllers\ResepsionisController;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,6 +139,13 @@ Route::get('/home', function () {
         Route::get('/dokter/edit/{id}', [DokterController::class, 'edit']);
         Route::post('/dokter/edit/simpan', [DokterController::class, 'update']);
         Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
+    });
+
+     //Profil
+     Route::prefix('dashboard')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'index']);
+        Route::get('/profile/edit/{id}', [ProfileController::class, 'edit']);
+        Route::post('/profile/edit/simpan', [ProfileController::class, 'update']);
     });
 
     //Logout
