@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use App\Models\DataObat;
 use App\Models\Tipe;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -183,6 +184,14 @@ class ApotekerController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function unduhObat(DataObat $dataObat)
+    {
+        $apoteker = $dataObat
+            ->join('tipe_obat', 'data_obat.id_tipe', '=', 'tipe_obat.id_tipe')->get();
+        $pdf = PDF::loadView('apoteker.unduh', ['apoteker' => $apoteker]);
+        return $pdf->download('data-obat.pdf');
     }
 }
 
