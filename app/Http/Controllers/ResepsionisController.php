@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pendaftaran;
-use App\Models\Poli;
 use Exception;
+use App\Models\Poli;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
 
 class ResepsionisController extends Controller
 {
@@ -137,5 +139,13 @@ class ResepsionisController extends Controller
             }
             return response()->json($pesan);
 
+    }
+
+    public function unduhPendaftaran(Pendaftaran $pendaftaran)
+    {
+        $pendaftaran = $pendaftaran
+            ->join('poli', 'pendaftaran.id_poli', '=', 'poli.id_poli')->get();
+        $pdf = PDF::loadView('pendaftaran.unduh', ['pendaftaran' => $pendaftaran]);
+        return $pdf->download('data-pendaftaran.pdf');
     }
 }
