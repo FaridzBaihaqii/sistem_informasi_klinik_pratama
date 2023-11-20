@@ -40,14 +40,14 @@ Route::get('/home', function () {
 Route::middleware(['web'])->group(function () {
 
     //Resepsionis
-    Route::prefix('pendaftaran')->group(function () {
-        Route::get('/resepsionis', [ResepsionisController::class, 'index']);
-        Route::get('/resepsionis/tambah', [ResepsionisController::class, 'create']);
-        Route::post('/resepsionis/simpan', [ResepsionisController::class, 'store']);
-        Route::get('/resepsionis/edit/{id}', [ResepsionisController::class, 'edit']);
-        Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
-        Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
-        Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
+    Route::prefix('resepsionis')->group(function () {
+        Route::get('/', [ResepsionisController::class, 'index']);
+        Route::get('/tambah', [ResepsionisController::class, 'create']);
+        Route::post('/simpan', [ResepsionisController::class, 'store']);
+        Route::get('/edit/{id}', [ResepsionisController::class, 'edit']);
+        Route::get('/detail/{id}', [ResepsionisController::class, 'detail']);
+        Route::post('/edit/simpan', [ResepsionisController::class, 'update']);
+        Route::delete('/hapus', [ResepsionisController::class, 'destroy']);
     });
 
     //Poli
@@ -61,7 +61,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     // Pasien
-    Route::prefix('dashboard')->group(function () {
+    Route::prefix('resepsionis')->group(function () {
         Route::get('/pasien', [PasienController::class, 'index']);
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);
@@ -130,7 +130,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     //Dokter
-    Route::prefix('dashboard')->group(function () {
+    Route::prefix('resepsionis')->group(function () {
         Route::get('/dokter', [DokterController::class, 'index']);
         Route::get('/dokter/tambah', [DokterController::class, 'create']);
         Route::post('/dokter/simpan', [DokterController::class, 'store']);

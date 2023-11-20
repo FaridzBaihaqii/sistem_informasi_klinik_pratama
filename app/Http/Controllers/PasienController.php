@@ -24,6 +24,14 @@ class PasienController extends Controller
     return view ('pasien.index', $data);
     }
 
+    public function detail(Pasien $pasien, Request $request)
+    {
+        $data = [
+            'pasien' => Pasien::where('id_pasien', $request->id)->first()
+        ];
+        return view('pasien.detail', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -61,7 +69,7 @@ class PasienController extends Controller
             }
 
             if ($pasien->create($data)) {
-                return redirect('/dashboard/pasien')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
+                return redirect('/resepsionis/pasien')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
             return back()->with('error','Pendaftaran Gagal Ditambahkan');
         }
@@ -117,7 +125,7 @@ class PasienController extends Controller
             $dataUpdate = $pasien->where('id_pasien', $id_pasien)->update($data);
 
             if($dataUpdate) {
-                return redirect('dashboard/pasien')->with('success', 'Data berhasil diupdate');
+                return redirect('resepsionis/pasien')->with('success', 'Data berhasil diupdate');
             }
         }
 

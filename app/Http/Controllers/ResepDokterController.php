@@ -19,7 +19,7 @@ class ResepDokterController extends Controller
             'resep' => $resep
                         ->join('rekam_medis', 'resep_dokter.no_rm' , '=', 'rekam_medis.no_rm')
                         ->join('data_obat', 'resep_dokter.id_obat' , '=', 'data_obat.id_obat')->get(),
-            'jumlahRekam' => DB::select('SELECT CountTotalRekamMedis() AS totalRekam')[0]->totalRekam
+           
         ];
     
         return view('resep.index', $data);

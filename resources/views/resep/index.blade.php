@@ -12,9 +12,7 @@
                 </div>
                 <br>
                 <div class="card-header">
-                    <span class="h5">
-                        Jumlah Resep Dokter Yang Tercatat : {{$jumlahRekam}}
-                    </span>
+                 
                 </div>
                             <hr>
                         <table class="table table-hover table-bordered">
