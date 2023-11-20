@@ -10,6 +10,11 @@
                     </span>
                 </div>
                             <hr>
+                        <div class="col-md-4">
+                            <a href="tipe/tambah">
+                                <btn class="btn btn-success"  style="margin-bottom:10px">Tambah Tipe Obat</btn>
+                            </a>
+                        </div>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -30,14 +35,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="tipe/tambah">
-                        <btn class="btn btn-success">Tambah Tipe Obat</btn>
-                    </a>
-                </div>
-                <div class="card-footer">
-
                 </div>
             </div>
         </div>

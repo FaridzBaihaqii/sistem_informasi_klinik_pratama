@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pendaftaran;
-use App\Models\Poli;
 use Exception;
+use App\Models\Poli;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+
 
 class ResepsionisController extends Controller
 {
@@ -63,7 +65,7 @@ class ResepsionisController extends Controller
             );
 
             if (DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?)",[$data['nama_pendaftar'],$data['keluhan'],$data['tgl_pendaftaran'],$data['id_poli'],$data['jadwal_pelayanan'],$data['info_janji']]))  {
-                return redirect('/pendaftaran/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
+                return redirect('/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
     
             return back()->with('error', 'Data Pendaftaran Gagal Ditambahkan');
@@ -84,6 +86,15 @@ class ResepsionisController extends Controller
             'pendaftaran' => Pendaftaran::where('id_pendaftaran', $request->id)->first()
         ];
         return view('pendaftaran.edit', $data);
+    }
+
+    public function detail(Pendaftaran $pendaftaran, string $id)
+    {
+        $data = [
+            // 'pendaftaran' =>  Pendaftaran::where('id_pendaftaran', $id)->get(),
+            'pendaftaran' =>  DB::table('view_poli')->where('id_pendaftaran', $id)->get(),
+        ];
+        return view('pendaftaran.detail', $data);
     }
  
     /**
@@ -137,5 +148,13 @@ class ResepsionisController extends Controller
             }
             return response()->json($pesan);
 
+    }
+
+    public function unduhPendaftaran(Pendaftaran $pendaftaran)
+    {
+        $pendaftaran = $pendaftaran
+            ->join('poli', 'pendaftaran.id_poli', '=', 'poli.id_poli')->get();
+        $pdf = PDF::loadView('pendaftaran.unduh', ['pendaftaran' => $pendaftaran]);
+        return $pdf->download('data-pendaftaran.pdf');
     }
 }

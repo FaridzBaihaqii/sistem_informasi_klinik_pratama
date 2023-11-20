@@ -9,11 +9,17 @@
                         Data Pasien
                     </span>
                 </div>
-                            <hr>
+                    <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead >
-                                <tr class="" >
-                                    <div style="backgroundcolor: #92E3A9">
+                            <div class="col-md-4">
+                               <a href="pasien/tambah">
+                                  <btn class="btn btn-success">Tambah Data Pasien</btn>
+                               </a>
+                            </div>
+                            <hr>
+                                <tr>
+                                    <div style="background-color: #92E3A9">
                                     <th>NAMA PASIEN</th>
                                     <th>JENIS KELAMIN</th>
                                     <th>TANGGAL LAHIR</th>
@@ -28,7 +34,7 @@
                             <tbody>
                                 @foreach ($pasien as $p)
                                     <tr>
-                                        <td>{{ $p->nama_pasien }}</td>
+                                        <td>{{ $p->nama_pasien}}</td>
                                         <td>{{ $p->jenkel }}</td>
                                         <td>{{ $p->tgl_lahir }}</td>
                                         <td>{{ $p->alamat }}</td>
@@ -41,9 +47,8 @@
                                             @endif
                                         </td>
                                         <td>
-
+                                            <a href="pasien/detail/{{ $p->id_pasien }}"><btn class="btn btn-info">Detail</btn></a>
                                             <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
-
                                             <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>
                                     </tr>
@@ -51,15 +56,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="pasien/tambah">
-                        <btn class="btn btn-success">Tambah Data Pasien</btn>
-                    </a>
-
-                </div>
-                <div class="card-footer">
-
                 </div>
             </div>
         </div>

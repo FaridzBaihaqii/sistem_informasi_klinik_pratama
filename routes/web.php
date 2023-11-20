@@ -34,7 +34,7 @@ Route::middleware(['guest'])->group(function () {
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
-    return redirect('dashboard/pasien');
+    return redirect('/');
 });
 
 Route::middleware(['web'])->group(function () {
@@ -47,6 +47,8 @@ Route::middleware(['web'])->group(function () {
         Route::get('/edit/{id}', [ResepsionisController::class, 'edit']);
         Route::get('/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/edit/simpan', [ResepsionisController::class, 'update']);
+        Route::post('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
+        Route::get('/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
         Route::delete('/hapus', [ResepsionisController::class, 'destroy']);
     });
 
@@ -68,6 +70,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/pasien/edit/{id}', [PasienController::class, 'edit']);
         Route::get('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::post('/pasien/edit/simpan', [PasienController::class, 'update']);
+        Route::post('/pasien/detail/{id}', [PasienController::class, 'detail']);
         Route::delete('/pasien/hapus', [PasienController::class, 'destroy']);
     });
 
@@ -80,6 +83,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
         Route::post('/apoteker/edit/simpan', [ApotekerController::class, 'update']);
         Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
+        Route::get('/apoteker/unduh', [ApotekerController::class, 'unduhObat']);
     });
 
     //Tipe Obat
@@ -145,13 +149,6 @@ Route::middleware(['web'])->group(function () {
         Route::get('/dokter/edit/{id}', [DokterController::class, 'edit']);
         Route::post('/dokter/edit/simpan', [DokterController::class, 'update']);
         Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
-    });
-
-     //Profil
-     Route::prefix('dashboard')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'index']);
-        Route::get('/profile/edit/{id}', [ProfileController::class, 'edit']);
-        Route::post('/profile/edit/simpan', [ProfileController::class, 'update']);
     });
 
     //Logout
