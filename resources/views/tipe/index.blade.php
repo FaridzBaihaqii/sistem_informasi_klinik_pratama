@@ -13,7 +13,7 @@
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th>NAMA TIPE</th>
+                                    <th>TIPE OBAT</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>

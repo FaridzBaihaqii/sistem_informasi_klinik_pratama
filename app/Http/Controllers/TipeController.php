@@ -79,7 +79,7 @@ class TipeController extends Controller
 
         $id_tipe = $request->input('id_tipe');
 
-        if ($id_tipe !==null){
+        if ($id_tipe !=null){
 
             $dataUpdate = $tipe->where('id_tipe', $id_tipe)->update($data);
 

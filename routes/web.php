@@ -74,6 +74,7 @@ Route::get('/home', function () {
     //Apoteker
     Route::prefix('obat')->group(function () {
         Route::get('/apoteker', [ApotekerController::class, 'index']);
+        Route::get('/apoteker/detail/{id}', [ApotekerController::class, 'detail']);
         Route::get('/apoteker/tambah', [ApotekerController::class, 'create']);
         Route::post('/apoteker/simpan', [ApotekerController::class, 'store']);
         Route::get('/apoteker/edit/{id}', [ApotekerController::class, 'edit']);

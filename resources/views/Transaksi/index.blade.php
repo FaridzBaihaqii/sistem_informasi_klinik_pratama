@@ -8,6 +8,7 @@
                 <span class="h1"  style="color:#92E3A9; font-weight: bold;">
                     History
                 </span>
+                <hr>
             </div>
             <br>
             <div class="card-body">

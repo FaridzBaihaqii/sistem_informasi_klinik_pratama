@@ -17,10 +17,9 @@
                                     <label>Nama Obat</label>
                                     <input type="text" class="form-control" name="nama_obat" value="{{ $apoteker->nama_obat }}" />
                                 </div>
-                                
                                 <div class="form-group">
                                     <label>Tipe Obat</label>
-                                    <input type="text" class="form-control" name="nama_tipe" value="{{ $apoteker->nama_tipe }}" />
+                                    <input type="text" class="form-control" name="nama_tipe" value="{{ $apoteker->nama_tipe }}" disabled />
                                 </div>
                                 <div class="form-group">
                                     <label>Stok Obat</label>
@@ -47,7 +46,6 @@
                         </div>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
