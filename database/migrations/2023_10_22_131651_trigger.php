@@ -41,6 +41,35 @@ return new class extends Migration
             VALUES ("rekam_medis", CURDATE(), CURTIME(), "Tambah", "Sukses");
         END
     ');
+
+
+// DB::unprepared('
+// CREATE TRIGGER add_resep_dokter
+// AFTER INSERT ON resep_dokter
+// FOR EACH ROW
+// BEGIN
+//     DECLARE tanggal_pelayanan DATE;
+//     DECLARE diagnosis VARCHAR(255); -- Sesuaikan tipe data dengan kolom yang sesuai
+//     -- Tambahkan deklarasi variabel lainnya sesuai kebutuhan
+
+//     -- Ambil data dari tabel rekam_medis berdasarkan no_rm
+//     SELECT tanggal_pelayanan, diagnosis
+//     INTO tanggal_pelayanan, diagnosis
+//     -- Tambahkan variabel lainnya sesuai kebutuhan
+//     FROM rekam_medis
+//     WHERE no_rm = NEW.no_rm; -- NEW.no_rm adalah nilai foreign key pada resep_dokter yang baru diinsert
+
+//     -- Lakukan operasi sesuai kebutuhan, contoh:
+//     INSERT INTO logs(tabel, tanggal, jam, aksi, record)
+//     VALUES ("resep_dokter", CURDATE(), CURTIME(), "Tambah", "Sukses");
+
+//     -- Tambahkan operasi lainnya sesuai kebutuhan
+
+// END
+// ');
+
+
+
     }
 
     /**

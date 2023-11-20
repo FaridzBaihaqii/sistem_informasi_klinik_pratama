@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataObat;
+use App\Models\RekamMedis;
 use App\Models\ResepDokter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ResepDokterController extends Controller
 {
@@ -12,10 +15,13 @@ class ResepDokterController extends Controller
      */
     public function index(ResepDokter $resep)
     {
-        // Mengirim data agar ditampilkan ke dalam view dengan isi array data resep
         $data = [
-            'resep' => $resep->all()
+            'resep' => $resep
+                        ->join('rekam_medis', 'resep_dokter.no_rm' , '=', 'rekam_medis.no_rm')
+                        ->join('data_obat', 'resep_dokter.id_obat' , '=', 'data_obat.id_obat')->get(),
+           
         ];
+    
         return view('resep.index', $data);
     }
 
@@ -24,9 +30,14 @@ class ResepDokterController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function create()
+    public function create(RekamMedis $rekam, DataObat $data_obat)
     {
-        return view('resep.tambah');
+        $data = [
+            'rekam' => $rekam->all(),
+            'obat' => $data_obat->all()
+        ];
+        // dd($data);
+        return view('resep.tambah', $data);
     }
 
     /**
@@ -36,20 +47,31 @@ class ResepDokterController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_pasien'    => 'required',
-                'tgl_pelayanan'    => 'required',
-                'diagnosis'      => 'required',
-                'nama_obat'    => 'required',
+                'no_rm'      => 'required',
+                'id_obat'    => 'required',
             ]
         );
 
         //Proses Insert
 
         if ($resep->create($data)) {
-            return redirect('/resep/asisten')->with('success', 'resep Medis Baru Berhasil Ditambah');
+            return redirect('/resep/asisten')->with('success', 'Resep Dokter Baru Berhasil Ditambah');
         }
 
         return back()->with('error', 'Data Obat Gagal Ditambahkan');
+    }
+
+    public function getRekamData(Request $request, RekamMedis $rekam)
+    {
+        $no_rm = $request->input('no_rm');
+
+        // Fetch data based on the selected 'no_rm'
+        $rekamData = $rekam->where('no_rm', $no_rm)->first();
+
+        return response()->json([
+            'tgl_pelayanan' => $rekamData->tgl_pelayanan,
+            'diagnosis' => $rekamData->diagnosis,
+    ]);
     }
     
 
@@ -76,10 +98,8 @@ class ResepDokterController extends Controller
     {
         $data = $request->validate(
             [
-                'nama_pasien'    => 'required',
-                'tgl_pelayanan'    => 'required',
-                'diagnosis'      => 'required',
-                'nama_obat'    => 'required',
+                'id_obat' => 'required',
+                'no_rm'   => 'required',
             ]
         );
 

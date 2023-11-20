@@ -58,7 +58,7 @@ class DokterController extends Controller
             }
 
             if (DB::statement("CALL CreateDokter(?,?,?)", [$data['nama_dokter'], $data['no_telp'], $data['foto_profil']])) {
-                return redirect('/dashboard/dokter')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
+                return redirect('resepsionis/dokter')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
             return back()->with('error','Pendaftaran Gagal Ditambahkan');
         }
@@ -112,7 +112,7 @@ class DokterController extends Controller
             $dataUpdate = $dokter->where('id_dokter', $id_dokter)->update($data);
 
             if($dataUpdate) {
-                return redirect('dashboard/dokter')->with('success', 'Data berhasil diupdate');
+                return redirect('resepsionis/dokter')->with('success', 'Data berhasil diupdate');
             }
         }
 
