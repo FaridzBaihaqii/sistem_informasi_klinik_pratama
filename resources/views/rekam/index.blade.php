@@ -41,12 +41,13 @@
                                         <td>
                                             @if ($r->foto_pasien)
                                                 <img src="{{ url('foto') . '/' . $r->foto_pasien }} "
-                                                    style="max-width: 150px; height: auto;" />
+                                                    style="max-width: 120px; height: auto;" />
                                             @endif
                                         </td>
                                         <td>{{ $r->nama_dokter }}</td>
                                         <td>
-                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
+                                            <a href="asisten/detail/{{ $r->no_rm }}"><btn class="btn btn-info">DETAIL</btn></a>
+                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-warning">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
                                         </td>
                                     </tr>

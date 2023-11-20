@@ -33,8 +33,9 @@
                                         <td>{{ $r->diagnosis }}</td>
                                         <td>{{ $r->nama_obat }}</td>
                                         <td>
-                                            <a href="asisten/edit/{{ $r->no_rm }}"><btn class="btn btn-primary">EDIT</btn></a>
-                                            <btn class="btn btn-danger btnHapus" idRekam="{{ $r->no_rm }}">HAPUS</btn>
+                                            <a href="asisten/detail/{{ $r->id_resep }}"><btn class="btn btn-info">DETAIL</btn></a>
+                                            <a href="asisten/edit/{{ $r->id_resep }}"><btn class="btn btn-warning">EDIT</btn></a>
+                                            <btn class="btn btn-danger btnHapus" idResep="{{ $r->id_resep }}">HAPUS</btn>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -60,7 +61,7 @@
     <script type="module">
         $('tbody').on('click', '.btnHapus', function(a) {
             a.preventDefault();
-            let idRekam = $(this).closest('.btnHapus').attr('idRekam');
+            let idResep = $(this).closest('.btnHapus').attr('idResep');
             swal.fire({
                 title: "Apakah anda ingin menghapus data ini?",
                 showCancelButton: true,
@@ -76,8 +77,7 @@
                         url: 'asisten/hapus',
                         data: {
 
-                            no_rm: idRekam,
-
+                            id_resep: idResep,
                             _token: "{{ csrf_token() }}"
                         },
                         success: function(data) {

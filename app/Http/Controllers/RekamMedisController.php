@@ -32,6 +32,17 @@ class RekamMedisController extends Controller
         return view('rekam.index', $data);
     }
 
+    public function detail(RekamMedis $rekam, string $id)
+    {
+        $data = [
+            'rekam' =>  RekamMedis::where('no_rm', $id)->get(),
+            'rekam' => DB::table('view_rekam')->where('no_rm', $id)->get(),
+
+        ];
+
+        return view('rekam.detail', $data);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -75,7 +86,7 @@ class RekamMedisController extends Controller
             return redirect('/rekam/asisten')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Data Obat Gagal Ditambahkan');
+        return back()->with('error', 'Data rekam Gagal Ditambahkan');
     }
     
 

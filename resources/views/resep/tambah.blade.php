@@ -22,6 +22,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Nama Dokter</label>    
+                                <input type='text' name="nama_dokter" class="form-control" id="nama_dokter" disabled></input>
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Pasien</label>    
+                                <input type='text' name="nama_pasien" class="form-control" id="nama_pasien" disabled></input>
+                            </div>
+                            <div class="form-group">
                                 <label>Tanggal Pelayanan</label>
                                 <input type="date" class="form-control" name="tgl_pelayanan" id="tgl_pelayanan" disabled/>
                             </div>
@@ -37,6 +45,10 @@
                                         <option value="{{ $o->id_obat }}">{{ $o->nama_obat }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Aturan Pakai</label>    
+                                <textarea name="aturan_pakai" class="form-control" id="aturan_pakai" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                         @csrf
@@ -70,6 +82,8 @@
                         // Update the values of 'tgl_pelayanan' and 'diagnosis' based on the response
                         $('#tgl_pelayanan').val(response.tgl_pelayanan);
                         $('#diagnosis').val(response.diagnosis);
+                        $('#nama_pasien').val(response.nama_pasien);
+                        $('#nama_dokter').val(response.nama_dokter);
                     },
                     error: function(error) {
                         console.error('Error fetching data:', error);
@@ -79,29 +93,5 @@
         });
     </script>
 
-    {{-- <script>
-        $(document).ready(function () {
-        $('#no_rm').on('change', function () {
-            var no_rm = $(this).val();
-
-            // Lakukan permintaan AJAX untuk mendapatkan data terkait dengan nomor rekam medis
-            $.ajax({
-                url: '/resep/asisten/get-rekam-data', // Ganti dengan rute yang sesuai di controller Anda
-                type: 'GET',
-                data:{
-                    no_rm: no_rm,
-                    _token: "{{ csrf_token() }}"
-                },
-                success: function (data) {
-                    if(data.success)
-                    {
-                        $('#tgl_pelayanan').val(data.tgl_pelayanan);
-                        $('#diagnosis').val(data.diagnosis);
-                    }
-                }
-            });
-        });
-    });
-    </script> --}}
 
 @endsection

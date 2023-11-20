@@ -12,13 +12,57 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared(
-            'CREATE OR REPLACE VIEW v_rekam_medis_table AS 
-                SELECT  rekam_medis.no_rm, rekam_medis.id_dokter, dokter.nama_dokter, pasien.nama_pasien, rekam_medis.ruangan, rekam_medis.tgl_pelayanan, rekam_medis.keluhan_rm, rekam_medis.diagnosis, rekam_medis.foto_pasien FROM rekam_medis 
-                INNER JOIN dokter ON dokter.id_dokter = rekam_medis.id_dokter
-                INNER JOIN pasien ON pasien.id_pasien = rekam_medis.id_pasien;
-            '
-        );
+        DB::unprepared("DROP VIEW IF EXISTS view_rekam");
+
+        DB::unprepared("
+        CREATE VIEW view_rekam AS
+        SELECT
+            r.no_rm AS no_rm, 
+            r.ruangan AS ruangan,
+            r.keluhan_rm AS keluhan_rm,
+            r.diagnosis AS diagnosis,
+            r.tgl_pelayanan AS tgl_pelayanan,
+            r.foto_pasien AS foto_pasien,
+            p.id_pasien AS id_pasien,
+            p.nama_pasien AS nama_pasien,
+            d.id_dokter AS id_dokter,
+            d.nama_dokter AS nama_dokter
+        FROM rekam_medis r
+        INNER JOIN pasien p ON r.id_pasien = p.id_pasien
+        INNER JOIN dokter d ON r.id_dokter = d.id_dokter;
+
+        ");
+
+        DB::unprepared("DROP VIEW IF EXISTS view_resep");
+
+        DB::unprepared("
+        CREATE VIEW view_resep AS
+        SELECT
+            re.id_resep AS id_resep, 
+            re.aturan_pakai AS aturan_pakai, 
+            r.no_rm AS no_rm,
+            r.diagnosis AS diagnosis,
+            r.tgl_pelayanan AS tgl_pelayanan,
+            p.id_pasien AS id_pasien,
+            p.nama_pasien AS nama_pasien,
+            d.id_dokter AS id_dokter,
+            d.nama_dokter AS nama_dokter,
+            o.id_obat AS id_obat,
+            o.nama_obat AS nama_obat
+        FROM resep_dokter re
+        INNER JOIN rekam_medis r ON re.no_rm = r.no_rm
+        INNER JOIN pasien p ON r.id_pasien = p.id_pasien
+        INNER JOIN dokter d ON r.id_dokter = d.id_dokter
+        INNER JOIN data_obat o ON re.id_obat = o.id_obat;
+        ");
+
+        // DB::unprepared(
+        //     'CREATE OR REPLACE VIEW v_rekam_medis_table AS 
+        //         SELECT  rekam_medis.no_rm, rekam_medis.id_dokter, dokter.nama_dokter, pasien.nama_pasien, rekam_medis.ruangan, rekam_medis.tgl_pelayanan, rekam_medis.keluhan_rm, rekam_medis.diagnosis, rekam_medis.foto_pasien FROM rekam_medis 
+        //         INNER JOIN dokter ON dokter.id_dokter = rekam_medis.id_dokter
+        //         INNER JOIN pasien ON pasien.id_pasien = rekam_medis.id_pasien;
+        //     '
+        // );
 
         DB::unprepared("DROP VIEW IF EXISTS view_tipe;");
 

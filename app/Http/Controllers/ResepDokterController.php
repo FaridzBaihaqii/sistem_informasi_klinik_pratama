@@ -49,11 +49,11 @@ class ResepDokterController extends Controller
             [
                 'no_rm'      => 'required',
                 'id_obat'    => 'required',
+                'aturan_pakai'    => 'required',
+
             ]
         );
-
         //Proses Insert
-
         if ($resep->create($data)) {
             return redirect('/resep/asisten')->with('success', 'Resep Dokter Baru Berhasil Ditambah');
         }
@@ -66,12 +66,24 @@ class ResepDokterController extends Controller
         $no_rm = $request->input('no_rm');
 
         // Fetch data based on the selected 'no_rm'
-        $rekamData = $rekam->where('no_rm', $no_rm)->first();
+        $rekamData = DB::table('view_rekam')->where('no_rm', $no_rm)->first();
 
         return response()->json([
             'tgl_pelayanan' => $rekamData->tgl_pelayanan,
             'diagnosis' => $rekamData->diagnosis,
+            'nama_pasien' => $rekamData->nama_pasien,
+            'nama_dokter' => $rekamData->nama_dokter,
     ]);
+    }
+
+    public function detail(ResepDokter $resep, string $id)
+    {
+        $data = [
+            'resep' => ResepDokter::where('id_resep', $id)->get(),
+            'resep' => DB::table('view_resep')->where('id_resep', $id)->get(),
+        ];
+
+        return view('resep.detail', $data);
     }
     
 
@@ -85,11 +97,13 @@ class ResepDokterController extends Controller
     public function edit(ResepDokter $resep, string $id)
     {
         $data = [
-            'resep' =>  ResepDokter::where('id_resep', $id)->first()
+            'resep' => ResepDokter::where('id_resep', $id)->first(),
+            'viewResep' => DB::table('view_resep')->where('id_resep', $id)->get(),
         ];
-
+    
         return view('resep.edit', $data);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -100,6 +114,7 @@ class ResepDokterController extends Controller
             [
                 'id_obat' => 'required',
                 'no_rm'   => 'required',
+                'aturan_pakai'    => 'required',
             ]
         );
 

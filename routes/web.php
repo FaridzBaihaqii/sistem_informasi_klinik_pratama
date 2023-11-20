@@ -95,6 +95,7 @@ Route::middleware(['web'])->group(function () {
     //Rekam Medis
     Route::prefix('rekam')->group(function () {
         Route::get('/asisten', [RekamMedisController::class, 'index']);
+        Route::get('/asisten/detail/{id}', [RekamMedisController::class, 'detail']);
         Route::get('/asisten/tambah', [RekamMedisController::class, 'create']);
         Route::post('/asisten/simpan', [RekamMedisController::class, 'store']);
         Route::get('/asisten/edit/{id}', [RekamMedisController::class, 'edit']);
@@ -105,9 +106,13 @@ Route::middleware(['web'])->group(function () {
     //Resep Dokter
     Route::prefix('resep/asisten')->group(function () {
         Route::get('/', [ResepDokterController::class, 'index']);
+        Route::get('/detail/{id}', [ResepDokterController::class, 'detail']);
         Route::get('/tambah', [ResepDokterController::class, 'create']);
         Route::get('/get-rekam-data', [ResepDokterController::class, 'getRekamData'])->name('getRekamData'); 
         Route::post('/simpan', [ResepDokterController::class, 'store']);
+        Route::get('/edit/{id}', [ResepDokterController::class, 'edit']);
+        Route::post('/edit/simpan', [ResepDokterController::class, 'update']);
+        Route::delete('/hapus', [ResepDokterController::class, 'destroy']);
     });
     // routes/web.php
 
