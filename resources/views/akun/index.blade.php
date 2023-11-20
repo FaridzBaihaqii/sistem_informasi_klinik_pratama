@@ -47,10 +47,8 @@
                     <a href="akun/tambah">
                         <btn class="btn btn-success">Tambah Akun</btn>
                     </a>
-
                 </div>
                 <div class="card-footer">
-
                 </div>
             </div>
         </div>

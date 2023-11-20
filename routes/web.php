@@ -48,6 +48,7 @@ Route::get('/home', function () {
         Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
         Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
         Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
+        Route::get('/resepsionis/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
     });
 
     //Poli
