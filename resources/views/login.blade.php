@@ -29,7 +29,7 @@
                             <div class="card-body p-md-5 mx-md-4">
                                 <form method="POST">
                                     @csrf
-                                    <p class="mb-4 fw-bold fs-2">Login Akun</p>
+                                    <p class="mb-4 fw-bold fs-2" style="color: #92E3A9;">Login Akun</p>
                                     <div class="form-outline mb-4">
                                         <div class="input-group">
                                             <span class="input-group-text">
