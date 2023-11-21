@@ -8,6 +8,7 @@ use App\Models\RekamMedis;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RekamMedisController extends Controller
 {
@@ -30,6 +31,17 @@ class RekamMedisController extends Controller
             'jumlahRekam' => $totalRekam
         ];
         return view('rekam.index', $data);
+    }
+
+    public function detail(RekamMedis $rekam, string $id)
+    {
+        $data = [
+            'rekam' =>  RekamMedis::where('no_rm', $id)->get(),
+            'rekam' => DB::table('view_rekam')->where('no_rm', $id)->get(),
+
+        ];
+
+        return view('rekam.detail', $data);
     }
 
 
@@ -75,7 +87,7 @@ class RekamMedisController extends Controller
             return redirect('/rekam/asisten')->with('success', 'Rekam Medis Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Data Obat Gagal Ditambahkan');
+        return back()->with('error', 'Data rekam Gagal Ditambahkan');
     }
     
 
@@ -174,5 +186,16 @@ class RekamMedisController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function unduhRekam(RekamMedis $rekam)
+    {
+        $v_rekam = DB::table('rekam_medis')
+        ->join('dokter', 'rekam_medis.id_dokter', '=', 'dokter.id_dokter')
+        ->join('pasien', 'rekam_medis.id_pasien', '=', 'pasien.id_pasien')
+        ->get();
+
+        $pdf = PDF::loadView('rekam.unduh', ['rekam_medis' => $v_rekam]);
+        return $pdf->download('data-rekam.pdf');
     }
 }

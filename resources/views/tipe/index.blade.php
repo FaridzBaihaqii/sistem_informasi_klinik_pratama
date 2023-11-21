@@ -10,6 +10,11 @@
                     </span>
                 </div>
                             <hr>
+                        <div class="col-md-4">
+                            <a href="tipe/tambah">
+                                <btn class="btn btn-success"  style="margin-bottom:10px">Tambah Tipe Obat</btn>
+                            </a>
+                        </div>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
@@ -22,7 +27,6 @@
                                     <tr>
                                         <td>{{ $t->nama_tipe }}</td>
                                         <td>
-                                            <a href="tipe/edit/{{ $t->id_tipe }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idTipe="{{ $t->id_tipe }}">HAPUS</btn>
                                         </td>
                                     </tr>
@@ -30,14 +34,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="tipe/tambah">
-                        <btn class="btn btn-success">Tambah Tipe Obat <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg></btn>
-                    </a>
-                </div>
-                <div class="card-footer">
-
                 </div>
             </div>
         </div>

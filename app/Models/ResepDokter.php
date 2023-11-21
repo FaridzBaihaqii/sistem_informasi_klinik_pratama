@@ -10,7 +10,7 @@ class ResepDokter extends Model
     use HasFactory;
     use HasFactory;
     protected $table = 'resep_dokter';
-    protected $fillable = ['no_rm','id_obat'];
+    protected $fillable = ['no_rm','id_obat','aturan_pakai'];
     protected $primarykey = 'id_resep';
     public $timestamps = false;
 }

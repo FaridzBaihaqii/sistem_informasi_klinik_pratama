@@ -47,7 +47,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="pasien/detail/{{ $p->id_pasien }}"><btn class="btn btn-info">Detail</btn></a>
+                                            <!-- <a href="pasien/detail/{{ $p->id_pasien }}"><btn class="btn btn-info">Detail</btn></a> -->
                                             <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>

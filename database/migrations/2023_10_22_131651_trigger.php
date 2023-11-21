@@ -42,6 +42,16 @@ return new class extends Migration
         END
     ');
 
+    DB::unprepared('
+        CREATE TRIGGER add_resep_dokter
+        BEFORE INSERT ON resep_dokter
+        FOR EACH ROW
+        BEGIN
+            INSERT logs(tabel, tanggal, jam, aksi, record)
+            VALUES ("resep_dokter", CURDATE(), CURTIME(), "Tambah", "Sukses");
+        END
+    ');
+
 
 // DB::unprepared('
 // CREATE TRIGGER add_resep_dokter
