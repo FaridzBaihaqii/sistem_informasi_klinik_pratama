@@ -62,7 +62,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 header {
-    background-color: #b9f6cb;
+    background-color: #92E3A9;
     color: #fff;
     padding: 10px;
     text-align: center;
