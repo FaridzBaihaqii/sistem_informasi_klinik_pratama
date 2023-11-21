@@ -16,7 +16,7 @@
                                <div class="form-group">
                                     <label>Tipe Obat</label>
                                     <input type="text" class="form-control" name="nama_tipe" value="{{ $tipe->nama_tipe }}" />
-                                    <input type="hidden" class="form-control" name="id  _tipe" value="{{ $tipe->id_tipe }}" />
+                                    <input type="hidden" class="form-control" name="id_tipe" value="{{ $tipe->id_tipe }}" />
                                 </div>
                                 </div>
                                 @csrf
