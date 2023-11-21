@@ -34,7 +34,7 @@ Route::middleware(['guest'])->group(function () {
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
-    return redirect('/');
+    return redirect('/dashboard/pasien');
 });
 
 Route::middleware(['web'])->group(function () {

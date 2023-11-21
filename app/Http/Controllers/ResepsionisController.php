@@ -117,7 +117,7 @@ class ResepsionisController extends Controller
             try {
                 $dataUpdate = $pendaftaran->where('id_pendaftaran', $id_pendaftaran)->update($data);
                 DB::commit();
-                return redirect('pendaftaran/resepsionis')->with('success', 'Data Berhasil Diupdate');
+                return redirect('/resepsionis')->with('success', 'Data Berhasil Diupdate');
                 
             } catch (Exception $e) {
                 DB::rollback();

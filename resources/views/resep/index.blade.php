@@ -16,6 +16,10 @@
                 </div>
                             <hr>
                         <table class="table table-hover table-bordered">
+                        <a href="asisten/tambah">
+                            <btn class="btn btn-success btn">Tambah resep Medis</btn>
+                        </a>
+                        <hr>
                             <thead>
                                 <tr>
                                     <th>NO REKAM MEDIS</th>
@@ -43,6 +47,8 @@
                         </table>
                     </div>
                 </div>
+<<<<<<< HEAD
+=======
                 <div class="card-footer">
                     <div class="col-md-4">
                         <a href="asisten/tambah">
@@ -51,6 +57,7 @@
 
                     </div>
                 </div>
+>>>>>>> 327c612da77a00d499c39d5dc420af74a9f4bcdf
             </div>
         </div>
         <br/>

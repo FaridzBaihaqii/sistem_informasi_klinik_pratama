@@ -25,12 +25,9 @@
                                     <label>Tanggal Pendaftaran</label>
                                     <input type="date" class="form-control" name="tgl_pendaftaran" value="{{ $pendaftaran->tgl_pendaftaran }}" />
                                 </div>
-                                <div class="form-">
-                                <label>Poli</label><br>
-                                <select name="poli" class="form-control" value="{{ $pendaftaran->poli }}">
-                                    <option value="poli_umum">Poli Umum</option>
-                                    <option value="poli_gigi">Poli Gigi</option>
-                                </select>
+                                <div class="form-group">
+                                    <label>Poli</label>
+                                    <input type="text" class="form-control" name="nama_poli" value="{{ $pendaftaran->nama_poli }}" />
                                 </div>
                                 <div class="form-group">
                                     <label>Jadwal Pelayanan</label>
