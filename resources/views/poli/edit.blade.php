@@ -17,6 +17,9 @@
                                     <label>Nama Poli</label>
                                     <input type="text" class="form-control" name="nama_poli" value="{{ $poli->nama_poli }}" />
                                 </div>
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" name="id_poli" value="{{ $poli->id_poli }}"/>
+                                </div>
                                 </div>
                                 @csrf
                                 <div class="d-flex mt-3">

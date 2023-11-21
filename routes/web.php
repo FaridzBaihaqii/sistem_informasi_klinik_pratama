@@ -34,7 +34,7 @@ Route::middleware(['guest'])->group(function () {
 
 // Jika sudah login, kembali ke dalam halaman 
 Route::get('/home', function () {
-    return redirect('/');
+    return redirect('/dashboard/pasien');
 });
 
 Route::middleware(['web'])->group(function () {
@@ -63,7 +63,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     // Pasien
-    Route::prefix('resepsionis')->group(function () {
+    Route::prefix('dashboard')->group(function () {
         Route::get('/pasien', [PasienController::class, 'index']);
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);

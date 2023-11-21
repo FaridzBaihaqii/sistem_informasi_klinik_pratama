@@ -16,6 +16,10 @@
                 </div>
                             <hr>
                         <table class="table table-hover table-bordered">
+                        <a href="apoteker/tambah">
+                        <btn class="btn btn-success">Tambah Obat</btn>
+                    </a>
+                    <hr>
                             <thead>
                                 <tr>
                                     <th>NAMA OBAT</th>
@@ -49,13 +53,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <a href="apoteker/tambah">
-                        <btn class="btn btn-success">Tambah Obat</btn>
-                    </a>
-                </div>
-                <div class="card-footer"> 
                 </div>
             </div>
         </div>
