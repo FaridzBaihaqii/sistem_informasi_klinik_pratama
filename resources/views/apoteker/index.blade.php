@@ -44,7 +44,7 @@
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>
-                                            <a href="apoteker/detail/{{ $a->id_obat }}"><btn class="btn btn-info">Detail</btn></a>
+                                            <a href="apoteker/detail/{{ $a->id_obat }}"><btn class="btn btn-info">DETAIL</btn></a>
                                             <a href="apoteker/edit/{{ $a->id_obat }}"><btn class="btn btn-warning">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
                                         </td>
