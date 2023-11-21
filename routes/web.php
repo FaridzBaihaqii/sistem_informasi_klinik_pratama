@@ -63,7 +63,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     // Pasien
-    Route::prefix('resepsionis')->group(function () {
+    Route::prefix('dashboard')->group(function () {
         Route::get('/pasien', [PasienController::class, 'index']);
         Route::get('/pasien/tambah', [PasienController::class, 'create']);
         Route::post('/pasien/simpan', [PasienController::class, 'store']);
@@ -104,6 +104,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('/asisten/simpan', [RekamMedisController::class, 'store']);
         Route::get('/asisten/edit/{id}', [RekamMedisController::class, 'edit']);
         Route::post('/asisten/edit/simpan', [RekamMedisController::class, 'update']);
+        Route::get('/asisten/unduh', [RekamMedisController::class, 'unduhRekam']);
         Route::delete('/asisten/hapus', [RekamMedisController::class, 'destroy']);
     });
 

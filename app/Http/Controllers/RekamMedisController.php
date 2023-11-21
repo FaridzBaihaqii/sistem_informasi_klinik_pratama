@@ -8,6 +8,7 @@ use App\Models\RekamMedis;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RekamMedisController extends Controller
 {
@@ -185,5 +186,16 @@ class RekamMedisController extends Controller
         }
 
         return response()->json($pesan);
+    }
+
+    public function unduhRekam(RekamMedis $rekam)
+    {
+        $v_rekam = DB::table('rekam_medis')
+        ->join('dokter', 'rekam_medis.id_dokter', '=', 'dokter.id_dokter')
+        ->join('pasien', 'rekam_medis.id_pasien', '=', 'pasien.id_pasien')
+        ->get();
+
+        $pdf = PDF::loadView('rekam.unduh', ['rekam_medis' => $v_rekam]);
+        return $pdf->download('data-rekam.pdf');
     }
 }

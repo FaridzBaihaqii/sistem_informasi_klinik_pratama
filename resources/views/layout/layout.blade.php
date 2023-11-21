@@ -295,7 +295,7 @@ svg {
                 <!-- Add additional list items here -->
                 <li><a href="{{ url('/resepsionis') }}">Pendaftaran</a></li>
                 <li><a href="{{url('resepsionis/dokter')}}">Dokter</a></li>
-                <li><a href="{{url('resepsionis/pasien')}}">Pasien</a></li>
+                <li><a href="{{url('dashboard/pasien')}}">Pasien</a></li>
                 <li><a href="{{url('pendaftaran/poli')}}">Poli</a></li>
             </ul>
         </li>
