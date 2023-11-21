@@ -21,11 +21,20 @@
                     </a>
                 </div>
                     <hr>
+<<<<<<< HEAD
                         <table class="table table-hover table-bordered">
                         <a href="apoteker/tambah">
                         <btn class="btn btn-success">Tambah Obat</btn>
                     </a>
                     <hr>
+=======
+                    <div class="col-md-4">
+                        <a href="apoteker/tambah">
+                            <btn class="btn btn-success" style="margin-bottom:10px">Tambah Obat</btn>
+                        </a>
+                    </div>
+                        <table class="table table-hover table-bordered DataTable">
+>>>>>>> a7f7624f605baf919c3f5cf5f7971b88c042d8f0
                             <thead>
                                 <tr>
                                     <th>NAMA OBAT</th>
@@ -43,7 +52,7 @@
                                         <td>{{ $a->stok_obat }}</td>
                                         <td>{{ $a->tgl_exp }}</td>
                                         <td>
-                                            <a href="apoteker/detail/{{ $a->id_obat }}"><btn class="btn btn-info">Detail</btn></a>
+                                            <a href="apoteker/detail/{{ $a->id_obat }}"><btn class="btn btn-info">DETAIL</btn></a>
                                             <a href="apoteker/edit/{{ $a->id_obat }}"><btn class="btn btn-warning">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idObat="{{ $a->id_obat }}">HAPUS</btn>
                                         </td>

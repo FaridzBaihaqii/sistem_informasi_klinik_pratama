@@ -265,7 +265,7 @@ svg {
       <br>
         <li class="sidebar-brand">
             <a href="{{ url('dashboard/pasien') }}" class="h2">
-              <img src="{{ asset('gambar/logo.png') }}" style="width: 90%; margin-top: -80px; margin-left: 0%;">
+              <img src="{{ asset('gambar/logo.png') }}" style="width: 90%; margin-top: -69px; margin-left: 0%;">
             </a>
         </li>
         <br>
