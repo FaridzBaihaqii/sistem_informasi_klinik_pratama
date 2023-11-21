@@ -10,7 +10,7 @@
                     </span>
                 </div>
                 <br>
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <span class="h5">
                         Jumlah Pendaftaran Yang Tercatat : {{$jumlahPendaftaran}}
                     </span>
@@ -21,7 +21,7 @@
                     </a>
                 </div>
                     <hr>
-                    <table class="table table-hover table-bordered">
+                    <table class="table table-hover table-bordered DataTable">
                     <div class="col-md-4">
                         <a href="resepsionis/tambah">
                             <btn class="btn btn-success">Tambah Pendaftaran</btn>
@@ -97,6 +97,9 @@
                     });
                 }
             });
+        });
+        $(document).ready(function() {
+            $('.DataTable').DataTable();
         });
     </script>
 

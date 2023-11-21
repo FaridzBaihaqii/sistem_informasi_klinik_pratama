@@ -21,7 +21,7 @@
                     </a>
                 </div>
                     <hr>
-                        <table class="table table-hover table-bordered">
+                        <table class="table table-hover table-bordered DataTable">
                         <a href="apoteker/tambah">
                         <btn class="btn btn-success">Tambah Obat</btn>
                     </a>
