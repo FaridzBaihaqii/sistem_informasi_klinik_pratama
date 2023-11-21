@@ -79,16 +79,16 @@ class TipeController extends Controller
 
         $id_tipe = $request->input('id_tipe');
 
-        if ($id_tipe !=null){
+        if ($id_tipe !==null){
 
             $dataUpdate = $tipe->where('id_tipe', $id_tipe)->update($data);
 
             if($dataUpdate) {
-                return redirect('obat/tipe')->with('success', 'Data Tipe Obat Berhasil Diupdate');
+                return redirect('obat/tipe')->with('success', 'Data Obat Berhasil Diupdate');
             }
         }
 
-            return back()->with('error', 'Data Tipe Obat Gagal diupdate');
+            return back()->with('error', 'Data Obat Gagal diupdate');
     }
 
     /**
