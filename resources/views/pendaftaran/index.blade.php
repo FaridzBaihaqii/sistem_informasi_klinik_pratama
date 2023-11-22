@@ -10,7 +10,7 @@
                     </span>
                 </div>
                 <br>
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <span class="h5">
                         Jumlah Pendaftaran Yang Tercatat : {{$jumlahPendaftaran}}
                     </span>

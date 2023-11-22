@@ -98,6 +98,23 @@ return new class extends Migration
         INNER JOIN poli p ON pe.id_poli = p.id_poli;
 
         ");
+
+        DB::unprepared("DROP VIEW IF EXISTS view_pasien;");
+
+        DB::unprepared("
+        CREATE VIEW view_pasien AS
+        SELECT
+            pe.id_pasien AS id_pasien,
+            pe.nama_pasien AS nama_pasien,
+            pe.jenkel AS jenkel,
+            pe.tgl_lahir AS tgl_lahir,
+            pe.alamat AS alamat,
+            pe.no_telp AS no_telp,
+            pe.no_bpjs AS no_bpjs,
+            pe.foto_profil AS foto_profil
+        FROM pasien pe;
+
+        ");
     }
 
     /**
