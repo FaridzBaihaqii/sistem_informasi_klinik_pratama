@@ -52,6 +52,11 @@ Route::middleware(['web'])->group(function () {
         Route::delete('/hapus', [ResepsionisController::class, 'destroy']);
     });
 
+    //Rekam Medis Terdaftar
+    Route::prefix('resepsionis')->group(function () {
+        Route::get('/rekam-terdaftar', [RekamMedisController::class, 'terdaftar']);
+    });
+
     //Poli
     Route::prefix('pendaftaran')->group(function () {
         Route::get('/poli', [PoliController::class, 'index']);
