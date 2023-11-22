@@ -23,11 +23,17 @@
                                 <div class="form-group">
                                     <div class="container">
                                     @foreach ($pasien as $p)
+                                    @if ($p->foto_profil)
+                                        <div class="photo-container" style="margin-top:-20px">
+                                            <br>
+                                            <img src="{{ url('foto') . '/' . $p->foto_profil }} "style="max-width: 170px; height: auto;" />                                
+                                        </div>
+                                        @endif
                                         <table class="table table-bordered mt-3">
                                             <tbody>
                                                 <tr>
                                                     <td class="fw-bolder" style="width: 250px;">Nama Pasien</td>
-                                                    <td style="width: 150px;">: {{$p->nama_pasien}}</td>
+                                                    <td>: {{$p->nama_pasien}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="fw-bolder">Jenis Kelamin</td>
@@ -48,10 +54,6 @@
                                                 <tr>
                                                     <td class="fw-bolder">NO BPJS</td>
                                                     <td>: {{$p->no_bpjs}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="fw-bolder">Foto Profil</td>
-                                                    <td>: {{$p->foto_profil}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>

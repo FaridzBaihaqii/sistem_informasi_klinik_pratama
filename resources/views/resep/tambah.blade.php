@@ -3,13 +3,19 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
                     <span class="h1">
                         Tambah Resep Dokter
                     </span>
+                    
                 </div>
-                <div class="card-body">
+                <br>
+<<<<<<< HEAD
+                <div class="card-body" >
+=======
+                <div class="card-body" style="width:;">
+>>>>>>> bd9311719877f5d90666ca05ce06a5e896cc6f3a
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group">
@@ -73,7 +79,7 @@
 
                 // Perform AJAX request to retrieve data based on selected 'no_rm'
                 $.ajax({
-                    url: '{{ route('getRekamData') }}',
+                    url: '/resep/asisten/get-rekam-data',
                     method: 'GET',
                     data: {
                         'no_rm': selectedNoRM
