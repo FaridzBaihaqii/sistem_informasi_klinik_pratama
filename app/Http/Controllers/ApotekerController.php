@@ -58,7 +58,7 @@ class ApotekerController extends Controller
         $data = $request->validate(
             [
                 'nama_obat'    => 'required',
-                'id_tipe'    => 'required',
+                'id_tipe'      => 'required',
                 'stok_obat'    => 'required',
                 'tgl_exp'      => 'required',
                 'foto_obat'    => 'required',
@@ -186,7 +186,7 @@ class ApotekerController extends Controller
         return response()->json($pesan);
     }
 
-    public function unduhObat(DataObat $dataObat)
+    public function unduh(DataObat $dataObat)
     {
         $apoteker = $dataObat
             ->join('tipe_obat', 'data_obat.id_tipe', '=', 'tipe_obat.id_tipe')->get();

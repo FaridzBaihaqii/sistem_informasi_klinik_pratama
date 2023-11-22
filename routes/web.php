@@ -83,7 +83,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
         Route::post('/apoteker/edit/simpan', [ApotekerController::class, 'update']);
         Route::delete('/apoteker/hapus', [ApotekerController::class, 'destroy']);
-        Route::get('/apoteker/unduh', [ApotekerController::class, 'unduhObat']);
+        Route::get('/apoteker/unduh', [ApotekerController::class, 'unduh']);
     });
 
     //Tipe Obat
