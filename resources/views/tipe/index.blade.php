@@ -28,6 +28,7 @@
                                     <tr>
                                         <td>{{ $t->nama_tipe }}</td>
                                         <td>
+                                            <a href="tipe/edit/{{ $t->id_tipe }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idTipe="{{ $t->id_tipe }}">HAPUS</btn>
                                         </td>
                                     </tr>
