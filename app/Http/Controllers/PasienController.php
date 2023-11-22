@@ -5,6 +5,7 @@ use App\Models\Akun;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class PasienController extends Controller
@@ -25,11 +26,14 @@ class PasienController extends Controller
     return view ('pasien.index', $data);
     }
 
-    public function detail(Pasien $pasien, Request $request)
+    public function detail(Pasien $pasien, Request $request, string $id)
     {
         $data = [
-            'pasien' => Pasien::where('id_pasien', $request->id)->first()
+            'pasien' =>  Pasien::where('id_pasien', $id)->get(),
+            'pasien' => DB::table('view_pasien')->where('id_pasien', $id)->get(),
+
         ];
+
         return view('pasien.detail', $data);
     }
 

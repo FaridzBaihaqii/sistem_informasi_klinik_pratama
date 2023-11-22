@@ -21,11 +21,12 @@
                     </a>
                 </div>
                     <hr>
-                        <table class="table table-hover table-bordered DataTable">
+                    <div class="col-md-4">
                         <a href="apoteker/tambah">
-                        <btn class="btn btn-success">Tambah Obat</btn>
-                    </a>
-                    <hr>
+                            <btn class="btn btn-success" style="margin-bottom:10px">Tambah Obat</btn>
+                        </a>
+                    </div>
+                        <table class="table table-hover table-bordered DataTable">
                             <thead>
                                 <tr>
                                     <th>NAMA OBAT</th>

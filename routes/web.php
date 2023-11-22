@@ -40,7 +40,7 @@ Route::get('/home', function () {
 Route::middleware(['web'])->group(function () {
 
     //Resepsionis
-    Route::prefix('resepsionis')->group(function () {
+    Route::prefix('resepsionis')->group(function() {
         Route::get('/', [ResepsionisController::class, 'index']);
         Route::get('/tambah', [ResepsionisController::class, 'create']);
         Route::post('/simpan', [ResepsionisController::class, 'store']);

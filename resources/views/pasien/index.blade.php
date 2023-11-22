@@ -17,7 +17,6 @@
                                   <btn class="btn btn-success">Tambah Data Pasien</btn>
                                </a>
                             </div>
-                            <hr>
                                 <tr>
                                     <div style="background-color: #92E3A9">
                                     <th>NAMA PASIEN</th>
@@ -47,7 +46,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <!-- <a href="pasien/detail/{{ $p->id_pasien }}"><btn class="btn btn-info">Detail</btn></a> -->
+                                            <a href="pasien/detail/{{ $p->id_pasien }}"><btn class="btn btn-info">Detail</btn></a>
                                             <a href="pasien/edit/{{ $p->id_pasien }}"><btn class="btn btn-primary">EDIT</btn></a>
                                             <btn class="btn btn-danger btnHapus" idPasien="{{ $p->id_pasien }}">HAPUS</btn>
                                         </td>

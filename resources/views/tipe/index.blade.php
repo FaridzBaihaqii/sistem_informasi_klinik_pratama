@@ -12,9 +12,10 @@
                             <hr>
                         <div class="col-md-4">
                             <a href="tipe/tambah">
-                                <btn class="btn btn-success"  style="margin-bottom:10px">Tambah Tipe Obat</btn>
+                                <btn class="btn btn-success">Tambah Tipe Obat</btn>
                             </a>
                         </div>
+                        <hr>
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
