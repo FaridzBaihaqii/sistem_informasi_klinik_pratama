@@ -78,7 +78,7 @@
 
                     // Perform AJAX request to retrieve data based on selected 'no_rm'
                     $.ajax({
-                        url: '{{ route('getRekamData') }}',
+                        url: '/resep/asisten/get-rekam-data',
                         method: 'GET',
                         data: {
                             'no_rm': selectedNoRM

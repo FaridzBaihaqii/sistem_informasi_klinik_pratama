@@ -27,6 +27,8 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            
+            Session::regenerateToken();
 
             if ($user->peran == 'resepsionis' || $user->peran == 'apoteker' || $user->peran == 'asisten') {
                 return redirect('dashboard/pasien')->with('_token', Session::token());

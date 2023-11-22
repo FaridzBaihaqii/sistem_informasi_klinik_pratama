@@ -3,13 +3,15 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="">
                 <div class="card-header">
                     <span class="h1">
                         Tambah Resep Dokter
                     </span>
+                    
                 </div>
-                <div class="card-body">
+                <br>
+                <div class="card-body" >
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group">
@@ -73,7 +75,7 @@
 
                 // Perform AJAX request to retrieve data based on selected 'no_rm'
                 $.ajax({
-                    url: '{{ route('getRekamData') }}',
+                    url: '/resep/asisten/get-rekam-data',
                     method: 'GET',
                     data: {
                         'no_rm': selectedNoRM
