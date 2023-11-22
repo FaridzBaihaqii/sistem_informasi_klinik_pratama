@@ -125,7 +125,7 @@ class ResepDokterController extends Controller
             $dataUpdate = $resep->where('id_resep', $id_resep)->update($data);
 
             if ($dataUpdate) {
-                return redirect('/resep/asisten')->with('success', 'resep Medis Berhasil Diupdate');
+                return redirect('/resep/asisten')->with('success', 'Resep Dokter Berhasil Diupdate');
             } else {
                 return back()->with('error', 'resep Medis Gagal Diupdate');
             }

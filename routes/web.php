@@ -65,6 +65,7 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/dokter/hapus', [DokterController::class, 'destroy']);
     });
 
+<<<<<<< HEAD
     Route::middleware(['UserPeran:apoteker'])->group(function() {
         //Apoteker
             Route::get('/obat/apoteker', [ApotekerController::class, 'index']);
@@ -82,6 +83,21 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/obat/tipe/edit/{id}', [TipeController::class, 'edit']);
             Route::post('/obat/tipe/edit/simpan', [TipeController::class, 'update']);
             Route::delete('/obat/tipe/hapus', [TipeController::class, 'destroy']);
+=======
+    //Rekam Medis Terdaftar
+    Route::prefix('resepsionis')->group(function () {
+        Route::get('/rekam-terdaftar', [RekamMedisController::class, 'terdaftar']);
+    });
+
+    //Poli
+    Route::prefix('pendaftaran')->group(function () {
+        Route::get('/poli', [PoliController::class, 'index']);
+        Route::get('/poli/tambah', [PoliController::class, 'create']);
+        Route::post('/poli/simpan', [PoliController::class, 'store']);
+        Route::get('/poli/edit/{id}', [PoliController::class, 'edit']);
+        Route::post('/poli/edit/simpan', [PoliController::class, 'update']);
+        Route::delete('/poli/hapus', [PoliController::class, 'destroy']);
+>>>>>>> bd9311719877f5d90666ca05ce06a5e896cc6f3a
     });
 
     Route::middleware(['UserPeran:asisten'])->group(function() {

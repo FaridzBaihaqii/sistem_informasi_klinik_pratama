@@ -44,6 +44,18 @@ class RekamMedisController extends Controller
         return view('rekam.detail', $data);
     }
 
+    public function terdaftar(RekamMedis $rekam)
+    {
+        $data = [
+            'rekam' => DB::table('view_rekam')->get(),
+
+        ];
+
+        return view('rekam.terdaftar', $data);
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

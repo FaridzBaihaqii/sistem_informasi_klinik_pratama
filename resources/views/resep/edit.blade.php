@@ -15,42 +15,34 @@
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Nomor Rekam Medis</label>
+                                        @foreach ($viewResep as $r)
                                         <select name="no_rm" id="no_rm" class="form-control" required>
                                             <option value="">Pilih Rekam Medis</option>
-                                            @foreach ($viewResep as $r)
                                             <option value="{{ $r->no_rm }}" {{ old('no_rm', $resep->no_rm) == $r->no_rm ? 'selected' : '' }}>
                                                 {{ $r->no_rm }}
                                             </option>
-                                       
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Tanggal Pelayanan</label>
                                         <input type="date" class="form-control" name="tgl_pelayanan" id="tgl_pelayanan" value="{{$r->tgl_pelayanan}}" disabled/>
                                     </div>
-                                    @endforeach
                                     <div class="form-group">
                                         <label>Diagnosis</label>
-                                        @foreach ($viewResep as $r)    
-                                        <textarea name="diagnosis" class="form-control" id="diagnosis" cols="30" rows="10"  value="{{$r->diagnosis}}" disabled></textarea>
-                                        @endforeach
+                                        <textarea name="diagnosis" class="form-control" id="diagnosis" cols="30" rows="10"  value="" disabled>{{$r->diagnosis}}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label>Nama Obat</label>
                                         <select name="id_obat" id="id_obat" class="form-control" required>
                                             <option value="" disabled>Pilih Obat</option>
-                                            @foreach ($viewResep as $r)
                                                 <option value="{{ $r->id_obat }}">{{ $r->nama_obat }}</option>
-                                                @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Aturan Pakai</label>   
-                                        @foreach ($viewResep as $r) 
-                                        <textarea name="aturan_pakai" class="form-control" id="aturan_pakai" cols="30" rows="10"  value="{{$r->aturan_pakai}}"></textarea>
+                                        <textarea name="aturan_pakai" class="form-control" id="aturan_pakai" cols="30" rows="10"  value="">{{$r->aturan_pakai}}</textarea>
                                         @endforeach
                                     </div>
-                                   
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" name="id_resep" value="{{ $resep->id_resep }}"/>
                                     </div>
