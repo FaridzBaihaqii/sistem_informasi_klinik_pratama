@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pasien;
-use App\Models\DataObat;
-use App\Models\Tipe;
+    use App\Models\DataObat;
+    use App\Models\Tipe;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Support\Facades\DB;
