@@ -160,5 +160,13 @@ class PasienController extends Controller
             }
             return response()->json($pesan);
     }
+
+    public function unduhPasien(Pasien $pasien)
+    {
+        $pasien = $pasien
+        ->get();
+        $pdf = PDF::loadView('pasien.unduh', ['pasien' => $pasien]);
+        return $pdf->download('data-pasien.pdf');
+    }
 }
 
