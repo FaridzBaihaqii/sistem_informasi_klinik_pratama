@@ -22,6 +22,7 @@
                                   <btn class="btn btn-success">Tambah Data Pasien</btn>
                                </a>
                             </div>
+                            <hr>
                                 <tr>
                                     <div style="background-color: #92E3A9">
                                     <th>NAMA PASIEN</th>

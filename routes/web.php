@@ -67,22 +67,23 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['UserPeran:apoteker'])->group(function() {
         //Apoteker
-            Route::get('/obat/apoteker', [ApotekerController::class, 'index']);
-            Route::get('/obat/apoteker/detail/{id}', [ApotekerController::class, 'detail']);
-            Route::get('/obat/apoteker/tambah', [ApotekerController::class, 'create']);
-            Route::post('/obat/apoteker/simpan', [ApotekerController::class, 'store']);
-            Route::get('/obat/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
-            Route::post('/obat/apoteker/edit/simpan', [ApotekerController::class, 'update']);
-            Route::delete('/obat/apoteker/hapus', [ApotekerController::class, 'destroy']);
-            Route::get('/obat/apoteker/unduh', [ApotekerController::class, 'unduhObat']);
+            Route::get('obat/apoteker', [ApotekerController::class, 'index']);
+            Route::get('obat/apoteker/detail/{id}', [ApotekerController::class, 'detail']);
+            Route::get('obat/apoteker/tambah', [ApotekerController::class, 'create']);
+            Route::post('obat/apoteker/simpan', [ApotekerController::class, 'store']);
+            Route::get('obat/apoteker/edit/{id}', [ApotekerController::class, 'edit']);
+            Route::post('obat/apoteker/edit/simpan', [ApotekerController::class, 'update']);
+            Route::delete('obat/apoteker/hapus', [ApotekerController::class, 'destroy']);
+            Route::get('obat/apoteker/unduh', [ApotekerController::class, 'unduh']);
+
         //Tipe Obat
-            Route::get('/obat/tipe', [TipeController::class, 'index']);
-            Route::get('/obat/tipe/tambah', [TipeController::class, 'create']);
-            Route::post('/obat/tipe/simpan', [TipeController::class, 'store']);
-            Route::get('/obat/tipe/edit/{id}', [TipeController::class, 'edit']);
-            Route::post('/obat/tipe/edit/simpan', [TipeController::class, 'update']);
-            Route::delete('/obat/tipe/hapus', [TipeController::class, 'destroy']);
-    });
+            Route::get('obat/tipe', [TipeController::class, 'index']);
+            Route::get('obat/tipe/tambah', [TipeController::class, 'create']);
+            Route::post('obat/tipe/simpan', [TipeController::class, 'store']);
+            Route::get('obat/tipe/edit/{id}', [TipeController::class, 'edit']);
+            Route::post('obat/tipe/edit/simpan', [TipeController::class, 'update']);
+            Route::delete('obat/tipe/hapus', [TipeController::class, 'destroy']);
+        });
 
     Route::middleware(['UserPeran:asisten'])->group(function() {
         //Rekam Medis
