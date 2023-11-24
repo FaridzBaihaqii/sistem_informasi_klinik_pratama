@@ -113,7 +113,7 @@ class PasienController extends Controller
             'alamat' => 'sometimes',
             'no_telp' => 'sometimes',
             'no_bpjs' => 'sometimes',
-            'foto_profil' => 'sometimes',
+            'foto_profil' => 'sometimes|file',
         ]);
 
         if ($id_pasien !==null){
