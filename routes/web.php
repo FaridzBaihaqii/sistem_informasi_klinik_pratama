@@ -83,6 +83,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('obat/tipe/edit/{id}', [TipeController::class, 'edit']);
             Route::post('obat/tipe/edit/simpan', [TipeController::class, 'update']);
             Route::delete('obat/tipe/hapus', [TipeController::class, 'destroy']);
+
+        //Resep Dokter
+            Route::get('/resep/asisten/', [ResepDokterController::class, 'index']);
+            Route::get('/resep/asisten/detail/{id}', [ResepDokterController::class, 'detail']);
+            Route::get('/resep/asisten/tambah', [ResepDokterController::class, 'create']);
+            Route::get('/resep/asisten/get-rekam-data', [ResepDokterController::class, 'getRekamData'])->name('getRekamData'); 
+            Route::post('/resep/asisten/simpan', [ResepDokterController::class, 'store']);
+            Route::get('/resep/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
+            Route::post('/resep/asisten/edit/simpan', [ResepDokterController::class, 'update']);
+            Route::delete('/resep/asisten/hapus', [ResepDokterController::class, 'destroy']);
         });
 
     Route::middleware(['UserPeran:asisten'])->group(function() {

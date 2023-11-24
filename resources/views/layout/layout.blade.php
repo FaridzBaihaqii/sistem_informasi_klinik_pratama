@@ -292,6 +292,7 @@ svg {
                 <!-- Add additional list items here -->
                 <li><a href="{{ url('obat/apoteker') }}">Data Obat</a></li>
                 <li><a href="{{ url('obat/tipe') }}">Tipe Obat</a></li>
+                <li><a href="{{ url('resep/asisten')}}">Resep Dokter</a></li>
             </ul>
         </li>
         @endif
