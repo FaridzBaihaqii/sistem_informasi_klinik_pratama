@@ -11,11 +11,7 @@
                     
                 </div>
                 <br>
-<<<<<<< HEAD
                 <div class="card-body" >
-=======
-                <div class="card-body" style="width:;">
->>>>>>> bd9311719877f5d90666ca05ce06a5e896cc6f3a
                     <form method="POST" action="simpan" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group">

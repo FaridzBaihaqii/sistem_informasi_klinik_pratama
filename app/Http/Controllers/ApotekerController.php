@@ -108,6 +108,7 @@ class ApotekerController extends Controller
             'apoteker' =>  DataObat::where('id_obat', $id)->get(),
             'apoteker' => DB::table('view_tipe')->where('id_obat', $id)->get(),
 
+
         ];
 
         return view('apoteker.detail', $data);
