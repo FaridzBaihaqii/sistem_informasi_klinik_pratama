@@ -94,11 +94,12 @@ class ResepDokterController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ResepDokter $resep, string $id)
+    public function edit(ResepDokter $resep,DataObat $data_obat, string $id)
     {
         $data = [
             'resep' => ResepDokter::where('id_resep', $id)->first(),
             'viewResep' => DB::table('view_resep')->where('id_resep', $id)->get(),
+            'obat' => $data_obat->all(),
         ];
     
         return view('resep.edit', $data);
