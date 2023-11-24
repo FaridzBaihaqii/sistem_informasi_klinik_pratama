@@ -17,7 +17,7 @@
                             <hr>
                         <table class="table table-hover table-bordered">
                         <a href="asisten/tambah">
-                            <btn class="btn btn-success btn">Tambah resep Medis</btn>
+                            <btn class="btn btn-success btn">Tambah Resep Dokter</btn>
                         </a>
                         <hr>
                             <thead>

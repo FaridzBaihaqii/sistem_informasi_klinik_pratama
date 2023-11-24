@@ -8,11 +8,13 @@ use App\Http\Controllers\TipeController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
 use App\Http\Controllers\ResepsionisController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,6 +151,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/akun/edit/{id}', [AkunController::class, 'edit']);
         Route::post('/akun/edit/simpan', [AkunController::class, 'update']);
         Route::delete('/akun/hapus', [AkunController::class, 'destroy']);
+    });
+
+    Route::prefix('dashboard')->group(function() {
+        Route::get('/', [DashboardController::class, 'index']);
     });
 
     //Logout

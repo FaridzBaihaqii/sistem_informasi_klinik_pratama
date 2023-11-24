@@ -34,8 +34,9 @@
                                     <div class="form-group">
                                         <label>Nama Obat</label>
                                         <select name="id_obat" id="id_obat" class="form-control" required>
-                                            <option value="" disabled>Pilih Obat</option>
-                                                <option value="{{ $r->id_obat }}">{{ $r->nama_obat }}</option>
+                                            @foreach ($obat as $o)
+                                        <option value="{{ $o->id_obat }}">{{ $o->nama_obat }}</option>
+                                    @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
