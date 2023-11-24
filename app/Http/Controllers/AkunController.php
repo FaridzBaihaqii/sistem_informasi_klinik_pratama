@@ -98,9 +98,9 @@ class AkunController extends Controller
         ]);
         if($data){
             Akun::where('id_user', $request->input('id_user'))->update($data);
-            return redirect()->to('/dashboard/akun')->with('success','Data Surat Berhasil di Update');
+            return redirect()->to('/dashboard/akun')->with('success','Data Akun Berhasil di Update');
         } else {
-            return back()->with('error','Data Surat Gagal di Update');
+            return back()->with('error','Data Akun Gagal di Update');
         }
     }
 
@@ -125,13 +125,13 @@ class AkunController extends Controller
             {
                 $pesan = [
                     'success' => true,
-                    'pesan'   => 'Jenis surat berhasil dihapus'
+                    'pesan'   => 'Akun berhasil dihapus'
                 ];
             }else
             {
                 $pesan = [
                     'success' => false,
-                    'pesan'   => 'Jenis surat gagal dihapus'
+                    'pesan'   => 'Akun gagal dihapus'
                 ];
             }
             return response()->json($pesan);

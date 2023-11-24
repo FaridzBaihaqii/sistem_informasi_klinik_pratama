@@ -8,6 +8,7 @@ use App\Http\Controllers\TipeController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\ApotekerController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\RekamMedisController;
 use App\Http\Controllers\ResepDokterController;
@@ -95,7 +96,20 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/rekam/asisten/edit/simpan', [RekamMedisController::class, 'update']);
             Route::get('/rekam/asisten/unduh', [RekamMedisController::class, 'unduhRekam']);
             Route::delete('/rekam/asisten/hapus', [RekamMedisController::class, 'destroy']);
-        //Resep Dokter
+    });
+
+            // Pasien
+            Route::get('/dashboard/pasien', [PasienController::class, 'index']);
+            Route::get('/dashboard/pasien/tambah', [PasienController::class, 'create']);
+            Route::post('/dashboard/pasien/simpan', [PasienController::class, 'store']);
+            Route::get('/dashboard/pasien/edit/{id}', [PasienController::class, 'edit']);
+            Route::get('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);
+            Route::post('/dashboard/pasien/edit/simpan', [PasienController::class, 'update']);
+            Route::post('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);
+            Route::get('/dashboard/unduh', [PasienController::class, 'unduhPasien']);
+            Route::delete('/dashboard/pasien/hapus', [PasienController::class, 'destroy']);
+
+            //Resep Dokter
             Route::get('/resep/asisten/', [ResepDokterController::class, 'index']);
             Route::get('/resep/asisten/detail/{id}', [ResepDokterController::class, 'detail']);
             Route::get('/resep/asisten/tambah', [ResepDokterController::class, 'create']);
@@ -104,19 +118,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/resep/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
             Route::post('/resep/asisten/edit/simpan', [ResepDokterController::class, 'update']);
             Route::delete('/resep/asisten/hapus', [ResepDokterController::class, 'destroy']);
-    });
 
-        // Pasien
-        Route::get('/dashboard/pasien', [PasienController::class, 'index']);
-        Route::get('/dashboard/pasien/tambah', [PasienController::class, 'create']);
-        Route::post('/dashboard/pasien/simpan', [PasienController::class, 'store']);
-        Route::get('/dashboard/pasien/edit/{id}', [PasienController::class, 'edit']);
-        Route::get('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);
-        Route::post('/dashboard/pasien/edit/simpan', [PasienController::class, 'update']);
-        Route::post('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);
-        Route::get('/dashboard/unduh', [PasienController::class, 'unduhPasien']);
-        Route::delete('/dashboard/pasien/hapus', [PasienController::class, 'destroy']);
-    });
+});
 
     // routes/web.php
 
