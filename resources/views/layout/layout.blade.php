@@ -264,9 +264,7 @@ svg {
     <ul class="sidebar-nav">
       <br>
         <li class="sidebar-brand">
-            <a href="{{ url('dashboard') }}" class="h2">
-              <img src="{{ asset('gambar/logo.png') }}" style="width: 90%; margin-top: -58px; margin-left: 0%;">
-            </a>
+            <img src="{{ asset('gambar/logo.png') }}" style="width: 90%; margin-top: -58px; margin-left: 0%;">
         </li>
         <br>
         <br>
@@ -292,7 +290,6 @@ svg {
                 <!-- Add additional list items here -->
                 <li><a href="{{ url('obat/apoteker') }}">Data Obat</a></li>
                 <li><a href="{{ url('obat/tipe') }}">Tipe Obat</a></li>
-                <li><a href="{{url('resep/asisten')}}">Resep Dokter</a></li>
             </ul>
         </li>
         @endif
@@ -304,6 +301,7 @@ svg {
                 <!-- Add additional list items here -->
                 <li><a href="{{ url('resepsionis') }}">Pendaftaran</a></li>
                 <li><a href="{{url('dokter')}}">Dokter</a></li>
+            <li><a href="{{url('dashboard/pasien')}}">Pasien</a></li>
                 <li><a href="{{url('pendaftaran/poli')}}">Poli</a></li>
             </ul>
         </li>

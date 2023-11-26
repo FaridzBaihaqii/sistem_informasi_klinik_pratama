@@ -49,11 +49,18 @@
                                                     <td class="fw-bolder">Info Temu Janji</td>
                                                     <td>: {{$p->info_janji}}</td>
                                                 </tr>
+                                                <tr>
+                                                    <td class="fw-bolder">Konfirmasi</td>
+                                                    <td>: {{ $p->status_konfirmasi }}</td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
-                                        <div class="col-md-4 mt-3">
-                                            <a href="#" onclick="window.history.back();" class="btn btn-success">KEMBALI</a>
+                                        <div class="col-md-4 mt-3 d-flex">
+                                            <a href="#" onclick="window.history.back();"
+                                                class="btn btn-success">KEMBALI</a>
+                                            <a href="/resepsionis/confirm/{{ $p->id_pendaftaran }}"
+                                                class="btn btn-info mx-2 text-white">KONFIRMASI</a>
                                         </div>
                                     </div>
 
