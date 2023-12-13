@@ -19,7 +19,7 @@
                     </div>
                         <div class="card text-center bg-white col">
                             <div class="card-body">
-                                    <h3 class="card-title">JUMLAH Obat</h3>
+                                    <h3 class="card-title">JUMLAH OBAT</h3>
                                 <h1 class="fw-bold">{{$jumlahObat}}</h1>
                             </div>
                         </div>
