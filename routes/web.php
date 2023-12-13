@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
             Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
             Route::post('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
+            Route::get('/resepsionis/confirm/{id}', [ResepsionisController::class, 'confirm']);
             Route::get('/resepsionis/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
             Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
         //Poli
@@ -112,7 +113,6 @@ Route::middleware(['auth'])->group(function () {
 
             // Pasien
             Route::get('/dashboard/pasien', [PasienController::class, 'index']);
-            Route::get('/dashboard/pasien/tambah', [PasienController::class, 'create']);
             Route::post('/dashboard/pasien/simpan', [PasienController::class, 'store']);
             Route::get('/dashboard/pasien/edit/{id}', [PasienController::class, 'edit']);
             Route::get('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);

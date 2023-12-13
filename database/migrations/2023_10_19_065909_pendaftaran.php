@@ -16,10 +16,12 @@ return new class extends Migration
             $table->integer('id_pendaftaran', true)->nullable(false);
             $table->string('nama_pendaftar', 60);
             $table->string('keluhan', 60);
+            $table->date('tgl_lahir');
             $table->date('tgl_pendaftaran');
             $table->integer('id_poli', false)->index('id_poli');
             $table->date('jadwal_pelayanan');
             $table->string('info_janji', 60);
+            $table->enum('status_konfirmasi', ['berhasil', 'belum'])->default('belum');
 
             // Foreign
             $table->foreign('id_poli')->on('poli')->references('id_poli')->onDelete('cascade')->onUpdate('cascade');

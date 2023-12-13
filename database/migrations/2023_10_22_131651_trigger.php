@@ -52,6 +52,20 @@ return new class extends Migration
         END
     ');
 
+    DB::unprepared('
+        CREATE TRIGGER add_pasien
+        AFTER UPDATE ON pendaftaran FOR EACH ROW
+        BEGIN
+            IF NEW.status_konfirmasi = "berhasil" THEN
+                INSERT INTO pasien (nama_pasien, tgl_lahir, id_pendaftaran, alamat, no_telp, no_bpjs, jenkel,foto_profil)
+                VALUES (NEW.nama_pendaftar, NEW.tgl_lahir, NEW.id_pendaftaran, "-", "62", "08", "-" , "pasien.png")
+                ON DUPLICATE KEY UPDATE
+                    nama_pasien = NEW.nama_pendaftar,
+                    tgl_lahir = NEW.tgl_lahir;
+            END IF;
+        END
+    ');
+
 
 // DB::unprepared('
 // CREATE TRIGGER add_resep_dokter

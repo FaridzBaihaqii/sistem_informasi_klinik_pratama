@@ -28,35 +28,44 @@
                         </a>
                     </div>
                     <hr>
-                        <thead>
-                            <tr>
-                                <th>NAMA PENDAFTAR</th>
-                                <th>KELUHAN</th>
-                                <th>TANGGAL PENDAFTARAN</th>
-                                <th>POLI</th>
-                                <th>JADWAL PELAYANAN</th>
-                                <th>INFO JANJI TEMU</th>
-                                <th>AKSI</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <thead>
+                        <tr>
+                            <th>NAMA PENDAFTAR</th>
+                            <th>KELUHAN</th>
+                            <th>TANGGAL LAHIR</th>
+                            <th>TANGGAL PENDAFTARAN</th>
+                            <th>POLI</th>
+                            <th>JADWAL PELAYANAN</th>
+                            <th>INFO JANJI TEMU</th>
+                            <th>AKSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         @foreach ($pendaftaran as $p)
-                            <tr>
-                                <td>{{ $p->nama_pendaftar }}</td>
-                                <td>{{ $p->keluhan }}</td>
-                                <td>{{ $p->tgl_pendaftaran }}</td>
-                                <td>{{ $p->nama_poli }}</td>
-                                <td>{{ $p->jadwal_pelayanan }}</td>
-                                <td>{{ $p->info_janji }}</td>
-                                <td>
-                                    <a href="resepsionis/detail/{{ $p->id_pendaftaran }}"><btn class="btn btn-info">Detail</btn></a>
-                                    <a href="resepsionis/edit/{{ $p->id_pendaftaran }}"><btn class="btn btn-warning">EDIT</btn></a> 
-                                    <btn class="btn btn-danger btnHapus" idPendaftaran="{{ $p->id_pendaftaran }}">HAPUS</btn>
-                                </td>
-                            </tr>
+                            @if ($p->status_konfirmasi == 'belum')
+                                <tr>
+                                    <td>{{ $p->nama_pendaftar }}</td>
+                                    <td>{{ $p->keluhan }}</td>
+                                    <td>{{ $p->tgl_lahir }}</td>
+                                    <td>{{ $p->tgl_pendaftaran }}</td>
+                                    <td>{{ $p->nama_poli }}</td>
+                                    <td>{{ $p->jadwal_pelayanan }}</td>
+                                    <td>{{ $p->info_janji }}</td>
+                                    <td>
+                                        <a href="resepsionis/detail/{{ $p->id_pendaftaran }}">
+                                            <btn class="btn btn-info">Detail</btn>
+                                        </a>
+                                        <a href="resepsionis/edit/{{ $p->id_pendaftaran }}">
+                                            <btn class="btn btn-warning">EDIT</btn>
+                                        </a>
+                                        <btn class="btn btn-danger btnHapus" idPendaftaran="{{ $p->id_pendaftaran }}">HAPUS
+                                        </btn>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
-                        </tbody>
-                        </table>
+                    </tbody>
+                </table>
                     </div>
                 </div>
             </div>
