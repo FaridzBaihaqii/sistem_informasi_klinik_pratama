@@ -15,7 +15,12 @@
                             <div class="col-md-5">
                                <div class="form-group">
                                     <label>Tipe Obat</label>
-                                    <input type="text" class="form-control" name="nama_tipe" style="text-transform: capitalize" />
+                                    <input type="text" class="form-control @error('nama_tipe') is-invalid @enderror" value="{{ old('nama_tipe')}}" name="nama_tipe" style="text-transform: capitalize" />
+                                    @error('nama_tipe')
+                                        <div class="invalid-feedback">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
                                 </div>
                                 @csrf

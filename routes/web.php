@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
             Route::post('/resepsionis/edit/simpan', [ResepsionisController::class, 'update']);
             Route::post('/resepsionis/detail/{id}', [ResepsionisController::class, 'detail']);
+            Route::get('/resepsionis/confirm/{id}', [ResepsionisController::class, 'confirm']);
             Route::get('/resepsionis/unduh', [ResepsionisController::class, 'unduhPendaftaran']);
             Route::delete('/resepsionis/hapus', [ResepsionisController::class, 'destroy']);
         //Poli
@@ -86,6 +87,16 @@ Route::middleware(['auth'])->group(function () {
             Route::get('obat/tipe/edit/{id}', [TipeController::class, 'edit']);
             Route::post('obat/tipe/edit/simpan', [TipeController::class, 'update']);
             Route::delete('obat/tipe/hapus', [TipeController::class, 'destroy']);
+
+        //Resep Dokter
+            Route::get('/resep/asisten/', [ResepDokterController::class, 'index']);
+            Route::get('/resep/asisten/detail/{id}', [ResepDokterController::class, 'detail']);
+            Route::get('/resep/asisten/tambah', [ResepDokterController::class, 'create']);
+            Route::get('/resep/asisten/get-rekam-data', [ResepDokterController::class, 'getRekamData'])->name('getRekamData'); 
+            Route::post('/resep/asisten/simpan', [ResepDokterController::class, 'store']);
+            Route::get('/resep/asisten/edit/{id}', [ResepDokterController::class, 'edit']);
+            Route::post('/resep/asisten/edit/simpan', [ResepDokterController::class, 'update']);
+            Route::delete('/resep/asisten/hapus', [ResepDokterController::class, 'destroy']);
         });
 
     Route::middleware(['UserPeran:asisten'])->group(function() {
@@ -102,7 +113,6 @@ Route::middleware(['auth'])->group(function () {
 
             // Pasien
             Route::get('/dashboard/pasien', [PasienController::class, 'index']);
-            Route::get('/dashboard/pasien/tambah', [PasienController::class, 'create']);
             Route::post('/dashboard/pasien/simpan', [PasienController::class, 'store']);
             Route::get('/dashboard/pasien/edit/{id}', [PasienController::class, 'edit']);
             Route::get('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);

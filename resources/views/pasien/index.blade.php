@@ -17,14 +17,10 @@
                     <hr>
                         <table class="table table-hover table-bordered DataTable">
                             <thead >
-                            <div class="col-md-4">
-                               <a href="pasien/tambah">
-                                  <btn class="btn btn-success">Tambah Data Pasien</btn>
-                               </a>
-                            </div>
                             <hr>
                                 <tr>
                                     <div style="background-color: #92E3A9">
+                                    <th>NO PENDAFTARAN</th>
                                     <th>NAMA PASIEN</th>
                                     <th>JENIS KELAMIN</th>
                                     <th>TANGGAL LAHIR</th>
@@ -39,6 +35,7 @@
                             <tbody>
                                 @foreach ($pasien as $p)
                                     <tr>
+                                        <td>{{ $p->id_pendaftaran }}</td>
                                         <td>{{ $p->nama_pasien}}</td>
                                         <td>{{ $p->jenkel }}</td>
                                         <td>{{ $p->tgl_lahir }}</td>

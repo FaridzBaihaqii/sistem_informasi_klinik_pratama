@@ -68,6 +68,17 @@ return new class extends Migration
         END
         ');
 
+        DB::unprepared('DROP FUNCTION IF EXISTS CountPendaftaran');
+
+        DB::unprepared('
+        CREATE FUNCTION CountPendaftaran(status VARCHAR(10)) RETURNS INT
+        BEGIN
+            DECLARE total INT;
+            SELECT COUNT(*) INTO total FROM pendaftaran WHERE status_konfirmasi = status COLLATE utf8mb4_unicode_ci;
+            RETURN total;
+        END
+        ');
+
         DB::unprepared('DROP FUNCTION IF EXISTS CountTotalDokter');
 
         DB::unprepared('

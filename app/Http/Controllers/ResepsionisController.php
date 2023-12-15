@@ -26,7 +26,7 @@ class ResepsionisController extends Controller
      */
     public function index(Poli $resepsionis)
     {
-        $totalPendaftaran = DB::select('SELECT CountTotalPendaftaran() AS totalPendaftaran')[0]->totalPendaftaran;
+        $totalPendaftaran = DB::select("SELECT CountPendaftaran('belum') AS totalPendaftaran")[0]->totalPendaftaran;
         // Mengirim data agar ditampilkan kedalam view dengan isi array data pendaftaran
         // Array dari model pendaftaran yang disimpan dalam variabel data
     $data = [
@@ -59,6 +59,7 @@ class ResepsionisController extends Controller
             [
                 'nama_pendaftar' => ['required'],
                 'keluhan' => ['required'],
+                'tgl_lahir' => ['required'],
                 'tgl_pendaftaran' => ['required'],
                 'id_poli' => ['required'],
                 'jadwal_pelayanan' => ['required'],
@@ -66,7 +67,7 @@ class ResepsionisController extends Controller
             ]
             );
 
-            if (DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?)",[$data['nama_pendaftar'],$data['keluhan'],$data['tgl_pendaftaran'],$data['id_poli'],$data['jadwal_pelayanan'],$data['info_janji']]))  {
+            if (DB::statement("CALL CreatePendaftaran(?,?,?,?,?,?,?)",[$data['nama_pendaftar'],$data['keluhan'],$data['tgl_lahir'],$data['tgl_pendaftaran'],$data['id_poli'],$data['jadwal_pelayanan'],$data['info_janji']]))  {
                 return redirect('/resepsionis')->with('success', 'Data Pendaftaran Baru Berhasil Ditambah');
             }
     
@@ -158,5 +159,20 @@ class ResepsionisController extends Controller
             ->join('poli', 'pendaftaran.id_poli', '=', 'poli.id_poli')->get();
         $pdf = PDF::loadView('pendaftaran.unduh', ['pendaftaran' => $pendaftaran]);
         return $pdf->download('data-pendaftaran.pdf');
+    }
+
+    public function confirm(Pendaftaran $pendaftaran, string $id)
+    {
+
+        if($id) {
+            $pendaftaran
+                ->where('id_pendaftaran', $id)
+                ->update(['status_konfirmasi' => 'berhasil']);
+
+            return redirect('/resepsionis')->with('success', 'Data Pendafataran Berhasil Di konfirmasi');
+        } else {
+            return redirect('/resepsionis')->with('error', 'Data Pendafataran Gagal Di konfirmasi');
+        }
+
     }
 }

@@ -93,7 +93,9 @@ return new class extends Migration
             pe.jadwal_pelayanan AS jadwal_pelayanan,
             pe.info_janji AS info_janji,
             p.id_poli AS id_poli,
-            p.nama_poli AS nama_poli
+            p.nama_poli AS nama_poli,
+            pe.status_konfirmasi AS status_konfirmasi,
+            pe.tgl_lahir AS tgl_lahir
         FROM pendaftaran pe
         INNER JOIN poli p ON pe.id_poli = p.id_poli;
 
