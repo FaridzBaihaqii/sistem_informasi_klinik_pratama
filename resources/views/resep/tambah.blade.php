@@ -24,13 +24,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Nama Dokter</label>    
-                                <input type='text' name="nama_dokter" class="form-control" id="nama_dokter" disabled></input>
-                            </div>
-                            <div class="form-group">
                                 <label>Nama Pasien</label>    
                                 <input type='text' name="nama_pasien" class="form-control" id="nama_pasien" disabled></input>
                             </div>
+                            <div class="form-group">
+                                <label>Nama Dokter</label>    
+                                <input type='text' name="nama_dokter" class="form-control" id="nama_dokter" disabled></input>
+                            </div>
+                          
                             <div class="form-group">
                                 <label>Tanggal Pelayanan</label>
                                 <input type="date" class="form-control" name="tgl_pelayanan" id="tgl_pelayanan" disabled/>
