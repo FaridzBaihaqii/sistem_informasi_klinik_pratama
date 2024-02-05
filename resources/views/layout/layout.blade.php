@@ -305,7 +305,6 @@ svg {
                 <li><a href="{{ url('dashboard/pasien') }}">Pasien</a></li>
                 <li><a href="{{ url('resepsionis') }}">Pendaftaran</a></li>
                 <li><a href="{{url('dokter')}}">Dokter</a></li>
-                <li><a href="{{url('dashboard/pasien')}}">Pasien</a></li>
                 <li><a href="{{url('pendaftaran/poli')}}">Poli</a></li>
             </ul>
         </li>

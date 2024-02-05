@@ -22,6 +22,10 @@
                                     <input type="text" class="form-control" name="keluhan" value="{{ $pendaftaran->keluhan }}"/>
                                 </div>
                                 <div class="form-group">
+                                    <label>Tanggal Lahir</label>
+                                    <input type="date" class="form-control" name="tgl_lahir" value="{{ $pendaftaran->tgl_lahir }}" />
+                                </div>
+                                <div class="form-group">
                                     <label>Tanggal Pendaftaran</label>
                                     <input type="date" class="form-control" name="tgl_pendaftaran" value="{{ $pendaftaran->tgl_pendaftaran }}" />
                                 </div>

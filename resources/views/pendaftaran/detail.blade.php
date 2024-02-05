@@ -34,6 +34,10 @@
                                                     <td>: {{$p->keluhan}}</td>
                                                 </tr>
                                                 <tr>
+                                                    <td class="fw-bolder">Tanggal Lahir</td>
+                                                    <td>: {{$p->tgl_lahir}}</td>
+                                                </tr>
+                                                <tr>
                                                     <td class="fw-bolder">Tanggal Pendaftaran</td>
                                                     <td>: {{$p->tgl_pendaftaran}}</td>
                                                 </tr>
