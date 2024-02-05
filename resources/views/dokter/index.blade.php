@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Daftar Pasien')
+@section('title', 'Daftar Dokter')
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -9,12 +9,12 @@
                         Data Dokter
                     </span>
                 </div>
-                            <hr>
-                        <table class="table table-hover table-bordered">
+                <hr>
+                    <table class="table table-hover table-bordered">
                         <a href="dokter/tambah">
-                        <btn class="btn btn-success">Tambah Data Dokter</btn>
-                    </a>
-                    <hr>
+                            <btn class="btn btn-success">Tambah Data Dokter</btn>
+                        </a>
+                        <hr>
                             <thead>
                                 <tr>
                                     <th>NAMA DOKTER</th>

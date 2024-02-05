@@ -28,7 +28,7 @@ class ResepsionisController extends Controller
     {
         $totalPendaftaran = DB::select("SELECT CountPendaftaran('belum') AS totalPendaftaran")[0]->totalPendaftaran;
         // Mengirim data agar ditampilkan kedalam view dengan isi array data pendaftaran
-        // Array dari model pendaftaran yang disimpan dalam variabel data
+        // Array daqri model pendaftaran yang disimpan dalam variabel data
     $data = [
             'pendaftaran' => DB::table('view_poli')->get(),
             'jumlahPendaftaran' => $totalPendaftaran

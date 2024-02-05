@@ -1,11 +1,10 @@
 @extends('layout.layout')
-@section('title', 'Data pasien')
+@section('title', 'Detail Rekam Medis')
 @section('content')
 <style>
     table{
         border:1px solid transparent !important;
     }
-
 
 </style>
     <div class="row">

@@ -40,7 +40,7 @@
                                             <input type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username')}}" placeholder="Username" name="username" />
                                             @error('username')
                                                 <div class="invalid-feedback">
-                                                    {{$message}}
+                                                    {{$message}}    
                                                 </div>
                                             @enderror
                                         </div>

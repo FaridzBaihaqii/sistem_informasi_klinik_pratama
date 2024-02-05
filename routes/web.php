@@ -112,7 +112,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
             // Pasien
-            Route::get('/dashboard/pasien', [PasienController::class, 'index']);
+            Route::get('/dashboard/pasien', [PasienController::class, 'index']);  
             Route::post('/dashboard/pasien/simpan', [PasienController::class, 'store']);
             Route::get('/dashboard/pasien/edit/{id}', [PasienController::class, 'edit']);
             Route::get('/dashboard/pasien/detail/{id}', [PasienController::class, 'detail']);

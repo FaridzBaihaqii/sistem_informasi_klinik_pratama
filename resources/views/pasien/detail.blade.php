@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Data Obat')
+@section('title', 'Detail Pasien')
 @section('content')
 <style>
     table{
