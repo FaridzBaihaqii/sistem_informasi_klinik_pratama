@@ -10,7 +10,6 @@
                         Resep Dokter
                     </span>
                 </div>
-                <br>
                 <div class="card-header">
                  
                 </div>

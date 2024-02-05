@@ -45,7 +45,7 @@ class TipeController extends Controller
             return redirect('/obat/tipe')->with('success', 'Data Tipe Obat Baru Berhasil Ditambah');
         }
 
-        return back()->with('error', 'Data Obat Gagal Ditambahkan');
+        return back()->with('error', 'Data Tipe Obat Gagal Ditambahkan');
     }
 
 
@@ -84,11 +84,11 @@ class TipeController extends Controller
             $dataUpdate = $tipe->where('id_tipe', $id_tipe)->update($data);
 
             if($dataUpdate) {
-                return redirect('obat/tipe')->with('success', 'Data Obat Berhasil Diupdate');
+                return redirect('obat/tipe')->with('success', 'Data Tipe Obat Berhasil Diupdate');
             }
         }
 
-            return back()->with('error', 'Data Obat Gagal diupdate');
+            return back()->with('error', 'Data Tipe Obat Gagal diupdate');
     }
 
     /**
@@ -105,7 +105,7 @@ class TipeController extends Controller
             // Pesan Berhasil
             $pesan = [
                 'success' => true,
-                'pesan'   => 'Data Obat Berhasil Dihapus'
+                'pesan'   => 'Data Tipe Obat Berhasil Dihapus'
             ];
         } else {
             // Pesan Gagal

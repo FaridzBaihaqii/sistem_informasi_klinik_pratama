@@ -7,19 +7,20 @@
                 <br/>
                 <div class="card-header">
                     <span class="h1" style="color:#92E3A9; font-weight: bold;">
-
+                        Dashboard Admin
                     </span>
                 </div>
+                <hr>
                 <div class="card-header d-flex justify-content-between gap-3 row">
                     <div class="card text-center bg-white col">
                         <div class="card-body">
-                                <h3 class="card-title">JUMLAH PASIEN</h3>
+                            <h3 class="card-title">JUMLAH PASIEN</h3>
                             <h1 class="fw-bold">{{$jumlahPasien}}</h1>
                         </div>
                     </div>
                         <div class="card text-center bg-white col">
                             <div class="card-body">
-                                    <h3 class="card-title">JUMLAH Obat</h3>
+                                    <h3 class="card-title">JUMLAH OBAT</h3>
                                 <h1 class="fw-bold">{{$jumlahObat}}</h1>
                             </div>
                         </div>
