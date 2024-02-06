@@ -99,6 +99,7 @@ class ResepsionisController extends Controller
         ];
         return view('pendaftaran.detail', $data);
     }
+
  
     /**
      * Update the specified resource in storage.
@@ -154,12 +155,15 @@ class ResepsionisController extends Controller
     }
 
     public function unduhPendaftaran(Pendaftaran $pendaftaran)
-    {
-        $pendaftaran = $pendaftaran
-            ->join('poli', 'pendaftaran.id_poli', '=', 'poli.id_poli')->get();
-        $pdf = PDF::loadView('pendaftaran.unduh', ['pendaftaran' => $pendaftaran]);
-        return $pdf->download('data-pendaftaran.pdf');
-    }
+{
+    $pendaftaran = $pendaftaran
+        ->join('poli', 'pendaftaran.id_poli', '=', 'poli.id_poli')
+        ->where('status_konfirmasi', '!=', 'berhasil')
+        ->get();
+
+    $pdf = PDF::loadView('pendaftaran.unduh', ['pendaftaran' => $pendaftaran]);
+    return $pdf->download('data-pendaftaran.pdf');
+}
 
     public function confirm(Pendaftaran $pendaftaran, string $id)
     {

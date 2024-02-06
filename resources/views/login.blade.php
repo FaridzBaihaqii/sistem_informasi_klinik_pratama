@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <title>Halaman Login</title>
     @vite(['resources/sass/app.scss','resources/js/app.js'])
 </head>
 <style>

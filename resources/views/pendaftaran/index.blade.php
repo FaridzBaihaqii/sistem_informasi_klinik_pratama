@@ -1,5 +1,5 @@
 @extends('layout.layout')
-@section('title', 'Dattar Pendaftaran')
+@section('title', 'Daftar Pendaftaran')
 @section('content')
     <div class="row">
         <div class="col-md-12">
